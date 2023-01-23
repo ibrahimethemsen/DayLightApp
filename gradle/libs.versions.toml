@@ -24,7 +24,7 @@ androidx-core = { module = "androidx.core:core-ktx", version.ref = "core_version
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat_version" }
 androidx-constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayout_version" }
 androidx-navigation-fragment = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigation_version" }
-androidx-navigation-ui = { module = "androidx.navigation:navigation-ui-ktx" }
+androidx-navigation-ui = { module = "androidx.navigation:navigation-ui-ktx" , version.ref = "navigation_version"}
 android-material = { module = "com.google.android.material:material", version.ref = "material_version" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt_version" }
 hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt_version" }

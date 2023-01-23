@@ -1,8 +1,11 @@
-package com.ibrahimethemsen.daylightapp
+package com.ibrahimethemsen.daylightapp.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.ibrahimethemsen.daylightapp.R
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
