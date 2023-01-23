@@ -15,8 +15,12 @@ class GetListCityUseCaseImpl @Inject constructor(
             emit(NetworkResult.Loading)
             when(val response = cityRepository.getAllCity()){
                 is NetworkResult.Error -> emit(NetworkResult.Error(response.exception))
-                NetworkResult.Loading -> TODO()
-                is NetworkResult.Success -> emit(NetworkResult.Success(response.data))
+                NetworkResult.Loading -> {
+
+                }
+                is NetworkResult.Success -> emit(NetworkResult.Success(response.data.map {
+                    it.copy(name = it.name?.lowercase())
+                }))
             }
         }
     }
