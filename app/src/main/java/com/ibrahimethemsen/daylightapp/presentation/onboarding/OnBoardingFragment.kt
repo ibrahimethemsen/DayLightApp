@@ -7,8 +7,13 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import com.ibrahimethemsen.daylightapp.common.isVisibility
+import com.ibrahimethemsen.daylightapp.common.nullVisibility
 import com.ibrahimethemsen.daylightapp.databinding.FragmentOnBoardingBinding
+import com.ibrahimethemsen.daylightapp.presentation.onboarding.adapter.CityRecyclerViewAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class OnBoardingFragment : Fragment() {
@@ -17,6 +22,7 @@ class OnBoardingFragment : Fragment() {
 
 
     private val viewModel by viewModels<OnBoardingViewModel>()
+    private val cityAdapter = CityRecyclerViewAdapter()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -28,36 +34,39 @@ class OnBoardingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getList()
-        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        binding.onboardingSearchCityRv.adapter = cityAdapter
+        binding.onboardingSearchView.setOnQueryTextListener(object :
+            SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return false
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                filterCity(newText)
+                viewModel.filterCityList(newText).also {
+                    cityAdapter.updateListCity(it)
+                }
                 return true
             }
         })
         observer()
-    }
 
-    private fun filterCity(query:String?){
-        query?.let {
-            viewModel.cityList.observe(viewLifecycleOwner){cityList->
-                cityList.forEach{city ->
-                    if (city.name!!.lowercase().contains(it)){
-                        println("şehir bulundu ${city.name} $it")
-                    }else{
-                        println("şehir bulunamadı")
-                    }
-                }
+
+        lifecycleScope.launch {
+            viewModel.readFromDataStore.collect {
+                println("lan ${it.lan}")
+                println("lon ${it.lon}")
             }
         }
+
     }
 
-    private fun observer(){
-        viewModel.cityList.observe(viewLifecycleOwner){
-
+    private fun observer() {
+        viewModel.cityList.observe(viewLifecycleOwner) { onBoardingUi ->
+            onBoardingUi.data?.let {
+                cityAdapter.updateListCity(it)
+            }
+            binding.onboardingErrorTv nullVisibility onBoardingUi.error
+            binding.onboardingProgress isVisibility onBoardingUi.loading
         }
     }
 }

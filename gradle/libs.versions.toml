@@ -14,6 +14,7 @@ hilt_version = "2.44.2"
 retrofit_version = "2.9.0"
 coil_version = "2.2.2"
 leakcanary_version = "2.10"
+datastore_version = "1.0.0"
 #tests
 junit_version = "4.13.2"
 junit_ext_version = "1.1.5"
@@ -31,6 +32,7 @@ androidx-navigation-ui = { module = "androidx.navigation:navigation-ui-ktx", ver
 androidx-livedata = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycle_version" }
 androidx-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle_version" }
 androidx-legacy = {module = "androidx.legacy:legacy-support-v4",version.ref = "legacy_version"}
+androidx-datastore={module = "androidx.datastore:datastore-preferences",version.ref = "datastore_version"}
 android-material = { module = "com.google.android.material:material", version.ref = "material_version" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt_version" }
 hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt_version" }
@@ -38,6 +40,7 @@ retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit
 retrofit-moshi = { module = "com.squareup.retrofit2:converter-moshi", version.ref = "retrofit_version" }
 coil = { module = "io.coil-kt:coil", version.ref = "coil_version" }
 leak-canary = {module = "com.squareup.leakcanary:leakcanary-android",version.ref = "leakcanary_version"}
+
 #tests
 test-junit = { module = "junit:junit", version.ref = "junit_version" }
 test-androidx-junit = { module = "androidx.test.ext:junit", version.ref = "junit_ext_version" }

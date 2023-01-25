@@ -18,9 +18,7 @@ class GetListCityUseCaseImpl @Inject constructor(
                 NetworkResult.Loading -> {
 
                 }
-                is NetworkResult.Success -> emit(NetworkResult.Success(response.data.map {
-                    it.copy(name = it.name?.lowercase())
-                }))
+                is NetworkResult.Success -> emit(NetworkResult.Success(response.data))
             }
         }
     }
