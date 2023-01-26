@@ -1,40 +1,28 @@
 package com.ibrahimethemsen.daylightapp.presentation.onboarding
 
-import android.util.Log
-import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.core.edit
-import androidx.datastore.preferences.core.emptyPreferences
-import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ibrahimethemsen.daylightapp.data.NetworkResult
-import com.ibrahimethemsen.daylightapp.data.dto.City
-import com.ibrahimethemsen.daylightapp.domain.usecase.GetListCityUseCase
+import com.ibrahimethemsen.daylightapp.data.dto.city.City
+import com.ibrahimethemsen.daylightapp.domain.usecase.city.GetListCityUseCase
+import com.ibrahimethemsen.daylightapp.domain.usecase.datastore.read.ReadDataStoreUseCase
+import com.ibrahimethemsen.daylightapp.domain.usecase.datastore.write.WriteDataStoreUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
-import java.io.IOException
 import javax.inject.Inject
 
 @HiltViewModel
 class OnBoardingViewModel @Inject constructor(
     private val getListCityUseCase: GetListCityUseCase,
-    private val dataStore: DataStore<Preferences>
-) : ViewModel() {
+    private val writeDataStoreUseCase: WriteDataStoreUseCase,
+    private val readDataStoreUseCase: ReadDataStoreUseCase
+    ) : ViewModel() {
     private var _cityList = MutableLiveData<OnBoardingUi>()
     val cityList: LiveData<OnBoardingUi> = _cityList
 
-    private object PreferencesKeys {
-        val lon = stringPreferencesKey("lon")
-        val lan = stringPreferencesKey("lan")
-    }
-
-
+    val getLocation = readDataStoreUseCase.readCityDataStore
     fun getList() {
         viewModelScope.launch {
             getListCityUseCase().collect {
@@ -80,38 +68,15 @@ class OnBoardingViewModel @Inject constructor(
         return searchList
     }
 
-    fun addDataStoreCity(lat: String, lon: String) {
+    fun writeDataStoreCity(lat: String, lon: String,name : String) {
         viewModelScope.launch {
-            dataStore.edit { preferences ->
-                preferences[stringPreferencesKey("lan")] = lat
-                preferences[stringPreferencesKey("lon")] = lon
-                println("edit")
-            }
+            writeDataStoreUseCase(lat, lon,name)
+            println("latw ${lat}")
+            println("latw ${lon}")
+            println("latw ${name}")
+
         }
     }
-
-
-
-    val readFromDataStore: Flow<LocationEntity> = dataStore.data
-        .catch { exception ->
-            if (exception is IOException) {
-                Log.d("DataStore", exception.message.toString())
-                emit(emptyPreferences())
-            } else {
-                throw exception
-            }
-        }
-        .map { preference ->
-            mapPreferencesKey(preference)
-        }
-
-
-    private fun mapPreferencesKey(preferences: Preferences): LocationEntity {
-        val lon = preferences[PreferencesKeys.lon] ?: "d0"
-        val lan = preferences[PreferencesKeys.lan] ?: "d1"
-        return LocationEntity(lon, lan)
-    }
-
 }
 
 data class OnBoardingUi(
@@ -120,7 +85,3 @@ data class OnBoardingUi(
     val error: Exception? = null
 )
 
-data class LocationEntity(
-    val lon: String,
-    val lan: String
-)

@@ -1,35 +1,28 @@
 package com.ibrahimethemsen.daylightapp.presentation.onboarding
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
+import com.ibrahimethemsen.daylightapp.R
 import com.ibrahimethemsen.daylightapp.common.isVisibility
 import com.ibrahimethemsen.daylightapp.common.nullVisibility
+import com.ibrahimethemsen.daylightapp.data.dto.city.City
 import com.ibrahimethemsen.daylightapp.databinding.FragmentOnBoardingBinding
 import com.ibrahimethemsen.daylightapp.presentation.onboarding.adapter.CityRecyclerViewAdapter
+import com.ibrahimethemsen.daylightapp.utility.viewBindingInflater
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class OnBoardingFragment : Fragment() {
-    private var _binding: FragmentOnBoardingBinding? = null
-    private val binding get() = _binding!!
+class OnBoardingFragment : Fragment(R.layout.fragment_on_boarding) {
 
-
+    private val binding by viewBindingInflater(FragmentOnBoardingBinding::bind)
     private val viewModel by viewModels<OnBoardingViewModel>()
     private val cityAdapter = CityRecyclerViewAdapter()
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentOnBoardingBinding.inflate(inflater, container, false)
-        return binding.root
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -49,15 +42,27 @@ class OnBoardingFragment : Fragment() {
             }
         })
         observer()
-
-
         lifecycleScope.launch {
-            viewModel.readFromDataStore.collect {
-                println("lan ${it.lan}")
-                println("lon ${it.lon}")
+            viewModel.getLocation.collect{
+                println("laton ${it.lat}")
+                println("lonon ${it.lon}")
+                println("nameon ${it.name}")
             }
         }
+        cityAdapter.onCityClickListener(::cityWriteDataStore)
+    }
 
+    private fun cityWriteDataStore(city: City) {
+        if (!city.latitude.isNullOrEmpty() && !city.longitude.isNullOrEmpty() && !city.name.isNullOrEmpty()) {
+            println("on boarding ${city.latitude}")
+            println("on boarding ${city.longitude}")
+            println("on boarding ${city.name}")
+            viewModel.writeDataStoreCity(city.latitude, city.longitude,city.name).also {
+                val action = OnBoardingFragmentDirections.actionOnBoardingFragmentToHomeFragment()
+                requireView().findNavController().navigate(action)
+            }
+
+        }
     }
 
     private fun observer() {

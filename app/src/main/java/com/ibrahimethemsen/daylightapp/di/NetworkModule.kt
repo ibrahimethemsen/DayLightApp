@@ -1,7 +1,9 @@
 package com.ibrahimethemsen.daylightapp.di
 
 import com.ibrahimethemsen.daylightapp.common.Constants.CITY_BASE_URL
-import com.ibrahimethemsen.daylightapp.data.api.CityApi
+import com.ibrahimethemsen.daylightapp.common.Constants.WEATHER_BASE_URL
+import com.ibrahimethemsen.daylightapp.data.api.city.CityApi
+import com.ibrahimethemsen.daylightapp.data.api.weather.WeatherApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -20,12 +22,22 @@ object NetworkModule {
 
     @[Provides Singleton]
     fun provideRetrofit(
-        moshiConverterFactory: MoshiConverterFactory
-    ): CityApi {
+        baseUrl: String,
+        moshiConverterFactory: MoshiConverterFactory = provideMoshi()
+    ): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(CITY_BASE_URL)
+            .baseUrl(baseUrl)
             .addConverterFactory(moshiConverterFactory)
             .build()
-            .create(CityApi::class.java)
     }
+
+    @[Provides Singleton]
+    fun provideCityRetrofit(
+    ): CityApi =
+        provideRetrofit(CITY_BASE_URL).create(CityApi::class.java)
+
+    @[Provides Singleton]
+    fun provideWeatherRetrofit(): WeatherApi =
+        provideRetrofit(WEATHER_BASE_URL).create(WeatherApi::class.java)
+
 }

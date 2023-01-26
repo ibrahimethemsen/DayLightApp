@@ -3,7 +3,7 @@ package com.ibrahimethemsen.daylightapp.presentation.onboarding.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.ibrahimethemsen.daylightapp.data.dto.City
+import com.ibrahimethemsen.daylightapp.data.dto.city.City
 import com.ibrahimethemsen.daylightapp.databinding.AdapterCityItemBinding
 
 class CityRecyclerViewAdapter : RecyclerView.Adapter<CityRecyclerViewAdapter.CityViewHolder>() {
@@ -16,7 +16,14 @@ class CityRecyclerViewAdapter : RecyclerView.Adapter<CityRecyclerViewAdapter.Cit
         }
         notifyDataSetChanged()
     }
-    class CityViewHolder(private val binding : AdapterCityItemBinding) : RecyclerView.ViewHolder(binding.root){
+    //click item
+    private lateinit var onCityClickListener : (City) -> Unit
+
+    fun onCityClickListener(cityClick : (City)->Unit){
+        this.onCityClickListener = cityClick
+    }
+
+    class CityViewHolder(val binding : AdapterCityItemBinding) : RecyclerView.ViewHolder(binding.root){
         fun bind(city : City){
             binding.cityItemNameTv.text = city.name
             binding.cityItemPlateTv.text = city.id.toString()
@@ -31,5 +38,8 @@ class CityRecyclerViewAdapter : RecyclerView.Adapter<CityRecyclerViewAdapter.Cit
 
     override fun onBindViewHolder(holder: CityViewHolder, position: Int) {
         holder.bind(citys[position])
+        holder.binding.root.setOnClickListener {
+            onCityClickListener.invoke(citys[position])
+        }
     }
 }

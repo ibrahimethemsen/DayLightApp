@@ -1,6 +1,6 @@
-package com.ibrahimethemsen.daylightapp.data.api
+package com.ibrahimethemsen.daylightapp.data.api.city
 
-import com.ibrahimethemsen.daylightapp.data.dto.City
+import com.ibrahimethemsen.daylightapp.data.dto.city.City
 import retrofit2.http.GET
 
 interface CityApi {

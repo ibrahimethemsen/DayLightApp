@@ -14,7 +14,6 @@
         android:layout_width="match_parent"
         app:layout_constraintTop_toTopOf="parent"
         app:queryHint="Search"
-        android:visibility="gone"
         app:iconifiedByDefault="false"
         android:background="@drawable/search_view_border"
         android:layout_height="wrap_content" />
@@ -23,7 +22,6 @@
         android:id="@+id/onboarding_search_city_rv"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:visibility="gone"
         android:layout_marginTop="16dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"

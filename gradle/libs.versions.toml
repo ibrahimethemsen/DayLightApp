@@ -20,7 +20,7 @@ junit_version = "4.13.2"
 junit_ext_version = "1.1.5"
 espresso_core_version = "3.5.1"
 #plugins
-gradle_plugin = "8.1.0-alpha01"
+gradle_plugin = "7.4.0"
 kotlin_version = "1.7.21"
 
 [libraries]

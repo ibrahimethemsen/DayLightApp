@@ -1,7 +1,7 @@
-package com.ibrahimethemsen.daylightapp.domain.usecase
+package com.ibrahimethemsen.daylightapp.domain.usecase.city
 
 import com.ibrahimethemsen.daylightapp.data.NetworkResult
-import com.ibrahimethemsen.daylightapp.data.dto.City
+import com.ibrahimethemsen.daylightapp.data.dto.city.City
 import com.ibrahimethemsen.daylightapp.domain.repository.city.CityRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

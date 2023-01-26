@@ -1,4 +1,4 @@
-package com.ibrahimethemsen.daylightapp.data.dto
+package com.ibrahimethemsen.daylightapp.data.dto.city
 
 import com.squareup.moshi.Json
 
