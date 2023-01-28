@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="16dp"
+    tools:context="com.daylightapp.presentation.onboarding.OnBoardingFragment">
+
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/onboarding_search_view"
+        android:layout_width="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:queryHint="Search"
+        app:iconifiedByDefault="false"
+        android:background="@drawable/search_view_border"
+        android:layout_height="wrap_content" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/onboarding_search_city_rv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/onboarding_search_view"
+        tools:layout_editor_absoluteX="16dp"
+        tools:listitem="@layout/adapter_city_item" />
+
+    <ProgressBar
+        android:id="@+id/onboarding_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/onboarding_error_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Bir hata oluştu"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:gravity="center"
+        android:textSize="24sp"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@android:color/holo_red_dark"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

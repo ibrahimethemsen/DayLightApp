@@ -1,0 +1,51 @@
+plugins {
+    alias libs.plugins.android.library
+    alias libs.plugins.android.kotlin
+    alias libs.plugins.hilt.android
+    alias libs.plugins.kapt
+    alias libs.plugins.androidx.navigation
+}
+
+android {
+    namespace 'com.daylightapp.presentation'
+    compileSdk libs.versions.compile.sdk.get().toInteger()
+
+    defaultConfig {
+        minSdk libs.versions.min.sdk.get().toInteger()
+        targetSdk libs.versions.target.sdk.get().toInteger()
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    buildFeatures {
+        viewBinding true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    implementation project(path: ':core:domain')
+    implementation project(path: ':core:common')
+    implementation libs.bundles.default
+    implementation libs.hilt.android
+    kapt libs.hilt.compiler
+    implementation libs.bundles.lifecycle
+    implementation libs.bundles.navigation
+    implementation libs.androidx.constraintlayout
+    testImplementation libs.test.junit
+    androidTestImplementation libs.test.androidx.junit
+    androidTestImplementation libs.test.espresso
+}

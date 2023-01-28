@@ -1,0 +1,39 @@
+plugins {
+    alias libs.plugins.android.library
+    alias libs.plugins.android.kotlin
+}
+
+android {
+    namespace 'com.daylightapp.common'
+    compileSdk libs.versions.compile.sdk.get().toInteger()
+
+    defaultConfig {
+        minSdk libs.versions.min.sdk.get().toInteger()
+        targetSdk libs.versions.target.sdk.get().toInteger()
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    implementation libs.bundles.default
+    implementation libs.retrofit.moshi
+    testImplementation libs.test.junit
+    androidTestImplementation libs.test.androidx.junit
+    androidTestImplementation libs.test.espresso
+}

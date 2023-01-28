@@ -50,6 +50,7 @@ test-espresso = { module = "androidx.test.espresso:espresso-core", version.ref =
 navigation = ["androidx-navigation-fragment", "androidx-navigation-ui"]
 retrofit = ["retrofit", "retrofit-moshi"]
 lifecycle = ["androidx-livedata","androidx-viewmodel","androidx-legacy"]
+default = ["androidx-core","androidx-appcompat","android-material"]
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "gradle_plugin" }

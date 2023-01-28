@@ -39,13 +39,15 @@ android {
 }
 
 dependencies {
-    implementation libs.androidx.core
-    implementation libs.androidx.appcompat
-    implementation libs.android.material
+    implementation libs.bundles.default
     implementation libs.androidx.constraintlayout
     implementation libs.androidx.datastore
     implementation libs.hilt.android
     kapt libs.hilt.compiler
+    implementation project(path: ':core:presentation')
+    implementation project(path: ':core:common')
+    implementation project(path: ':core:data')
+    implementation project(path: ':core:domain')
 
     implementation libs.bundles.navigation
     implementation libs.bundles.retrofit
