@@ -6,7 +6,6 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.emptyPreferences
 import androidx.datastore.preferences.core.stringPreferencesKey
-import com.ibrahimethemsen.daylightapp.common.Constants.ONBOARDING_FRAGMENT
 import com.ibrahimethemsen.daylightapp.data.dto.datastore.LocationEntity
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
@@ -21,7 +20,7 @@ class DataStoreDataSourceImpl @Inject constructor(
         val lon = stringPreferencesKey("lon")
         val lat = stringPreferencesKey("lat")
         val name = stringPreferencesKey("name")
-        val startDestination = stringPreferencesKey("destination")
+        val startDestination = stringPreferencesKey("navdestination")
     }
     override suspend fun writeCityDataStore(lat: String, lon: String,name : String) {
         try {
@@ -32,6 +31,16 @@ class DataStoreDataSourceImpl @Inject constructor(
             }
         }catch (e : Exception){
             Log.e("DataStore", "writeCityDataStore: ${e.localizedMessage}")
+        }
+    }
+
+    override suspend fun writeNavStartDestination(destination : String) {
+        try {
+            dataStore.edit {
+                it[PreferencesKeys.startDestination] = destination
+            }
+        }catch (e : Exception){
+            Log.e("DataStore", "writeNavStart: ${e.localizedMessage}")
         }
     }
 
@@ -47,15 +56,7 @@ class DataStoreDataSourceImpl @Inject constructor(
             mapCityPreferencesKey(preference)
         }
 
-    override suspend fun writeNavStartDestination(destination : String) {
-        try {
-            dataStore.edit {
-                it[PreferencesKeys.startDestination] = destination
-            }
-        }catch (e : Exception){
-            Log.e("DataStore", "writeCityDataStore: ${e.localizedMessage}")
-        }
-    }
+
 
     override val readNavStartDestination: Flow<String>
         get() =  dataStore.data.catch { exception ->
@@ -66,7 +67,7 @@ class DataStoreDataSourceImpl @Inject constructor(
             throw exception
         }
     }.map {preference ->
-        preference[PreferencesKeys.startDestination] ?: ONBOARDING_FRAGMENT
+        preference[PreferencesKeys.startDestination] ?: "d3"
     }
 
     private fun mapCityPreferencesKey(preferences: Preferences): LocationEntity {

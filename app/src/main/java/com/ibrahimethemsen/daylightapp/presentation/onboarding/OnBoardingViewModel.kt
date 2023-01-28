@@ -4,11 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.ibrahimethemsen.daylightapp.common.Constants.HOME_FRAGMENT
 import com.ibrahimethemsen.daylightapp.data.NetworkResult
 import com.ibrahimethemsen.daylightapp.data.dto.city.City
 import com.ibrahimethemsen.daylightapp.domain.usecase.city.GetListCityUseCase
-import com.ibrahimethemsen.daylightapp.domain.usecase.datastore.read.CityDataStoreUseCase
+import com.ibrahimethemsen.daylightapp.domain.usecase.datastore.read.NavStartDestinationUseCase
 import com.ibrahimethemsen.daylightapp.domain.usecase.datastore.write.WriteCityDataStoreUseCase
+import com.ibrahimethemsen.daylightapp.domain.usecase.datastore.write.WriteNavStartDestinationUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -17,15 +19,33 @@ import javax.inject.Inject
 class OnBoardingViewModel @Inject constructor(
     private val getListCityUseCase: GetListCityUseCase,
     private val writeCityDataStoreUseCase: WriteCityDataStoreUseCase,
-    private val readDataStoreUseCase: CityDataStoreUseCase
-    ) : ViewModel() {
+    private val writeNavStartDestination: WriteNavStartDestinationUseCase,
+    private val readNavStartDestination: NavStartDestinationUseCase,
+) : ViewModel() {
     private var _cityList = MutableLiveData<OnBoardingUi>()
     val cityList: LiveData<OnBoardingUi> = _cityList
 
-    val getLocation = readDataStoreUseCase.readCityDataStore
-    fun getList() {
+    private var _navStartDestination = MutableLiveData<String>()
+    val navStartDestination: LiveData<String> = _navStartDestination
+
+    private val readNavStart = readNavStartDestination.readNavStartDestination
+
+    init {
+        getStartDestination()
+        getList()
+    }
+
+     fun getStartDestination() {
         viewModelScope.launch {
-            getListCityUseCase().collect {
+            readNavStart.collect {
+                _navStartDestination.postValue(it)
+            }
+        }
+    }
+
+     fun getList() {
+        viewModelScope.launch {
+            getListCityUseCase().collect{
                 when (it) {
                     is NetworkResult.Error -> {
                         _cityList.postValue(
@@ -37,7 +57,7 @@ class OnBoardingViewModel @Inject constructor(
                     }
 
                     NetworkResult.Loading -> {
-                        _cityList.postValue(
+                        _cityList.postValue (
                             OnBoardingUi()
                         )
                     }
@@ -68,20 +88,17 @@ class OnBoardingViewModel @Inject constructor(
         return searchList
     }
 
-    fun writeDataStoreCity(lat: String, lon: String,name : String) {
+    fun writeDataStoreCity(lat: String, lon: String, name: String) {
         viewModelScope.launch {
-            writeCityDataStoreUseCase(lat, lon,name)
-            println("latw ${lat}")
-            println("latw ${lon}")
-            println("latw ${name}")
-
+            writeCityDataStoreUseCase(lat, lon, name)
+            writeNavStartDestination(HOME_FRAGMENT)
         }
     }
 }
 
 data class OnBoardingUi(
-    val data: List<City>? = null,
+    val data: List<City>? = listOf(),
     val loading: Boolean = true,
-    val error: Exception? = null
+    val error: Throwable? = null
 )
 

@@ -8,6 +8,8 @@ import com.ibrahimethemsen.daylightapp.domain.usecase.datastore.read.NavStartDes
 import com.ibrahimethemsen.daylightapp.domain.usecase.datastore.read.NavStartDestinationUseCaseImpl
 import com.ibrahimethemsen.daylightapp.domain.usecase.datastore.write.WriteCityDataStoreUseCase
 import com.ibrahimethemsen.daylightapp.domain.usecase.datastore.write.WriteCityDataStoreUseCaseImpl
+import com.ibrahimethemsen.daylightapp.domain.usecase.datastore.write.WriteNavStartDestinationUseCase
+import com.ibrahimethemsen.daylightapp.domain.usecase.datastore.write.WriteNavStartDestinationUseCaseImpl
 import com.ibrahimethemsen.daylightapp.domain.usecase.weather.FiveDayWeatherForecastUseCase
 import com.ibrahimethemsen.daylightapp.domain.usecase.weather.FiveDayWeatherForecastUseCaseImpl
 import dagger.Binds
@@ -32,4 +34,7 @@ abstract class UseCaseModule {
 
     @[Binds Singleton]
     abstract fun bindReadNavStartDestinationUseCase(navStartDestinationUseCaseImpl: NavStartDestinationUseCaseImpl) : NavStartDestinationUseCase
+
+    @[Binds Singleton]
+    abstract fun bindWriteNavStartDestinationUseCase(writeNavStartDestinationUseCaseImpl: WriteNavStartDestinationUseCaseImpl) : WriteNavStartDestinationUseCase
 }
