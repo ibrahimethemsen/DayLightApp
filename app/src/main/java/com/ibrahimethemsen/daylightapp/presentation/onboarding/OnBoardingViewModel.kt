@@ -7,8 +7,8 @@ import androidx.lifecycle.viewModelScope
 import com.ibrahimethemsen.daylightapp.data.NetworkResult
 import com.ibrahimethemsen.daylightapp.data.dto.city.City
 import com.ibrahimethemsen.daylightapp.domain.usecase.city.GetListCityUseCase
-import com.ibrahimethemsen.daylightapp.domain.usecase.datastore.read.ReadDataStoreUseCase
-import com.ibrahimethemsen.daylightapp.domain.usecase.datastore.write.WriteDataStoreUseCase
+import com.ibrahimethemsen.daylightapp.domain.usecase.datastore.read.CityDataStoreUseCase
+import com.ibrahimethemsen.daylightapp.domain.usecase.datastore.write.WriteCityDataStoreUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -16,8 +16,8 @@ import javax.inject.Inject
 @HiltViewModel
 class OnBoardingViewModel @Inject constructor(
     private val getListCityUseCase: GetListCityUseCase,
-    private val writeDataStoreUseCase: WriteDataStoreUseCase,
-    private val readDataStoreUseCase: ReadDataStoreUseCase
+    private val writeCityDataStoreUseCase: WriteCityDataStoreUseCase,
+    private val readDataStoreUseCase: CityDataStoreUseCase
     ) : ViewModel() {
     private var _cityList = MutableLiveData<OnBoardingUi>()
     val cityList: LiveData<OnBoardingUi> = _cityList
@@ -70,7 +70,7 @@ class OnBoardingViewModel @Inject constructor(
 
     fun writeDataStoreCity(lat: String, lon: String,name : String) {
         viewModelScope.launch {
-            writeDataStoreUseCase(lat, lon,name)
+            writeCityDataStoreUseCase(lat, lon,name)
             println("latw ${lat}")
             println("latw ${lon}")
             println("latw ${name}")

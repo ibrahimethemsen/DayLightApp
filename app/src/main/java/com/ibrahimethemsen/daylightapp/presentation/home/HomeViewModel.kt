@@ -5,18 +5,17 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ibrahimethemsen.daylightapp.data.NetworkResult
-import com.ibrahimethemsen.daylightapp.domain.usecase.datastore.read.ReadDataStoreUseCase
+import com.ibrahimethemsen.daylightapp.domain.usecase.datastore.read.CityDataStoreUseCase
 import com.ibrahimethemsen.daylightapp.domain.usecase.weather.FiveDayWeatherForecastUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     private val fiveDayWeatherForecastUseCase: FiveDayWeatherForecastUseCase,
-    private val readDataStoreUseCase: ReadDataStoreUseCase
+    private val readDataStoreUseCase: CityDataStoreUseCase
 ) : ViewModel() {
     private val _homeUiState = MutableLiveData<String>()
     val homeUiState : LiveData<String> = _homeUiState
@@ -25,9 +24,9 @@ class HomeViewModel @Inject constructor(
 
     fun getFiveWeather() {
         viewModelScope.launch {
-            getLocation.onEach {
+            getLocation.collectLatest {
                 getWeather(it.lat,it.lon)
-            }.launchIn(this)
+            }
         }
     }
 

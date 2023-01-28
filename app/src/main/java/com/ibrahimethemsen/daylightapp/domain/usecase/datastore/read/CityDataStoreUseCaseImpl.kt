@@ -5,9 +5,9 @@ import com.ibrahimethemsen.daylightapp.domain.repository.datastore.DataStoreRepo
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class ReadDataStoreUseCaseImpl @Inject constructor(
+class CityDataStoreUseCaseImpl @Inject constructor(
     private val dataStoreRepository : DataStoreRepository
-) : ReadDataStoreUseCase {
+) : CityDataStoreUseCase {
     override val readCityDataStore: Flow<LocationEntity>
         get() = dataStoreRepository.readCityDataStore
 

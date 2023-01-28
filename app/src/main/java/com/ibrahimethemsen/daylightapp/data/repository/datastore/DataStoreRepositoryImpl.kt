@@ -15,4 +15,11 @@ class DataStoreRepositoryImpl @Inject constructor(
 
     override val readCityDataStore: Flow<LocationEntity>
         get() = dataStoreDataSource.readCityDataStore
+
+    override suspend fun writeNavDestination(destination: String) {
+        dataStoreDataSource.writeNavStartDestination(destination)
+    }
+
+    override val readNavDestination: Flow<String>
+        get() = dataStoreDataSource.readNavStartDestination
 }
