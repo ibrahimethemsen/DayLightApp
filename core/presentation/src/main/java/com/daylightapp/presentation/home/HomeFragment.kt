@@ -18,7 +18,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getFiveWeather()
+        viewModel.getCurrentWeather()
+        viewModel.getQuote()
         observe()
     }
     private fun observe(){
@@ -34,6 +35,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 }
                 homeCurrentDescriptionTv.text = currentWeather.currentWeatherEntity?.description
             }
+        }
+        viewModel.quoteUiState.observe(viewLifecycleOwner){
+            binding.homeQuoteTv.text = it.quoteEntity?.quote
+            binding.homeQuoteAuthorTv.text = it.quoteEntity?.author
         }
     }
 }

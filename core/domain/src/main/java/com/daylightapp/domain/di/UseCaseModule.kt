@@ -11,6 +11,8 @@ import com.daylightapp.domain.usecase.datastore.write.WriteCityDataStoreUseCase
 import com.daylightapp.domain.usecase.datastore.write.WriteCityDataStoreUseCaseImpl
 import com.daylightapp.domain.usecase.datastore.write.WriteNavStartDestinationUseCase
 import com.daylightapp.domain.usecase.datastore.write.WriteNavStartDestinationUseCaseImpl
+import com.daylightapp.domain.usecase.quote.QuoteUseCase
+import com.daylightapp.domain.usecase.quote.QuoteUseCaseImpl
 import com.daylightapp.domain.usecase.weather.CurrentDayWeatherUseCase
 import com.daylightapp.domain.usecase.weather.CurrentDayWeatherUseCaseImpl
 import com.daylightapp.domain.usecase.weather.FiveDayWeatherForecastUseCase
@@ -43,4 +45,7 @@ abstract class UseCaseModule {
 
     @[Binds Singleton]
     abstract fun bindCurrentDayWeatherUseCase(currentDayWeatherImpl: CurrentDayWeatherUseCaseImpl) : CurrentDayWeatherUseCase
+
+    @[Binds Singleton]
+    abstract fun bindQuoteUseCase(quoteUseCaseImpl: QuoteUseCaseImpl) : QuoteUseCase
 }
