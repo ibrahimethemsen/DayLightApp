@@ -12,6 +12,7 @@ import com.daylightapp.domain.usecase.datastore.write.WriteCityDataStoreUseCase
 import com.daylightapp.domain.usecase.datastore.write.WriteNavStartDestinationUseCase
 import com.daylightapp.presentation.common.Constants.HOME_FRAGMENT
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -84,7 +85,7 @@ class OnBoardingViewModel @Inject constructor(
     }
 
     fun writeDataStoreCity(lat: String, lon: String, name: String) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             writeCityDataStoreUseCase(lat, lon, name)
             writeNavStartDestination(HOME_FRAGMENT)
         }

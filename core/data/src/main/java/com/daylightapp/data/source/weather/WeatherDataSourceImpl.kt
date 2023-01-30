@@ -1,23 +1,34 @@
 package com.daylightapp.data.source.weather
 
 import com.daylightapp.common.NetworkResult
+import com.daylightapp.common.weather.current.CurrentWeather
 import com.daylightapp.data.api.weather.WeatherApi
-import com.daylightapp.common.weather.WeatherResponse
+import com.daylightapp.common.weather.fiveday.WeatherResponse
 import javax.inject.Inject
 
 class WeatherDataSourceImpl @Inject constructor(
     private val weatherApi: WeatherApi
 ) : WeatherDataSource {
-    override suspend fun getWeather(
+    override suspend fun getFiveDayWeatherForecast(
         lat: String,
         lon: String
     ): NetworkResult<WeatherResponse> =
         try {
-            val response = weatherApi.weatherList(lat, lon)
+            val response = weatherApi.fiveDayWeatherForecast(lat, lon)
             NetworkResult.Success(response)
         }catch (e : Exception){
             NetworkResult.Error(e)
         }
 
+    override suspend fun getCurrentDayWeather(
+        lat: String,
+        lon: String
+    ): NetworkResult<CurrentWeather> =
+        try {
+            val response = weatherApi.currentDayWeather(lat, lon)
+            NetworkResult.Success(response)
+        }catch (e : Exception){
+            NetworkResult.Error(e)
+        }
 
 }

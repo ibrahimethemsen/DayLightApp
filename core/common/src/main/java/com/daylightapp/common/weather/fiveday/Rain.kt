@@ -1,9 +1,9 @@
-package com.daylightapp.common.weather
+package com.daylightapp.common.weather.fiveday
 
 
 import com.squareup.moshi.Json
 
-data class Snow(
+data class Rain(
     @Json(name = "3h")
     val h: Double?
 )

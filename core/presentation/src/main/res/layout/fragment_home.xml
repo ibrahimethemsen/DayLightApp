@@ -1,16 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
     tools:context="com.daylightapp.presentation.home.HomeFragment">
 
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/home_current_date"
         android:layout_width="match_parent"
-        android:textSize="30sp"
+        android:layout_height="wrap_content"
         android:gravity="center"
-        android:layout_height="match_parent"
-        android:text="Hello" />
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="30 Oca 2023" />
 
-</FrameLayout>
+    <ImageView
+        android:id="@+id/home_sunrise_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/sunrise"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/home_current_date" />
+
+    <TextView
+        android:id="@+id/home_sunrise_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/home_sunrise_iv"
+        app:layout_constraintStart_toEndOf="@+id/home_sunrise_iv"
+        app:layout_constraintTop_toTopOf="@+id/home_sunrise_iv"
+        tools:text="06:25" />
+
+    <ImageView
+        android:id="@+id/home_sunset_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/sunset"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/home_sunrise_iv" />
+
+    <TextView
+        android:id="@+id/home_sunset_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/black"
+
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/home_sunset_iv"
+        app:layout_constraintStart_toEndOf="@+id/home_sunset_iv"
+        app:layout_constraintTop_toTopOf="@+id/home_sunset_iv"
+        tools:text="16:25" />
+
+    <ImageView
+        android:id="@+id/home_wind_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/wind"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/home_sunset_iv" />
+
+    <TextView
+        android:id="@+id/home_wind_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/home_wind_iv"
+        app:layout_constraintStart_toEndOf="@+id/home_wind_iv"
+        app:layout_constraintTop_toTopOf="@+id/home_wind_iv"
+        tools:text="16:25" />
+
+    <ImageView
+        android:id="@+id/home_current_icon_iv"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:minWidth="150dp"
+        android:minHeight="150dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/wind"
+        app:layout_constraintBottom_toBottomOf="@+id/home_wind_tv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/home_sunset_tv"
+        app:layout_constraintTop_toBottomOf="@+id/home_current_date" />
+
+    <TextView
+        android:id="@+id/home_current_celcius_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/home_wind_iv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/home_sunset_tv"
+        tools:text="23 C" />
+
+    <TextView
+        android:id="@+id/home_current_description_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/home_current_icon_iv"
+        app:layout_constraintTop_toTopOf="@+id/home_current_icon_iv"
+        tools:text="Parçalı Bulutlu" />
+
+    <View
+        android:id="@+id/view"
+        android:background="@android:color/darker_gray"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/home_current_celcius_tv" />
+
+    <TextView
+        android:id="@+id/home_quote_tv"
+        android:layout_width="match_parent"
+        android:layout_marginTop="4dp"
+        android:layout_height="wrap_content"
+        tools:text="Now this is not the end. It is not even the beginning of the end. But it is, perhaps, the end of the beginning.Now this is not the end. It is not even the beginning of the end. But it is, perhaps, the end of the beginning.Now this is not the end. It is not even the beginning of the end."
+        app:layout_constraintTop_toBottomOf="@+id/view"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <TextView
+        android:id="@+id/home_quote_author_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Winston Churchill"
+        android:gravity="end"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/home_quote_tv"
+        tools:layout_editor_absoluteX="16dp" />
+    <View
+        android:id="@+id/view2"
+        android:background="@android:color/darker_gray"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/home_quote_author_tv" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -45,6 +45,7 @@ dependencies {
     implementation libs.bundles.lifecycle
     implementation libs.bundles.navigation
     implementation libs.androidx.constraintlayout
+    implementation libs.coil
     testImplementation libs.test.junit
     androidTestImplementation libs.test.androidx.junit
     androidTestImplementation libs.test.espresso

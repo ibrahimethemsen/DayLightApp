@@ -1,4 +1,4 @@
-package com.daylightapp.common.weather
+package com.daylightapp.common.weather.fiveday
 
 
 import com.squareup.moshi.Json

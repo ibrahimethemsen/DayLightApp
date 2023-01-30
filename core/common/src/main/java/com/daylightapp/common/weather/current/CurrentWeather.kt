@@ -1,25 +1,29 @@
-package com.daylightapp.common.weather
+package com.daylightapp.common.weather.current
 
 
 import com.squareup.moshi.Json
 
-data class Response(
+data class CurrentWeather(
+    @Json(name = "base")
+    val base: String?,
     @Json(name = "clouds")
     val clouds: Clouds?,
+    @Json(name = "cod")
+    val cod: Int?,
+    @Json(name = "coord")
+    val coord: Coord?,
     @Json(name = "dt")
     val dt: Int?,
-    @Json(name = "dt_txt")
-    val dtTxt: String?,
+    @Json(name = "id")
+    val id: Int?,
     @Json(name = "main")
     val main: Main?,
-    @Json(name = "pop")
-    val pop: Double?,
-    @Json(name = "rain")
-    val rain: Rain?,
-    @Json(name = "snow")
-    val snow: Snow?,
+    @Json(name = "name")
+    val name: String?,
     @Json(name = "sys")
     val sys: Sys?,
+    @Json(name = "timezone")
+    val timezone: Int?,
     @Json(name = "visibility")
     val visibility: Int?,
     @Json(name = "weather")

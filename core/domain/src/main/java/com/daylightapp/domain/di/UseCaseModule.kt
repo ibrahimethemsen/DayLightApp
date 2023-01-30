@@ -11,6 +11,8 @@ import com.daylightapp.domain.usecase.datastore.write.WriteCityDataStoreUseCase
 import com.daylightapp.domain.usecase.datastore.write.WriteCityDataStoreUseCaseImpl
 import com.daylightapp.domain.usecase.datastore.write.WriteNavStartDestinationUseCase
 import com.daylightapp.domain.usecase.datastore.write.WriteNavStartDestinationUseCaseImpl
+import com.daylightapp.domain.usecase.weather.CurrentDayWeatherUseCase
+import com.daylightapp.domain.usecase.weather.CurrentDayWeatherUseCaseImpl
 import com.daylightapp.domain.usecase.weather.FiveDayWeatherForecastUseCase
 import com.daylightapp.domain.usecase.weather.FiveDayWeatherForecastUseCaseImpl
 import dagger.Binds
@@ -31,11 +33,14 @@ abstract class UseCaseModule {
     abstract fun bindWriteDataStoreUseCase(writeDataStoreUseCaseImpl: WriteCityDataStoreUseCaseImpl) : WriteCityDataStoreUseCase
 
     @[Binds Singleton]
-    abstract fun bindFiveDayWeatherUseCase(fiveDayWeatherForecastUseCaseImpl: FiveDayWeatherForecastUseCaseImpl) : FiveDayWeatherForecastUseCase
-
-    @[Binds Singleton]
     abstract fun bindReadNavStartDestinationUseCase(navStartDestinationUseCaseImpl: NavStartDestinationUseCaseImpl) : NavStartDestinationUseCase
 
     @[Binds Singleton]
     abstract fun bindWriteNavStartDestinationUseCase(writeNavStartDestinationUseCaseImpl: WriteNavStartDestinationUseCaseImpl) : WriteNavStartDestinationUseCase
+
+    @[Binds Singleton]
+    abstract fun bindFiveDayWeatherUseCase(fiveDayWeatherForecastUseCaseImpl: FiveDayWeatherForecastUseCaseImpl) : FiveDayWeatherForecastUseCase
+
+    @[Binds Singleton]
+    abstract fun bindCurrentDayWeatherUseCase(currentDayWeatherImpl: CurrentDayWeatherUseCaseImpl) : CurrentDayWeatherUseCase
 }

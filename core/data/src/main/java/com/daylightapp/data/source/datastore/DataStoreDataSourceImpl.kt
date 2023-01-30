@@ -20,7 +20,7 @@ class DataStoreDataSourceImpl @Inject constructor(
         val lon = stringPreferencesKey("lon")
         val lat = stringPreferencesKey("lat")
         val name = stringPreferencesKey("name")
-        val startDestination = stringPreferencesKey("navdestination")
+        val startDestination = stringPreferencesKey("destination")
     }
     override suspend fun writeCityDataStore(lat: String, lon: String,name : String) {
         try {

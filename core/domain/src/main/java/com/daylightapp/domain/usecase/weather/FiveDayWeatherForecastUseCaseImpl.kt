@@ -1,7 +1,7 @@
 package com.daylightapp.domain.usecase.weather
 
 import com.daylightapp.common.NetworkResult
-import com.daylightapp.common.weather.WeatherResponse
+import com.daylightapp.common.weather.fiveday.WeatherResponse
 import com.daylightapp.domain.repository.weather.WeatherRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
@@ -13,6 +13,6 @@ class FiveDayWeatherForecastUseCaseImpl @Inject constructor(
         lat: String,
         lon: String
     ): Flow<NetworkResult<WeatherResponse>> =
-        weatherRepository.getWeather(lat, lon)
+        weatherRepository.getFiveDayWeatherForecast(lat, lon)
 
 }
