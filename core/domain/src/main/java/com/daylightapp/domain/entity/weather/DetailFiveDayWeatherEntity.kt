@@ -2,7 +2,7 @@ package com.daylightapp.domain.entity.weather
 
 data class DetailFiveDayWeatherEntity(
     val tempCelcius : String?,
-    val tempFeelsLike : String?,
+    val date : String?,
     val iconId : String?,
     val weatherParameter : String?,
     val windSpeed : String?,

@@ -9,11 +9,11 @@ import com.daylightapp.presentation.databinding.AdapterThreeHoursWeatherItemBind
 
 class FiveDayWeatherAdapter : RecyclerView.Adapter<FiveDayWeatherAdapter.FiveDayViewHolder>() {
 
-    private val fiveDayWeatherList  = mutableListOf<FiveDayWeatherEntity>()
+    private val threeHoursWeatherList  = mutableListOf<FiveDayWeatherEntity>()
 
     fun updateFiveDayWeatherList(newWeatherList : List<FiveDayWeatherEntity>){
-        fiveDayWeatherList.clear()
-        fiveDayWeatherList.addAll(newWeatherList)
+        threeHoursWeatherList.clear()
+        threeHoursWeatherList.addAll(newWeatherList)
         notifyDataSetChanged()
     }
 
@@ -33,9 +33,9 @@ class FiveDayWeatherAdapter : RecyclerView.Adapter<FiveDayWeatherAdapter.FiveDay
         return FiveDayViewHolder(binding)
     }
 
-    override fun getItemCount(): Int =fiveDayWeatherList.size
+    override fun getItemCount(): Int =threeHoursWeatherList.size
 
     override fun onBindViewHolder(holder: FiveDayViewHolder, position: Int) {
-        holder.bind(fiveDayWeatherList[position])
+        holder.bind(threeHoursWeatherList[position])
     }
 }

@@ -9,15 +9,15 @@ import androidx.navigation.fragment.navArgs
 import com.daylightapp.presentation.R
 import com.daylightapp.presentation.databinding.FragmentFiveDayWeatherListBinding
 import com.daylightapp.presentation.utility.viewBindingInflater
+import com.daylightapp.presentation.weatherlist.adapter.FiveDayWeatherAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class FiveDayWeatherListFragment : Fragment(R.layout.fragment_five_day_weather_list) {
     private val viewModel by viewModels<FiveDayWeatherListViewModel>()
     private val binding by viewBindingInflater(FragmentFiveDayWeatherListBinding::bind)
-
     private val args : FiveDayWeatherListFragmentArgs by navArgs()
-
+    private val fiveDayAdapter = FiveDayWeatherAdapter()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val lat = args.lat
@@ -28,11 +28,13 @@ class FiveDayWeatherListFragment : Fragment(R.layout.fragment_five_day_weather_l
             it.findNavController().navigate(action)
         }
         observe()
+        binding.fiveDayWeatherListRv.adapter = fiveDayAdapter
     }
 
     private fun observe(){
         viewModel.detailFiveUiState.observe(viewLifecycleOwner){detailListUiState ->
-            detailListUiState.data
+            fiveDayAdapter.updateFiveDay(detailListUiState.data)
+            println()
         }
     }
 }

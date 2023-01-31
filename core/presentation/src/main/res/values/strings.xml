@@ -7,4 +7,10 @@
     <string name="current_weather_icon">Güncel hava durumu iconu</string>
     <string name="five_day_weather">5 günlük hava durumu tahmini</string>
     <string name="back_btn_tv">Back Button</string>
+    <string name="heat_celcius">Sıcaklık : </string>
+    <string name="feat_celcius">Hissedilen : </string>
+    <string name="main_state">Durum : </string>
+    <string name="wind_speed">Rüzgar : </string>
+    <string name="wind_deg">Rüzgar Açısı : </string>
+    <string name="humidity">Nem : </string>
 </resources>
