@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="120dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="2dp"
+    android:layout_height="100dp">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/item_five_day_weather_icon"
+            android:layout_width="match_parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/sunset"
+            android:contentDescription="@string/current_weather_icon"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/item_five_day_weather_celcius"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="27C"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/item_five_day_weather_icon" />
+
+        <TextView
+            android:id="@+id/item_five_day_weather_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="11sp"
+            app:layout_constraintBottom_toTopOf="@+id/item_wind_speed"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/item_five_day_weather_celcius"
+            tools:text="01-31 03:00:00" />
+
+        <TextView
+            android:id="@+id/item_wind_speed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="11sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="6km/s" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

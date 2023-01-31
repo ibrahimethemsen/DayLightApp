@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import com.daylightapp.presentation.R
 import com.daylightapp.presentation.common.loadImage
 import com.daylightapp.presentation.databinding.FragmentHomeBinding
@@ -46,6 +47,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         viewModel.fiveDayWeather.observe(viewLifecycleOwner){fiveDayWeather->
             fiveDayWeather.fiveDayWeather?.let {
                 fiveDayAdapter.updateFiveDayWeatherList(it)
+            }
+        }
+        viewModel.locationLatLon.observe(viewLifecycleOwner){entity->
+            binding.homeFiveDayWeatherBtn.setOnClickListener {
+                val action = HomeFragmentDirections.actionHomeFragmentToFiveDayWeatherListFragment(entity.lat,entity.lon)
+                it.findNavController().navigate(action)
             }
         }
     }

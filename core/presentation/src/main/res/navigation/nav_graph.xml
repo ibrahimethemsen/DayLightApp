@@ -21,5 +21,24 @@
         android:id="@+id/homeFragment"
         android:name="com.daylightapp.presentation.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_fiveDayWeatherListFragment"
+            app:destination="@id/fiveDayWeatherListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fiveDayWeatherListFragment"
+        android:name="com.daylightapp.presentation.weatherlist.FiveDayWeatherListFragment"
+        android:label="fragment_five_day_weather_list"
+        tools:layout="@layout/fragment_five_day_weather_list" >
+        <argument
+            android:name="lat"
+            app:argType="string" />
+        <argument
+            android:name="lon"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_fiveDayWeatherListFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>

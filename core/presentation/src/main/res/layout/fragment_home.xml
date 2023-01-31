@@ -172,15 +172,18 @@
         app:layout_constraintTop_toBottomOf="@+id/home_five_day_weather_tv"
         tools:itemCount="10"
         tools:layout_editor_absoluteX="1dp"
-        tools:listitem="@layout/adapter_five_day_weather_item" />
+        tools:listitem="@layout/adapter_three_hours_weather_item" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/home_five_day_weather_btn"
         android:layout_width="0dp"
-        android:background="@android:color/holo_blue_light"
+        android:background="@drawable/gradient_btn"
         android:layout_height="wrap_content"
-        android:text="Beş günlük detaylı tahmin"
-        android:layout_marginHorizontal="80dp"
+        android:layout_marginTop="8dp"
+        android:textSize="16sp"
+        android:text="@string/five_day_weather"
+        android:layout_marginHorizontal="40dp"
+        android:textColor="@color/white"
         android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="@+id/home_five_day_weather_rv"
         app:layout_constraintStart_toStartOf="@+id/home_five_day_weather_rv"

@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.daylightapp.domain.entity.weather.FiveDayWeatherEntity
 import com.daylightapp.presentation.common.loadImage
-import com.daylightapp.presentation.databinding.AdapterFiveDayWeatherItemBinding
+import com.daylightapp.presentation.databinding.AdapterThreeHoursWeatherItemBinding
 
 class FiveDayWeatherAdapter : RecyclerView.Adapter<FiveDayWeatherAdapter.FiveDayViewHolder>() {
 
@@ -17,7 +17,7 @@ class FiveDayWeatherAdapter : RecyclerView.Adapter<FiveDayWeatherAdapter.FiveDay
         notifyDataSetChanged()
     }
 
-    class FiveDayViewHolder(private val binding : AdapterFiveDayWeatherItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    class FiveDayViewHolder(private val binding : AdapterThreeHoursWeatherItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(positionWeather : FiveDayWeatherEntity){
             binding.itemWindSpeed.text = positionWeather.windSpeed
             positionWeather.iconId?.let {
@@ -29,7 +29,7 @@ class FiveDayWeatherAdapter : RecyclerView.Adapter<FiveDayWeatherAdapter.FiveDay
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FiveDayViewHolder {
-        val binding = AdapterFiveDayWeatherItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val binding = AdapterThreeHoursWeatherItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return FiveDayViewHolder(binding)
     }
 

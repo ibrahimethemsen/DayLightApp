@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="8dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".weatherlist.FiveDayWeatherListFragment">
+
+    <ImageButton
+        android:id="@+id/five_day_back_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:padding="8dp"
+        android:contentDescription="@string/back_btn_tv"
+        android:src="@drawable/baseline_arrow_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/five_day_title"
+        android:layout_width="0dp"
+        android:text="@string/five_day_weather"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/five_day_back_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/five_day_back_btn"
+        app:layout_constraintTop_toTopOf="@+id/five_day_back_btn" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/five_day_weather_list_rv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/five_day_back_btn" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

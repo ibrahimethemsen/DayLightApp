@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="three_hour_five_day_weather">Üç Saat Aralıkla Hava Tahmini</string>
+    <string name="three_hour_five_day_weather">3 Saat Aralıkla Hava Durumu Tahmini</string>
     <string name="sunrise_tv">Güneşin doğuş saati</string>
     <string name="sunset_tv">Güneşin Batış saati</string>
     <string name="wind_speed_tv">km/s ile rüzgar hızı</string>
     <string name="current_weather_icon">Güncel hava durumu iconu</string>
+    <string name="five_day_weather">5 günlük hava durumu tahmini</string>
+    <string name="back_btn_tv">Back Button</string>
 </resources>

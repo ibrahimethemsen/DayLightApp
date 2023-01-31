@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.daylightapp.common.NetworkResult
+import com.daylightapp.common.datastore.LocationEntity
 import com.daylightapp.domain.entity.quote.QuoteEntity
 import com.daylightapp.domain.entity.weather.CurrentWeatherEntity
 import com.daylightapp.domain.entity.weather.FiveDayWeatherEntity
@@ -20,7 +21,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val fiveDayWeatherForecastUseCase: FiveDayWeatherForecastUseCase,
+    private val threeHoursWeatherForecastUseCase: FiveDayWeatherForecastUseCase,
     private val currentDayWeatherUseCase: CurrentDayWeatherUseCase,
     private val quoteUseCase: QuoteUseCase,
     readDataStoreUseCase: CityDataStoreUseCase
@@ -36,6 +37,9 @@ class HomeViewModel @Inject constructor(
     private val _fiveDayWeather = MutableLiveData<FiveDayWeatherUiState>()
     val fiveDayWeather: LiveData<FiveDayWeatherUiState> = _fiveDayWeather
 
+    private val _locationLatLon = MutableLiveData<LocationEntity>()
+    val locationLatLon : LiveData<LocationEntity> =_locationLatLon
+
     private val getLocation = readDataStoreUseCase.readCityDataStore
 
     fun getCurrentWeather() {
@@ -43,6 +47,7 @@ class HomeViewModel @Inject constructor(
             getLocation.collectLatest {
                 currentDayWeather(it.lat, it.lon)
                 getFiveDayWeather(it.lat, it.lon)
+                _locationLatLon.postValue(it)
             }
         }
     }
@@ -118,7 +123,7 @@ class HomeViewModel @Inject constructor(
 
     private fun getFiveDayWeather(lat: String, lon: String) {
         viewModelScope.launch {
-            fiveDayWeatherForecastUseCase(lat, lon).collect {
+            threeHoursWeatherForecastUseCase(lat, lon).collect {
                 when (it) {
                     is NetworkResult.Error -> {
                         _fiveDayWeather.postValue(
@@ -169,5 +174,6 @@ data class FiveDayWeatherUiState(
     val error: String? = null,
     val loading: Boolean = false
 )
+
 
 

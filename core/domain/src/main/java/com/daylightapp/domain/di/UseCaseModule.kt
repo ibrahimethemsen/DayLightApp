@@ -13,10 +13,7 @@ import com.daylightapp.domain.usecase.datastore.write.WriteNavStartDestinationUs
 import com.daylightapp.domain.usecase.datastore.write.WriteNavStartDestinationUseCaseImpl
 import com.daylightapp.domain.usecase.quote.QuoteUseCase
 import com.daylightapp.domain.usecase.quote.QuoteUseCaseImpl
-import com.daylightapp.domain.usecase.weather.CurrentDayWeatherUseCase
-import com.daylightapp.domain.usecase.weather.CurrentDayWeatherUseCaseImpl
-import com.daylightapp.domain.usecase.weather.FiveDayWeatherForecastUseCase
-import com.daylightapp.domain.usecase.weather.FiveDayWeatherForecastUseCaseImpl
+import com.daylightapp.domain.usecase.weather.*
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -45,6 +42,9 @@ abstract class UseCaseModule {
 
     @[Binds Singleton]
     abstract fun bindCurrentDayWeatherUseCase(currentDayWeatherImpl: CurrentDayWeatherUseCaseImpl) : CurrentDayWeatherUseCase
+
+    @[Binds Singleton]
+    abstract fun bindDetailFiveDayWeatherUseCase(detailFiveDayWeatherUseCaseImpl: DetailFiveDayWeatherUseCaseImpl) : DetailFiveDayWeatherUseCase
 
     @[Binds Singleton]
     abstract fun bindQuoteUseCase(quoteUseCaseImpl: QuoteUseCaseImpl) : QuoteUseCase

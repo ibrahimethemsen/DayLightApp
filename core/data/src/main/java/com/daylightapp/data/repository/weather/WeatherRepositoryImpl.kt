@@ -8,6 +8,7 @@ import com.daylightapp.domain.common.kelvinToCelcius
 import com.daylightapp.domain.common.milToKmSpeed
 import com.daylightapp.domain.common.toDateFormat
 import com.daylightapp.domain.entity.weather.CurrentWeatherEntity
+import com.daylightapp.domain.entity.weather.DetailFiveDayWeatherEntity
 import com.daylightapp.domain.entity.weather.FiveDayWeatherEntity
 import com.daylightapp.domain.mapper.ListMapper
 import com.daylightapp.domain.repository.weather.WeatherRepository
@@ -19,9 +20,10 @@ import javax.inject.Inject
 
 class WeatherRepositoryImpl @Inject constructor(
     private val weatherDataSource: WeatherDataSource,
-    private val fiveDayWeatherMapper: ListMapper<Response, FiveDayWeatherEntity>
+    private val fiveDayWeatherMapper: ListMapper<Response, FiveDayWeatherEntity>,
+    private val detailFiveDayWeatherMapper : ListMapper<Response,DetailFiveDayWeatherEntity>
 ) : WeatherRepository {
-    override fun getFiveDayWeatherForecast(
+    override fun getFiveDayThreeHoursWeatherForecast(
         lat: String,
         lon: String
     ): Flow<NetworkResult<List<FiveDayWeatherEntity>>> =
@@ -81,6 +83,29 @@ class WeatherRepositoryImpl @Inject constructor(
                             it.uppercase()
                         }
                     )
+                )
+            }
+        }
+    }
+
+    override fun getFiveDayDetailWeatherForeCast(
+        lat: String,
+        lon: String
+    ): Flow<NetworkResult<List<DetailFiveDayWeatherEntity>>> = flow<NetworkResult<List<DetailFiveDayWeatherEntity>>> {
+        emit(NetworkResult.Loading)
+    }.catch {
+        emit(NetworkResult.Error(it))
+    }.map {
+        when(val response = weatherDataSource.getFiveDayWeatherForecast(lat, lon)){
+            is NetworkResult.Error -> {
+                NetworkResult.Error(response.exception)
+            }
+            NetworkResult.Loading -> {
+                NetworkResult.Loading
+            }
+            is NetworkResult.Success -> {
+                NetworkResult.Success(
+                    detailFiveDayWeatherMapper.map(response.data.list)
                 )
             }
         }
