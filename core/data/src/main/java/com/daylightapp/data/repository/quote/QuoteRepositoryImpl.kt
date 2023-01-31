@@ -14,9 +14,9 @@ class QuoteRepositoryImpl @Inject constructor(
     private val quoteDataSource: QuoteDataSource
 ) : QuoteRepository {
     override fun getQuote(): Flow<NetworkResult<QuoteEntity>> = flow<NetworkResult<QuoteEntity>> {
-        NetworkResult.Loading
+        emit(NetworkResult.Loading)
     }.catch {
-        NetworkResult.Error(it)
+        emit(NetworkResult.Error(it))
     }.map {
         when(val response = quoteDataSource.getQuote()){
             is NetworkResult.Error -> {

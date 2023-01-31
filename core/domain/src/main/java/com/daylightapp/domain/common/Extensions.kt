@@ -1,5 +1,6 @@
 package com.daylightapp.domain.common
 
+import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -8,4 +9,14 @@ fun Int.toDateFormat(dateFormat: String): String {
     val sdf = SimpleDateFormat(dateFormat, Locale("tr"))
     sdf.timeZone = TimeZone.getTimeZone("Asia/Istanbul")
     return sdf.format(longToDate)
+}
+
+fun Double.milToKmSpeed(): String {
+    val windSpeed = this * 1.60934
+    val decimalFormat = DecimalFormat("#.##")
+    return decimalFormat.format(windSpeed).plus(" km/s")
+}
+
+fun Double.kelvinToCelcius() : String{
+    return this.minus(273.15).toInt().toString().plus("°C")
 }

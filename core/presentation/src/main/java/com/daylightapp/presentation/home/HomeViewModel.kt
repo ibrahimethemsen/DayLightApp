@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.daylightapp.common.NetworkResult
 import com.daylightapp.domain.entity.quote.QuoteEntity
 import com.daylightapp.domain.entity.weather.CurrentWeatherEntity
+import com.daylightapp.domain.entity.weather.FiveDayWeatherEntity
 import com.daylightapp.domain.usecase.datastore.read.CityDataStoreUseCase
 import com.daylightapp.domain.usecase.quote.QuoteUseCase
 import com.daylightapp.domain.usecase.weather.CurrentDayWeatherUseCase
@@ -20,30 +21,36 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     private val fiveDayWeatherForecastUseCase: FiveDayWeatherForecastUseCase,
-    private val currentDayWeatherUseCase : CurrentDayWeatherUseCase,
-    private val readDataStoreUseCase: CityDataStoreUseCase,
-    private val quoteUseCase: QuoteUseCase
+    private val currentDayWeatherUseCase: CurrentDayWeatherUseCase,
+    private val quoteUseCase: QuoteUseCase,
+    readDataStoreUseCase: CityDataStoreUseCase
 ) : ViewModel() {
+
+
     private val _homeUiState = MutableLiveData<CurrentWeatherUiState>()
-    val homeUiState : LiveData<CurrentWeatherUiState> = _homeUiState
+    val homeUiState: LiveData<CurrentWeatherUiState> = _homeUiState
 
     private val _quoteUiState = MutableLiveData<QuoteUiState>()
-    val quoteUiState : LiveData<QuoteUiState> = _quoteUiState
+    val quoteUiState: LiveData<QuoteUiState> = _quoteUiState
+
+    private val _fiveDayWeather = MutableLiveData<FiveDayWeatherUiState>()
+    val fiveDayWeather: LiveData<FiveDayWeatherUiState> = _fiveDayWeather
 
     private val getLocation = readDataStoreUseCase.readCityDataStore
 
     fun getCurrentWeather() {
         viewModelScope.launch {
             getLocation.collectLatest {
-                currentDayWeather(it.lat,it.lon)
+                currentDayWeather(it.lat, it.lon)
+                getFiveDayWeather(it.lat, it.lon)
             }
         }
     }
 
-    fun getQuote(){
+    fun getQuote() {
         viewModelScope.launch {
-            quoteUseCase().collect{
-                when(it){
+            quoteUseCase().collect {
+                when (it) {
                     is NetworkResult.Error -> {
                         _quoteUiState.postValue(
                             QuoteUiState().copy(
@@ -51,6 +58,7 @@ class HomeViewModel @Inject constructor(
                                 loading = false
                             )
                         )
+                        println("post ${it.exception}")
                     }
                     NetworkResult.Loading -> {
                         _quoteUiState.postValue(
@@ -58,6 +66,8 @@ class HomeViewModel @Inject constructor(
                                 loading = true
                             )
                         )
+                        println("post loading")
+
                     }
                     is NetworkResult.Success -> {
                         _quoteUiState.postValue(
@@ -66,16 +76,17 @@ class HomeViewModel @Inject constructor(
                                 loading = false
                             )
                         )
+                        println("post ${it.data}")
                     }
                 }
             }
         }
     }
 
-    private fun currentDayWeather(lat : String,lon : String){
+    private fun currentDayWeather(lat: String, lon: String) {
         viewModelScope.launch {
-            currentDayWeatherUseCase(lat, lon).collect{
-                when(it){
+            currentDayWeatherUseCase(lat, lon).collect {
+                when (it) {
                     is NetworkResult.Error -> {
                         _homeUiState.postValue(
                             CurrentWeatherUiState().copy(
@@ -105,25 +116,35 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    private fun getWeather(lat: String, lon: String) {
+    private fun getFiveDayWeather(lat: String, lon: String) {
         viewModelScope.launch {
             fiveDayWeatherForecastUseCase(lat, lon).collect {
                 when (it) {
                     is NetworkResult.Error -> {
-                        println("error ")
-                        println("error ${it.exception}")
+                        _fiveDayWeather.postValue(
+                            FiveDayWeatherUiState().copy(
+                                error = it.exception.localizedMessage,
+                                loading = false
+                            )
+                        )
                     }
 
                     NetworkResult.Loading -> {
-                        println("loading ")
+                        _fiveDayWeather.postValue(
+                            FiveDayWeatherUiState().copy(
+                                loading = true
+                            )
+                        )
                     }
 
                     is NetworkResult.Success -> {
-                        println("success ")
-                        println("success ${it.data.city} ")
-                        it.data.city?.name?.let {
-                            //_homeUiState.postValue(it)
-                        }
+                        _fiveDayWeather.postValue(
+                            FiveDayWeatherUiState().copy(
+                                fiveDayWeather = it.data,
+                                loading = false
+                            )
+                        )
+
                     }
                 }
             }
@@ -132,15 +153,21 @@ class HomeViewModel @Inject constructor(
 }
 
 data class CurrentWeatherUiState(
-    val currentWeatherEntity : CurrentWeatherEntity? = null,
-    val error : String? = null,
-    val loading : Boolean = false
+    val currentWeatherEntity: CurrentWeatherEntity? = null,
+    val error: String? = null,
+    val loading: Boolean = false
 )
 
 data class QuoteUiState(
     val quoteEntity: QuoteEntity? = null,
-    val error : String? = null,
-    val loading : Boolean = false
+    val error: String? = null,
+    val loading: Boolean = false
+)
+
+data class FiveDayWeatherUiState(
+    val fiveDayWeather: List<FiveDayWeatherEntity>? = emptyList(),
+    val error: String? = null,
+    val loading: Boolean = false
 )
 
 

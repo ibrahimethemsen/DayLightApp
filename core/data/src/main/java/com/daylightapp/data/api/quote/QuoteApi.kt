@@ -3,8 +3,8 @@ package com.daylightapp.data.api.quote
 import com.daylightapp.common.quote.QuoteResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
-const val MIN_LENGTH = 100
-const val MAX_LENGTH = 250
+const val MIN_LENGTH = 150
+const val MAX_LENGTH = 300
 interface QuoteApi {
     @GET("random")
     suspend fun getRandomQuote(

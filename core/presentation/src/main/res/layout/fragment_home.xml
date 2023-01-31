@@ -20,6 +20,7 @@
     <ImageView
         android:id="@+id/home_sunrise_iv"
         android:layout_width="wrap_content"
+        android:contentDescription="@string/sunrise_tv"
         android:layout_height="wrap_content"
         android:src="@drawable/sunrise"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,6 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/sunset"
+        android:contentDescription="@string/sunset_tv"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/home_sunrise_iv" />
 
@@ -63,7 +65,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/wind"
-
+        android:contentDescription="@string/wind_speed_tv"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/home_sunset_iv" />
 
@@ -85,6 +87,7 @@
         android:layout_height="0dp"
         android:minWidth="150dp"
         android:minHeight="150dp"
+        android:contentDescription="@string/current_weather_icon"
         android:scaleType="fitCenter"
         android:src="@drawable/wind"
         app:layout_constraintBottom_toBottomOf="@+id/home_wind_tv"
@@ -127,6 +130,7 @@
         android:layout_width="match_parent"
         android:layout_marginTop="4dp"
         android:layout_height="wrap_content"
+        android:minHeight="80dp"
         tools:text="Now this is not the end. It is not even the beginning of the end. But it is, perhaps, the end of the beginning.Now this is not the end. It is not even the beginning of the end. But it is, perhaps, the end of the beginning.Now this is not the end. It is not even the beginning of the end."
         app:layout_constraintTop_toBottomOf="@+id/view"
         tools:layout_editor_absoluteX="16dp" />
@@ -145,7 +149,41 @@
         android:background="@android:color/darker_gray"
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/home_quote_author_tv" />
+
+    <TextView
+        android:id="@+id/home_five_day_weather_tv"
+        android:layout_width="match_parent"
+        android:text="@string/three_hour_five_day_weather"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/view2"
+        android:layout_height="wrap_content"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/home_five_day_weather_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="@+id/home_five_day_weather_tv"
+        tools:itemCount="10"
+        tools:layout_editor_absoluteX="1dp"
+        tools:listitem="@layout/adapter_five_day_weather_item" />
+
+    <Button
+        android:id="@+id/home_five_day_weather_btn"
+        android:layout_width="0dp"
+        android:background="@android:color/holo_blue_light"
+        android:layout_height="wrap_content"
+        android:text="Beş günlük detaylı tahmin"
+        android:layout_marginHorizontal="80dp"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="@+id/home_five_day_weather_rv"
+        app:layout_constraintStart_toStartOf="@+id/home_five_day_weather_rv"
+        app:layout_constraintTop_toBottomOf="@+id/home_five_day_weather_rv" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

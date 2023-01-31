@@ -8,6 +8,7 @@ import androidx.fragment.app.viewModels
 import com.daylightapp.presentation.R
 import com.daylightapp.presentation.common.loadImage
 import com.daylightapp.presentation.databinding.FragmentHomeBinding
+import com.daylightapp.presentation.home.adapter.FiveDayWeatherAdapter
 import com.daylightapp.presentation.utility.viewBindingInflater
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -15,13 +16,15 @@ import dagger.hilt.android.AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home) {
     private val binding by viewBindingInflater(FragmentHomeBinding::bind)
     private val viewModel by viewModels<HomeViewModel>()
-
+    private val fiveDayAdapter = FiveDayWeatherAdapter()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getCurrentWeather()
         viewModel.getQuote()
+        binding.homeFiveDayWeatherRv.adapter = fiveDayAdapter
         observe()
     }
+
     private fun observe(){
         viewModel.homeUiState.observe(viewLifecycleOwner){ currentWeather ->
             binding.apply {
@@ -36,9 +39,14 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 homeCurrentDescriptionTv.text = currentWeather.currentWeatherEntity?.description
             }
         }
-        viewModel.quoteUiState.observe(viewLifecycleOwner){
-            binding.homeQuoteTv.text = it.quoteEntity?.quote
-            binding.homeQuoteAuthorTv.text = it.quoteEntity?.author
+        viewModel.quoteUiState.observe(viewLifecycleOwner){quote ->
+            binding.homeQuoteTv.text = quote.quoteEntity?.quote
+            binding.homeQuoteAuthorTv.text = quote.quoteEntity?.author
+        }
+        viewModel.fiveDayWeather.observe(viewLifecycleOwner){fiveDayWeather->
+            fiveDayWeather.fiveDayWeather?.let {
+                fiveDayAdapter.updateFiveDayWeatherList(it)
+            }
         }
     }
 }
