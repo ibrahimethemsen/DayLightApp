@@ -31,4 +31,5 @@ class DataStoreRepositoryImpl @Inject constructor(
 
     override val readNavDestination: Flow<String>
         get() = dataStoreDataSource.readNavStartDestination
+
 }

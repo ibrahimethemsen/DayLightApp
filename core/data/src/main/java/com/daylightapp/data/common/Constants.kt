@@ -9,5 +9,6 @@ object Constants {
     const val API_LANGUAGE ="tr"
     const val MIN_LENGTH = 100
     const val MAX_LENGTH = 250
+    const val AN_ERROR = "an_error"
     const val LOCATION = "LOCATION"
 }
