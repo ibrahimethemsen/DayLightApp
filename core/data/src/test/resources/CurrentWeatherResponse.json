@@ -1,0 +1,43 @@
+{
+  "coord": {
+    "lon": 34.6857,
+    "lat": 38.6939
+  },
+  "weather": [
+    {
+      "id": 804,
+      "main": "Clouds",
+      "description": "overcast clouds",
+      "icon": "04n"
+    }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 272.33,
+    "feels_like": 267.77,
+    "temp_min": 272.33,
+    "temp_max": 272.33,
+    "pressure": 1011,
+    "humidity": 80
+  },
+  "visibility": 10000,
+  "wind": {
+    "speed": 4.12,
+    "deg": 320
+  },
+  "clouds": {
+    "all": 100
+  },
+  "dt": 1675274860,
+  "sys": {
+    "type": 1,
+    "id": 6964,
+    "country": "TR",
+    "sunrise": 1675226856,
+    "sunset": 1675263710
+  },
+  "timezone": 10800,
+  "id": 313658,
+  "name": "Gülşehir",
+  "cod": 200
+}

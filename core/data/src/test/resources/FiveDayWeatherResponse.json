@@ -1,0 +1,1505 @@
+{
+  "cod": "200",
+  "message": 0,
+  "cnt": 40,
+  "list": [
+    {
+      "dt": 1675285200,
+      "main": {
+        "temp": 271.99,
+        "feels_like": 267.31,
+        "temp_min": 271.31,
+        "temp_max": 271.99,
+        "pressure": 1012,
+        "sea_level": 1012,
+        "grnd_level": 889,
+        "humidity": 83,
+        "temp_kf": 0.68
+      },
+      "weather": [
+        {
+          "id": 600,
+          "main": "Snow",
+          "description": "hafif kar yağışlı",
+          "icon": "13n"
+        }
+      ],
+      "clouds": {
+        "all": 100
+      },
+      "wind": {
+        "speed": 4.18,
+        "deg": 334,
+        "gust": 9.09
+      },
+      "visibility": 6926,
+      "pop": 0.47,
+      "snow": {
+        "3h": 0.62
+      },
+      "sys": {
+        "pod": "n"
+      },
+      "dt_txt": "2023-02-01 21:00:00"
+    },
+    {
+      "dt": 1675296000,
+      "main": {
+        "temp": 271.26,
+        "feels_like": 266.3,
+        "temp_min": 270.72,
+        "temp_max": 271.26,
+        "pressure": 1016,
+        "sea_level": 1016,
+        "grnd_level": 891,
+        "humidity": 86,
+        "temp_kf": 0.54
+      },
+      "weather": [
+        {
+          "id": 600,
+          "main": "Snow",
+          "description": "hafif kar yağışlı",
+          "icon": "13n"
+        }
+      ],
+      "clouds": {
+        "all": 100
+      },
+      "wind": {
+        "speed": 4.34,
+        "deg": 317,
+        "gust": 8.5
+      },
+      "visibility": 10000,
+      "pop": 0.55,
+      "snow": {
+        "3h": 0.61
+      },
+      "sys": {
+        "pod": "n"
+      },
+      "dt_txt": "2023-02-02 00:00:00"
+    },
+    {
+      "dt": 1675306800,
+      "main": {
+        "temp": 269.21,
+        "feels_like": 265.17,
+        "temp_min": 269.21,
+        "temp_max": 269.21,
+        "pressure": 1020,
+        "sea_level": 1020,
+        "grnd_level": 892,
+        "humidity": 89,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 600,
+          "main": "Snow",
+          "description": "hafif kar yağışlı",
+          "icon": "13n"
+        }
+      ],
+      "clouds": {
+        "all": 65
+      },
+      "wind": {
+        "speed": 2.76,
+        "deg": 273,
+        "gust": 4.57
+      },
+      "visibility": 10000,
+      "pop": 0.21,
+      "snow": {
+        "3h": 0.12
+      },
+      "sys": {
+        "pod": "n"
+      },
+      "dt_txt": "2023-02-02 03:00:00"
+    },
+    {
+      "dt": 1675317600,
+      "main": {
+        "temp": 269.43,
+        "feels_like": 266.08,
+        "temp_min": 269.43,
+        "temp_max": 269.43,
+        "pressure": 1022,
+        "sea_level": 1022,
+        "grnd_level": 895,
+        "humidity": 78,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 803,
+          "main": "Clouds",
+          "description": "parçalı bulutlu",
+          "icon": "04d"
+        }
+      ],
+      "clouds": {
+        "all": 71
+      },
+      "wind": {
+        "speed": 2.21,
+        "deg": 263,
+        "gust": 3.18
+      },
+      "visibility": 10000,
+      "pop": 0.13,
+      "sys": {
+        "pod": "d"
+      },
+      "dt_txt": "2023-02-02 06:00:00"
+    },
+    {
+      "dt": 1675328400,
+      "main": {
+        "temp": 272.27,
+        "feels_like": 268.11,
+        "temp_min": 272.27,
+        "temp_max": 272.27,
+        "pressure": 1023,
+        "sea_level": 1023,
+        "grnd_level": 896,
+        "humidity": 60,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 801,
+          "main": "Clouds",
+          "description": "az bulutlu",
+          "icon": "02d"
+        }
+      ],
+      "clouds": {
+        "all": 21
+      },
+      "wind": {
+        "speed": 3.57,
+        "deg": 266,
+        "gust": 4.5
+      },
+      "visibility": 10000,
+      "pop": 0,
+      "sys": {
+        "pod": "d"
+      },
+      "dt_txt": "2023-02-02 09:00:00"
+    },
+    {
+      "dt": 1675339200,
+      "main": {
+        "temp": 273.86,
+        "feels_like": 269.26,
+        "temp_min": 273.86,
+        "temp_max": 273.86,
+        "pressure": 1021,
+        "sea_level": 1021,
+        "grnd_level": 896,
+        "humidity": 51,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 801,
+          "main": "Clouds",
+          "description": "az bulutlu",
+          "icon": "02d"
+        }
+      ],
+      "clouds": {
+        "all": 23
+      },
+      "wind": {
+        "speed": 4.76,
+        "deg": 267,
+        "gust": 5.66
+      },
+      "visibility": 10000,
+      "pop": 0,
+      "sys": {
+        "pod": "d"
+      },
+      "dt_txt": "2023-02-02 12:00:00"
+    },
+    {
+      "dt": 1675350000,
+      "main": {
+        "temp": 271.08,
+        "feels_like": 266.55,
+        "temp_min": 271.08,
+        "temp_max": 271.08,
+        "pressure": 1023,
+        "sea_level": 1023,
+        "grnd_level": 896,
+        "humidity": 73,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 803,
+          "main": "Clouds",
+          "description": "parçalı bulutlu",
+          "icon": "04d"
+        }
+      ],
+      "clouds": {
+        "all": 61
+      },
+      "wind": {
+        "speed": 3.71,
+        "deg": 224,
+        "gust": 6.03
+      },
+      "visibility": 10000,
+      "pop": 0,
+      "sys": {
+        "pod": "d"
+      },
+      "dt_txt": "2023-02-02 15:00:00"
+    },
+    {
+      "dt": 1675360800,
+      "main": {
+        "temp": 269.82,
+        "feels_like": 266.57,
+        "temp_min": 269.82,
+        "temp_max": 269.82,
+        "pressure": 1026,
+        "sea_level": 1026,
+        "grnd_level": 898,
+        "humidity": 76,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 803,
+          "main": "Clouds",
+          "description": "parçalı bulutlu",
+          "icon": "04n"
+        }
+      ],
+      "clouds": {
+        "all": 66
+      },
+      "wind": {
+        "speed": 2.18,
+        "deg": 203,
+        "gust": 2.76
+      },
+      "visibility": 10000,
+      "pop": 0,
+      "sys": {
+        "pod": "n"
+      },
+      "dt_txt": "2023-02-02 18:00:00"
+    },
+    {
+      "dt": 1675371600,
+      "main": {
+        "temp": 269.73,
+        "feels_like": 266.64,
+        "temp_min": 269.73,
+        "temp_max": 269.73,
+        "pressure": 1026,
+        "sea_level": 1026,
+        "grnd_level": 898,
+        "humidity": 72,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 802,
+          "main": "Clouds",
+          "description": "parçalı az bulutlu",
+          "icon": "03n"
+        }
+      ],
+      "clouds": {
+        "all": 44
+      },
+      "wind": {
+        "speed": 2.05,
+        "deg": 180,
+        "gust": 2.51
+      },
+      "visibility": 10000,
+      "pop": 0,
+      "sys": {
+        "pod": "n"
+      },
+      "dt_txt": "2023-02-02 21:00:00"
+    },
+    {
+      "dt": 1675382400,
+      "main": {
+        "temp": 269.64,
+        "feels_like": 266.69,
+        "temp_min": 269.64,
+        "temp_max": 269.64,
+        "pressure": 1027,
+        "sea_level": 1027,
+        "grnd_level": 899,
+        "humidity": 70,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 802,
+          "main": "Clouds",
+          "description": "parçalı az bulutlu",
+          "icon": "03n"
+        }
+      ],
+      "clouds": {
+        "all": 29
+      },
+      "wind": {
+        "speed": 1.94,
+        "deg": 170,
+        "gust": 1.9
+      },
+      "visibility": 10000,
+      "pop": 0,
+      "sys": {
+        "pod": "n"
+      },
+      "dt_txt": "2023-02-03 00:00:00"
+    },
+    {
+      "dt": 1675393200,
+      "main": {
+        "temp": 269.43,
+        "feels_like": 266.4,
+        "temp_min": 269.43,
+        "temp_max": 269.43,
+        "pressure": 1026,
+        "sea_level": 1026,
+        "grnd_level": 898,
+        "humidity": 69,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 803,
+          "main": "Clouds",
+          "description": "parçalı bulutlu",
+          "icon": "04n"
+        }
+      ],
+      "clouds": {
+        "all": 64
+      },
+      "wind": {
+        "speed": 1.97,
+        "deg": 153,
+        "gust": 1.88
+      },
+      "visibility": 10000,
+      "pop": 0,
+      "sys": {
+        "pod": "n"
+      },
+      "dt_txt": "2023-02-03 03:00:00"
+    },
+    {
+      "dt": 1675404000,
+      "main": {
+        "temp": 270.32,
+        "feels_like": 266.97,
+        "temp_min": 270.32,
+        "temp_max": 270.32,
+        "pressure": 1026,
+        "sea_level": 1026,
+        "grnd_level": 898,
+        "humidity": 62,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 803,
+          "main": "Clouds",
+          "description": "parçalı bulutlu",
+          "icon": "04d"
+        }
+      ],
+      "clouds": {
+        "all": 66
+      },
+      "wind": {
+        "speed": 2.33,
+        "deg": 145,
+        "gust": 3.1
+      },
+      "visibility": 10000,
+      "pop": 0,
+      "sys": {
+        "pod": "d"
+      },
+      "dt_txt": "2023-02-03 06:00:00"
+    },
+    {
+      "dt": 1675414800,
+      "main": {
+        "temp": 275.24,
+        "feels_like": 272.86,
+        "temp_min": 275.24,
+        "temp_max": 275.24,
+        "pressure": 1023,
+        "sea_level": 1023,
+        "grnd_level": 898,
+        "humidity": 38,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 800,
+          "main": "Clear",
+          "description": "açık",
+          "icon": "01d"
+        }
+      ],
+      "clouds": {
+        "all": 9
+      },
+      "wind": {
+        "speed": 2.24,
+        "deg": 187,
+        "gust": 3.94
+      },
+      "visibility": 10000,
+      "pop": 0,
+      "sys": {
+        "pod": "d"
+      },
+      "dt_txt": "2023-02-03 09:00:00"
+    },
+    {
+      "dt": 1675425600,
+      "main": {
+        "temp": 277.15,
+        "feels_like": 274.02,
+        "temp_min": 277.15,
+        "temp_max": 277.15,
+        "pressure": 1021,
+        "sea_level": 1021,
+        "grnd_level": 897,
+        "humidity": 37,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 800,
+          "main": "Clear",
+          "description": "açık",
+          "icon": "01d"
+        }
+      ],
+      "clouds": {
+        "all": 7
+      },
+      "wind": {
+        "speed": 3.62,
+        "deg": 238,
+        "gust": 5.19
+      },
+      "visibility": 10000,
+      "pop": 0,
+      "sys": {
+        "pod": "d"
+      },
+      "dt_txt": "2023-02-03 12:00:00"
+    },
+    {
+      "dt": 1675436400,
+      "main": {
+        "temp": 273.18,
+        "feels_like": 271.19,
+        "temp_min": 273.18,
+        "temp_max": 273.18,
+        "pressure": 1021,
+        "sea_level": 1021,
+        "grnd_level": 895,
+        "humidity": 54,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 801,
+          "main": "Clouds",
+          "description": "az bulutlu",
+          "icon": "02d"
+        }
+      ],
+      "clouds": {
+        "all": 19
+      },
+      "wind": {
+        "speed": 1.66,
+        "deg": 182,
+        "gust": 1.62
+      },
+      "visibility": 10000,
+      "pop": 0,
+      "sys": {
+        "pod": "d"
+      },
+      "dt_txt": "2023-02-03 15:00:00"
+    },
+    {
+      "dt": 1675447200,
+      "main": {
+        "temp": 272.59,
+        "feels_like": 269.58,
+        "temp_min": 272.59,
+        "temp_max": 272.59,
+        "pressure": 1021,
+        "sea_level": 1021,
+        "grnd_level": 895,
+        "humidity": 55,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 803,
+          "main": "Clouds",
+          "description": "parçalı bulutlu",
+          "icon": "04n"
+        }
+      ],
+      "clouds": {
+        "all": 58
+      },
+      "wind": {
+        "speed": 2.39,
+        "deg": 156,
+        "gust": 2.97
+      },
+      "visibility": 10000,
+      "pop": 0,
+      "sys": {
+        "pod": "n"
+      },
+      "dt_txt": "2023-02-03 18:00:00"
+    },
+    {
+      "dt": 1675458000,
+      "main": {
+        "temp": 271.85,
+        "feels_like": 268.57,
+        "temp_min": 271.85,
+        "temp_max": 271.85,
+        "pressure": 1021,
+        "sea_level": 1021,
+        "grnd_level": 895,
+        "humidity": 58,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 803,
+          "main": "Clouds",
+          "description": "parçalı bulutlu",
+          "icon": "04n"
+        }
+      ],
+      "clouds": {
+        "all": 57
+      },
+      "wind": {
+        "speed": 2.52,
+        "deg": 142,
+        "gust": 3.04
+      },
+      "visibility": 10000,
+      "pop": 0,
+      "sys": {
+        "pod": "n"
+      },
+      "dt_txt": "2023-02-03 21:00:00"
+    },
+    {
+      "dt": 1675468800,
+      "main": {
+        "temp": 271.81,
+        "feels_like": 270.04,
+        "temp_min": 271.81,
+        "temp_max": 271.81,
+        "pressure": 1021,
+        "sea_level": 1021,
+        "grnd_level": 894,
+        "humidity": 58,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 803,
+          "main": "Clouds",
+          "description": "parçalı bulutlu",
+          "icon": "04n"
+        }
+      ],
+      "clouds": {
+        "all": 74
+      },
+      "wind": {
+        "speed": 1.4,
+        "deg": 214,
+        "gust": 1.35
+      },
+      "visibility": 10000,
+      "pop": 0.02,
+      "sys": {
+        "pod": "n"
+      },
+      "dt_txt": "2023-02-04 00:00:00"
+    },
+    {
+      "dt": 1675479600,
+      "main": {
+        "temp": 270.78,
+        "feels_like": 268.64,
+        "temp_min": 270.78,
+        "temp_max": 270.78,
+        "pressure": 1021,
+        "sea_level": 1021,
+        "grnd_level": 894,
+        "humidity": 85,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 600,
+          "main": "Snow",
+          "description": "hafif kar yağışlı",
+          "icon": "13n"
+        }
+      ],
+      "clouds": {
+        "all": 100
+      },
+      "wind": {
+        "speed": 1.53,
+        "deg": 230,
+        "gust": 2.19
+      },
+      "visibility": 2883,
+      "pop": 0.53,
+      "snow": {
+        "3h": 0.23
+      },
+      "sys": {
+        "pod": "n"
+      },
+      "dt_txt": "2023-02-04 03:00:00"
+    },
+    {
+      "dt": 1675490400,
+      "main": {
+        "temp": 271.28,
+        "feels_like": 271.28,
+        "temp_min": 271.28,
+        "temp_max": 271.28,
+        "pressure": 1021,
+        "sea_level": 1021,
+        "grnd_level": 894,
+        "humidity": 89,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 600,
+          "main": "Snow",
+          "description": "hafif kar yağışlı",
+          "icon": "13d"
+        }
+      ],
+      "clouds": {
+        "all": 100
+      },
+      "wind": {
+        "speed": 1.3,
+        "deg": 183,
+        "gust": 1.71
+      },
+      "visibility": 10000,
+      "pop": 0.88,
+      "snow": {
+        "3h": 1.09
+      },
+      "sys": {
+        "pod": "d"
+      },
+      "dt_txt": "2023-02-04 06:00:00"
+    },
+    {
+      "dt": 1675501200,
+      "main": {
+        "temp": 273.51,
+        "feels_like": 270.29,
+        "temp_min": 273.51,
+        "temp_max": 273.51,
+        "pressure": 1020,
+        "sea_level": 1020,
+        "grnd_level": 894,
+        "humidity": 70,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 804,
+          "main": "Clouds",
+          "description": "kapalı",
+          "icon": "04d"
+        }
+      ],
+      "clouds": {
+        "all": 96
+      },
+      "wind": {
+        "speed": 2.77,
+        "deg": 237,
+        "gust": 3.32
+      },
+      "visibility": 10000,
+      "pop": 0.1,
+      "sys": {
+        "pod": "d"
+      },
+      "dt_txt": "2023-02-04 09:00:00"
+    },
+    {
+      "dt": 1675512000,
+      "main": {
+        "temp": 274.6,
+        "feels_like": 271.06,
+        "temp_min": 274.6,
+        "temp_max": 274.6,
+        "pressure": 1017,
+        "sea_level": 1017,
+        "grnd_level": 892,
+        "humidity": 56,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 803,
+          "main": "Clouds",
+          "description": "parçalı bulutlu",
+          "icon": "04d"
+        }
+      ],
+      "clouds": {
+        "all": 73
+      },
+      "wind": {
+        "speed": 3.41,
+        "deg": 240,
+        "gust": 4.37
+      },
+      "visibility": 10000,
+      "pop": 0,
+      "sys": {
+        "pod": "d"
+      },
+      "dt_txt": "2023-02-04 12:00:00"
+    },
+    {
+      "dt": 1675522800,
+      "main": {
+        "temp": 272.74,
+        "feels_like": 272.74,
+        "temp_min": 272.74,
+        "temp_max": 272.74,
+        "pressure": 1017,
+        "sea_level": 1017,
+        "grnd_level": 891,
+        "humidity": 68,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 804,
+          "main": "Clouds",
+          "description": "kapalı",
+          "icon": "04d"
+        }
+      ],
+      "clouds": {
+        "all": 100
+      },
+      "wind": {
+        "speed": 1.13,
+        "deg": 256,
+        "gust": 1.38
+      },
+      "visibility": 10000,
+      "pop": 0,
+      "sys": {
+        "pod": "d"
+      },
+      "dt_txt": "2023-02-04 15:00:00"
+    },
+    {
+      "dt": 1675533600,
+      "main": {
+        "temp": 272.52,
+        "feels_like": 272.52,
+        "temp_min": 272.52,
+        "temp_max": 272.52,
+        "pressure": 1017,
+        "sea_level": 1017,
+        "grnd_level": 891,
+        "humidity": 70,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 804,
+          "main": "Clouds",
+          "description": "kapalı",
+          "icon": "04n"
+        }
+      ],
+      "clouds": {
+        "all": 100
+      },
+      "wind": {
+        "speed": 1.28,
+        "deg": 143,
+        "gust": 1.26
+      },
+      "visibility": 10000,
+      "pop": 0,
+      "sys": {
+        "pod": "n"
+      },
+      "dt_txt": "2023-02-04 18:00:00"
+    },
+    {
+      "dt": 1675544400,
+      "main": {
+        "temp": 272.32,
+        "feels_like": 269.7,
+        "temp_min": 272.32,
+        "temp_max": 272.32,
+        "pressure": 1015,
+        "sea_level": 1015,
+        "grnd_level": 890,
+        "humidity": 71,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 804,
+          "main": "Clouds",
+          "description": "kapalı",
+          "icon": "04n"
+        }
+      ],
+      "clouds": {
+        "all": 100
+      },
+      "wind": {
+        "speed": 2.02,
+        "deg": 138,
+        "gust": 2.23
+      },
+      "visibility": 10000,
+      "pop": 0.07,
+      "sys": {
+        "pod": "n"
+      },
+      "dt_txt": "2023-02-04 21:00:00"
+    },
+    {
+      "dt": 1675555200,
+      "main": {
+        "temp": 272.67,
+        "feels_like": 270.77,
+        "temp_min": 272.67,
+        "temp_max": 272.67,
+        "pressure": 1013,
+        "sea_level": 1013,
+        "grnd_level": 888,
+        "humidity": 75,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 804,
+          "main": "Clouds",
+          "description": "kapalı",
+          "icon": "04n"
+        }
+      ],
+      "clouds": {
+        "all": 100
+      },
+      "wind": {
+        "speed": 1.55,
+        "deg": 90,
+        "gust": 1.89
+      },
+      "visibility": 10000,
+      "pop": 0.02,
+      "sys": {
+        "pod": "n"
+      },
+      "dt_txt": "2023-02-05 00:00:00"
+    },
+    {
+      "dt": 1675566000,
+      "main": {
+        "temp": 271.62,
+        "feels_like": 268.25,
+        "temp_min": 271.62,
+        "temp_max": 271.62,
+        "pressure": 1011,
+        "sea_level": 1011,
+        "grnd_level": 886,
+        "humidity": 95,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 600,
+          "main": "Snow",
+          "description": "hafif kar yağışlı",
+          "icon": "13n"
+        }
+      ],
+      "clouds": {
+        "all": 100
+      },
+      "wind": {
+        "speed": 2.56,
+        "deg": 99,
+        "gust": 4.1
+      },
+      "visibility": 283,
+      "pop": 0.8,
+      "snow": {
+        "3h": 0.5
+      },
+      "sys": {
+        "pod": "n"
+      },
+      "dt_txt": "2023-02-05 03:00:00"
+    },
+    {
+      "dt": 1675576800,
+      "main": {
+        "temp": 271.67,
+        "feels_like": 269.32,
+        "temp_min": 271.67,
+        "temp_max": 271.67,
+        "pressure": 1011,
+        "sea_level": 1011,
+        "grnd_level": 885,
+        "humidity": 95,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 601,
+          "main": "Snow",
+          "description": "kar yağışlı",
+          "icon": "13d"
+        }
+      ],
+      "clouds": {
+        "all": 100
+      },
+      "wind": {
+        "speed": 1.75,
+        "deg": 62,
+        "gust": 3.05
+      },
+      "visibility": 167,
+      "pop": 1,
+      "snow": {
+        "3h": 1.74
+      },
+      "sys": {
+        "pod": "d"
+      },
+      "dt_txt": "2023-02-05 06:00:00"
+    },
+    {
+      "dt": 1675587600,
+      "main": {
+        "temp": 272.64,
+        "feels_like": 268.92,
+        "temp_min": 272.64,
+        "temp_max": 272.64,
+        "pressure": 1009,
+        "sea_level": 1009,
+        "grnd_level": 884,
+        "humidity": 95,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 601,
+          "main": "Snow",
+          "description": "kar yağışlı",
+          "icon": "13d"
+        }
+      ],
+      "clouds": {
+        "all": 100
+      },
+      "wind": {
+        "speed": 3.13,
+        "deg": 14,
+        "gust": 4.31
+      },
+      "visibility": 203,
+      "pop": 0.96,
+      "snow": {
+        "3h": 2.62
+      },
+      "sys": {
+        "pod": "d"
+      },
+      "dt_txt": "2023-02-05 09:00:00"
+    },
+    {
+      "dt": 1675598400,
+      "main": {
+        "temp": 272.75,
+        "feels_like": 267.54,
+        "temp_min": 272.75,
+        "temp_max": 272.75,
+        "pressure": 1009,
+        "sea_level": 1009,
+        "grnd_level": 884,
+        "humidity": 90,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 601,
+          "main": "Snow",
+          "description": "kar yağışlı",
+          "icon": "13d"
+        }
+      ],
+      "clouds": {
+        "all": 100
+      },
+      "wind": {
+        "speed": 5.34,
+        "deg": 352,
+        "gust": 7.34
+      },
+      "visibility": 1252,
+      "pop": 0.99,
+      "snow": {
+        "3h": 2.06
+      },
+      "sys": {
+        "pod": "d"
+      },
+      "dt_txt": "2023-02-05 12:00:00"
+    },
+    {
+      "dt": 1675609200,
+      "main": {
+        "temp": 271.45,
+        "feels_like": 266.68,
+        "temp_min": 271.45,
+        "temp_max": 271.45,
+        "pressure": 1010,
+        "sea_level": 1010,
+        "grnd_level": 885,
+        "humidity": 95,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 601,
+          "main": "Snow",
+          "description": "kar yağışlı",
+          "icon": "13d"
+        }
+      ],
+      "clouds": {
+        "all": 100
+      },
+      "wind": {
+        "speed": 4.14,
+        "deg": 331,
+        "gust": 8.5
+      },
+      "visibility": 371,
+      "pop": 0.83,
+      "snow": {
+        "3h": 1.56
+      },
+      "sys": {
+        "pod": "d"
+      },
+      "dt_txt": "2023-02-05 15:00:00"
+    },
+    {
+      "dt": 1675620000,
+      "main": {
+        "temp": 270.53,
+        "feels_like": 265.33,
+        "temp_min": 270.53,
+        "temp_max": 270.53,
+        "pressure": 1011,
+        "sea_level": 1011,
+        "grnd_level": 886,
+        "humidity": 95,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 600,
+          "main": "Snow",
+          "description": "hafif kar yağışlı",
+          "icon": "13n"
+        }
+      ],
+      "clouds": {
+        "all": 100
+      },
+      "wind": {
+        "speed": 4.43,
+        "deg": 326,
+        "gust": 9.68
+      },
+      "visibility": 200,
+      "pop": 0.87,
+      "snow": {
+        "3h": 1.37
+      },
+      "sys": {
+        "pod": "n"
+      },
+      "dt_txt": "2023-02-05 18:00:00"
+    },
+    {
+      "dt": 1675630800,
+      "main": {
+        "temp": 269.12,
+        "feels_like": 262.77,
+        "temp_min": 269.12,
+        "temp_max": 269.12,
+        "pressure": 1014,
+        "sea_level": 1014,
+        "grnd_level": 887,
+        "humidity": 85,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 600,
+          "main": "Snow",
+          "description": "hafif kar yağışlı",
+          "icon": "13n"
+        }
+      ],
+      "clouds": {
+        "all": 100
+      },
+      "wind": {
+        "speed": 5.68,
+        "deg": 324,
+        "gust": 11.18
+      },
+      "visibility": 7225,
+      "pop": 0.82,
+      "snow": {
+        "3h": 1.42
+      },
+      "sys": {
+        "pod": "n"
+      },
+      "dt_txt": "2023-02-05 21:00:00"
+    },
+    {
+      "dt": 1675641600,
+      "main": {
+        "temp": 267.32,
+        "feels_like": 261.13,
+        "temp_min": 267.32,
+        "temp_max": 267.32,
+        "pressure": 1018,
+        "sea_level": 1018,
+        "grnd_level": 890,
+        "humidity": 92,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 600,
+          "main": "Snow",
+          "description": "hafif kar yağışlı",
+          "icon": "13n"
+        }
+      ],
+      "clouds": {
+        "all": 100
+      },
+      "wind": {
+        "speed": 4.74,
+        "deg": 311,
+        "gust": 9.12
+      },
+      "visibility": 324,
+      "pop": 0.82,
+      "snow": {
+        "3h": 1.42
+      },
+      "sys": {
+        "pod": "n"
+      },
+      "dt_txt": "2023-02-06 00:00:00"
+    },
+    {
+      "dt": 1675652400,
+      "main": {
+        "temp": 266.24,
+        "feels_like": 261.42,
+        "temp_min": 266.24,
+        "temp_max": 266.24,
+        "pressure": 1020,
+        "sea_level": 1020,
+        "grnd_level": 891,
+        "humidity": 87,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 600,
+          "main": "Snow",
+          "description": "hafif kar yağışlı",
+          "icon": "13n"
+        }
+      ],
+      "clouds": {
+        "all": 100
+      },
+      "wind": {
+        "speed": 2.94,
+        "deg": 287,
+        "gust": 5.08
+      },
+      "visibility": 6012,
+      "pop": 0.43,
+      "snow": {
+        "3h": 0.72
+      },
+      "sys": {
+        "pod": "n"
+      },
+      "dt_txt": "2023-02-06 03:00:00"
+    },
+    {
+      "dt": 1675663200,
+      "main": {
+        "temp": 265.36,
+        "feels_like": 261.36,
+        "temp_min": 265.36,
+        "temp_max": 265.36,
+        "pressure": 1023,
+        "sea_level": 1023,
+        "grnd_level": 894,
+        "humidity": 88,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 600,
+          "main": "Snow",
+          "description": "hafif kar yağışlı",
+          "icon": "13d"
+        }
+      ],
+      "clouds": {
+        "all": 100
+      },
+      "wind": {
+        "speed": 2.17,
+        "deg": 269,
+        "gust": 3.1
+      },
+      "visibility": 6000,
+      "pop": 0.39,
+      "snow": {
+        "3h": 0.23
+      },
+      "sys": {
+        "pod": "d"
+      },
+      "dt_txt": "2023-02-06 06:00:00"
+    },
+    {
+      "dt": 1675674000,
+      "main": {
+        "temp": 267.56,
+        "feels_like": 263.52,
+        "temp_min": 267.56,
+        "temp_max": 267.56,
+        "pressure": 1024,
+        "sea_level": 1024,
+        "grnd_level": 895,
+        "humidity": 79,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 804,
+          "main": "Clouds",
+          "description": "kapalı",
+          "icon": "04d"
+        }
+      ],
+      "clouds": {
+        "all": 97
+      },
+      "wind": {
+        "speed": 2.49,
+        "deg": 284,
+        "gust": 2.58
+      },
+      "visibility": 10000,
+      "pop": 0.03,
+      "sys": {
+        "pod": "d"
+      },
+      "dt_txt": "2023-02-06 09:00:00"
+    },
+    {
+      "dt": 1675684800,
+      "main": {
+        "temp": 268.84,
+        "feels_like": 265.7,
+        "temp_min": 268.84,
+        "temp_max": 268.84,
+        "pressure": 1023,
+        "sea_level": 1023,
+        "grnd_level": 895,
+        "humidity": 73,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 804,
+          "main": "Clouds",
+          "description": "kapalı",
+          "icon": "04d"
+        }
+      ],
+      "clouds": {
+        "all": 98
+      },
+      "wind": {
+        "speed": 1.98,
+        "deg": 280,
+        "gust": 2.11
+      },
+      "visibility": 10000,
+      "pop": 0,
+      "sys": {
+        "pod": "d"
+      },
+      "dt_txt": "2023-02-06 12:00:00"
+    },
+    {
+      "dt": 1675695600,
+      "main": {
+        "temp": 265.44,
+        "feels_like": 262.64,
+        "temp_min": 265.44,
+        "temp_max": 265.44,
+        "pressure": 1026,
+        "sea_level": 1026,
+        "grnd_level": 896,
+        "humidity": 84,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 804,
+          "main": "Clouds",
+          "description": "kapalı",
+          "icon": "04d"
+        }
+      ],
+      "clouds": {
+        "all": 85
+      },
+      "wind": {
+        "speed": 1.48,
+        "deg": 206,
+        "gust": 1.53
+      },
+      "visibility": 10000,
+      "pop": 0,
+      "sys": {
+        "pod": "d"
+      },
+      "dt_txt": "2023-02-06 15:00:00"
+    },
+    {
+      "dt": 1675706400,
+      "main": {
+        "temp": 262.66,
+        "feels_like": 259.26,
+        "temp_min": 262.66,
+        "temp_max": 262.66,
+        "pressure": 1030,
+        "sea_level": 1030,
+        "grnd_level": 898,
+        "humidity": 87,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 803,
+          "main": "Clouds",
+          "description": "parçalı bulutlu",
+          "icon": "04n"
+        }
+      ],
+      "clouds": {
+        "all": 67
+      },
+      "wind": {
+        "speed": 1.58,
+        "deg": 162,
+        "gust": 1.47
+      },
+      "visibility": 10000,
+      "pop": 0,
+      "sys": {
+        "pod": "n"
+      },
+      "dt_txt": "2023-02-06 18:00:00"
+    }
+  ],
+  "city": {
+    "id": 313658,
+    "name": "Gülşehir",
+    "coord": {
+      "lat": 38.6939,
+      "lon": 34.6857
+    },
+    "country": "TR",
+    "population": 9740,
+    "timezone": 10800,
+    "sunrise": 1675226856,
+    "sunset": 1675263710
+  }
+}
