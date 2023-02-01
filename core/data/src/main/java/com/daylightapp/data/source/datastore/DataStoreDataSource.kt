@@ -1,12 +1,12 @@
 package com.daylightapp.data.source.datastore
 
-import com.daylightapp.common.datastore.LocationEntity
+import com.daylightapp.domain.entity.city.LocationEntity
 import com.daylightapp.domain.entity.quote.QuoteEntity
 import kotlinx.coroutines.flow.Flow
 
 interface DataStoreDataSource {
     //city
-    suspend fun writeCityDataStore(lat : String,lon : String,name : String)
+    suspend fun writeCityDataStore(lat : String,lon : String,name : String,plate : String)
     val readCityDataStore : Flow<LocationEntity>
     //nav start
     suspend fun writeNavStartDestination(destination : String)

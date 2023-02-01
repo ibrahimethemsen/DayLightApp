@@ -1,9 +1,9 @@
 package com.daylightapp.data.api.weather
 
 
-import com.daylightapp.common.weather.current.CurrentWeather
+import com.daylightapp.data.dto.weather.current.CurrentWeather
 import com.daylightapp.data.common.Constants.WEATHER_API_KEY
-import com.daylightapp.common.weather.fiveday.WeatherResponse
+import com.daylightapp.data.dto.weather.fiveday.WeatherResponse
 import com.daylightapp.data.common.Constants.API_LANGUAGE
 import retrofit2.http.GET
 import retrofit2.http.Query

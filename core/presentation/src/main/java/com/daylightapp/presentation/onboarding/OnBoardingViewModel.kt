@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.daylightapp.common.NetworkResult
-import com.daylightapp.common.city.City
+import com.daylightapp.domain.entity.city.LocationEntity
 import com.daylightapp.domain.usecase.city.GetListCityUseCase
 import com.daylightapp.domain.usecase.datastore.read.NavStartDestinationUseCase
 import com.daylightapp.domain.usecase.datastore.write.WriteCityDataStoreUseCase
@@ -71,11 +71,11 @@ class OnBoardingViewModel @Inject constructor(
     }
 
     //TODO search iki ekranda olacagi icin TextWatcher'a tasinacak
-    fun filterCityList(query: String?): List<City> {
-        val searchList = mutableListOf<City>()
+    fun filterCityList(query: String?): List<LocationEntity> {
+        val searchList = mutableListOf<LocationEntity>()
         query?.let {
             cityList.value?.data?.forEach { city ->
-                if (city.name!!.lowercase().contains(it)) {
+                if (city.name.lowercase().contains(it)) {
                     searchList.add(city)
                 }
             }
@@ -83,16 +83,16 @@ class OnBoardingViewModel @Inject constructor(
         return searchList
     }
 
-    fun writeDataStoreCity(lat: String, lon: String, name: String) {
+    fun writeDataStoreCity(lat: String, lon: String, name: String,plate : String) {
         viewModelScope.launch {
-            writeCityDataStoreUseCase(lat, lon, name)
+            writeCityDataStoreUseCase(lat, lon, name,plate)
             writeNavStartDestination(HOME_FRAGMENT)
         }
     }
 }
 
 data class OnBoardingUi(
-    val data: List<City>? = listOf(),
+    val data: List<LocationEntity>? = listOf(),
     val loading: Boolean = true,
     val error: Throwable? = null
 )

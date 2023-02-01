@@ -6,7 +6,7 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.emptyPreferences
 import androidx.datastore.preferences.core.stringPreferencesKey
-import com.daylightapp.common.datastore.LocationEntity
+import com.daylightapp.domain.entity.city.LocationEntity
 import com.daylightapp.data.common.Constants.AN_ERROR
 import com.daylightapp.data.di.IoDispatcher
 import com.daylightapp.domain.entity.quote.QuoteEntity
@@ -27,19 +27,21 @@ class DataStoreDataSourceImpl @Inject constructor(
         val lon = stringPreferencesKey("lon")
         val lat = stringPreferencesKey("lat")
         val name = stringPreferencesKey("name")
+        val plate = stringPreferencesKey("plate")
         val startDestination = stringPreferencesKey("destination")
         val date = stringPreferencesKey("date_current")
         val quote = stringPreferencesKey("quote")
         val author = stringPreferencesKey("author")
     }
 
-    override suspend fun writeCityDataStore(lat: String, lon: String, name: String) {
+    override suspend fun writeCityDataStore(lat: String, lon: String, name: String,plate : String) {
         withContext(ioDispatcher) {
             try {
                 dataStore.edit {
                     it[PreferencesKeys.lat] = lat
                     it[PreferencesKeys.lon] = lon
                     it[PreferencesKeys.name] = name
+                    it[PreferencesKeys.plate] = plate
                 }
             } catch (e: Exception) {
                 Log.e("DataStore", "writeCityDataStore: ${e.localizedMessage}")
@@ -138,7 +140,8 @@ class DataStoreDataSourceImpl @Inject constructor(
         val lon = preferences[PreferencesKeys.lon] ?: "d0"
         val lat = preferences[PreferencesKeys.lat] ?: "d1"
         val name = preferences[PreferencesKeys.name] ?: "d2"
-        return LocationEntity(lon, lat, name)
+        val plate = preferences[PreferencesKeys.plate] ?: "50"
+        return LocationEntity(lon, lat, name,plate)
     }
 
     private fun mapLocalQuote(preferences: Preferences): QuoteEntity {

@@ -1,6 +1,6 @@
 package com.daylightapp.data.api.city
 
-import com.daylightapp.common.city.City
+import com.daylightapp.data.dto.city.City
 import retrofit2.http.GET
 
 interface CityApi {

@@ -4,7 +4,7 @@ import com.daylightapp.common.NetworkResult
 import com.daylightapp.data.common.Constants.DAY_MONTH_FORMAT
 import com.daylightapp.data.source.datastore.DataStoreDataSource
 import com.daylightapp.data.source.quote.QuoteDataSource
-import com.daylightapp.domain.common.currentDateFormat
+import com.daylightapp.data.common.currentDateFormat
 import com.daylightapp.domain.entity.quote.QuoteEntity
 import com.daylightapp.domain.repository.repository.QuoteRepository
 import kotlinx.coroutines.flow.Flow

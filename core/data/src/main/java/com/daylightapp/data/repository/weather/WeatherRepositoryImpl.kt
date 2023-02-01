@@ -1,20 +1,20 @@
 package com.daylightapp.data.repository.weather
 
 import com.daylightapp.common.NetworkResult
-import com.daylightapp.common.weather.fiveday.Response
 import com.daylightapp.data.common.Constants.DAY_MONTH_FORMAT
 import com.daylightapp.data.common.Constants.DAY_MONTH_YEAR_FORMAT
+import com.daylightapp.data.common.Constants.HOUR_MINUTE_FORMAT
+import com.daylightapp.data.common.currentDateFormat
+import com.daylightapp.data.common.kelvinToCelcius
+import com.daylightapp.data.common.milToKmSpeed
+import com.daylightapp.data.common.toDateFormat
 import com.daylightapp.data.di.IoDispatcher
+import com.daylightapp.data.dto.weather.fiveday.Response
+import com.daylightapp.data.mapper.ListMapper
 import com.daylightapp.data.source.weather.WeatherDataSource
-import com.daylightapp.domain.common.Constants.HOUR_MINUTE_FORMAT
-import com.daylightapp.domain.common.currentDateFormat
-import com.daylightapp.domain.common.kelvinToCelcius
-import com.daylightapp.domain.common.milToKmSpeed
-import com.daylightapp.domain.common.toDateFormat
 import com.daylightapp.domain.entity.weather.CurrentWeatherEntity
 import com.daylightapp.domain.entity.weather.DetailFiveDayWeatherEntity
 import com.daylightapp.domain.entity.weather.FiveDayWeatherEntity
-import com.daylightapp.domain.mapper.ListMapper
 import com.daylightapp.domain.repository.weather.WeatherRepository
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
@@ -38,14 +38,18 @@ class WeatherRepositoryImpl @Inject constructor(
                 is NetworkResult.Error -> {
                     emit(NetworkResult.Error(response.exception))
                 }
+
                 NetworkResult.Loading -> {
                     emit(NetworkResult.Loading)
                 }
+
                 is NetworkResult.Success -> {
                     emit(NetworkResult.Success(
                         fiveDayWeatherMapper.map(
                             response.data.list?.filter {
-                                DAY_MONTH_FORMAT.currentDateFormat() == it.dt?.toDateFormat(DAY_MONTH_FORMAT)
+                                DAY_MONTH_FORMAT.currentDateFormat() == it.dt?.toDateFormat(
+                                    DAY_MONTH_FORMAT
+                                )
                             }
                         )
                     ))
@@ -62,9 +66,11 @@ class WeatherRepositoryImpl @Inject constructor(
             is NetworkResult.Error -> {
                 emit(NetworkResult.Error(response.exception))
             }
+
             NetworkResult.Loading -> {
                 emit(NetworkResult.Loading)
             }
+
             is NetworkResult.Success -> {
                 val sunset = response.data.sys?.sunset?.toDateFormat(HOUR_MINUTE_FORMAT)
                 val sunrise = response.data.sys?.sunrise?.toDateFormat(HOUR_MINUTE_FORMAT)
@@ -99,9 +105,11 @@ class WeatherRepositoryImpl @Inject constructor(
                 is NetworkResult.Error -> {
                     emit(NetworkResult.Error(response.exception))
                 }
+
                 NetworkResult.Loading -> {
                     emit(NetworkResult.Loading)
                 }
+
                 is NetworkResult.Success -> {
                     emit(
                         NetworkResult.Success(

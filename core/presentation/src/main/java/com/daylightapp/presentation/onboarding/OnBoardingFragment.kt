@@ -6,7 +6,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
-import com.daylightapp.common.city.City
+import com.daylightapp.domain.entity.city.LocationEntity
 import com.daylightapp.presentation.R
 import com.daylightapp.presentation.common.Constants.HOME_FRAGMENT
 import com.daylightapp.presentation.common.isVisibility
@@ -45,12 +45,10 @@ class OnBoardingFragment : Fragment(R.layout.fragment_on_boarding) {
         cityAdapter.onCityClickListener(::cityWriteDataStore)
     }
 
-    private fun cityWriteDataStore(city: City) {
-        if (!city.latitude.isNullOrEmpty() && !city.longitude.isNullOrEmpty() && !city.name.isNullOrEmpty()) {
-            viewModel.writeDataStoreCity(city.latitude!!, city.longitude!!, city.name!!).also {
-                val action = OnBoardingFragmentDirections.actionOnBoardingFragmentToHomeFragment()
-                requireView().findNavController().navigate(action)
-            }
+    private fun cityWriteDataStore(city: LocationEntity) {
+        viewModel.writeDataStoreCity(city.lat, city.lon, city.name,city.plate).also {
+            val action = OnBoardingFragmentDirections.actionOnBoardingFragmentToHomeFragment()
+            requireView().findNavController().navigate(action)
         }
     }
 

@@ -2,7 +2,7 @@ package com.daylightapp.data.source.city
 
 import com.daylightapp.common.NetworkResult
 import com.daylightapp.data.api.city.CityApi
-import com.daylightapp.common.city.City
+import com.daylightapp.data.dto.city.City
 import javax.inject.Inject
 
 class CityDataSourceImpl @Inject constructor(

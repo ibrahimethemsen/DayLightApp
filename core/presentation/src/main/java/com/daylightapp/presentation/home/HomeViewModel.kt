@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.daylightapp.common.NetworkResult
-import com.daylightapp.common.datastore.LocationEntity
+import com.daylightapp.domain.entity.city.LocationEntity
 import com.daylightapp.domain.entity.quote.QuoteEntity
 import com.daylightapp.domain.entity.weather.CurrentWeatherEntity
 import com.daylightapp.domain.entity.weather.FiveDayWeatherEntity

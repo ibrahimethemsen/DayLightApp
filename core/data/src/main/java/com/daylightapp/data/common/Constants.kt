@@ -9,6 +9,8 @@ object Constants {
     const val API_LANGUAGE ="tr"
     const val DAY_MONTH_FORMAT = "dd-MMM"
     const val DAY_MONTH_YEAR_FORMAT = "dd MMM yyyy"
+    const val HOUR_MINUTE_FORMAT = "aa hh:mm"
+    const val CARD_DATE_FORMAT = "dd-MMM hh:mm aa"
     const val AN_ERROR = "an_error"
     const val LOCATION = "LOCATION"
 }

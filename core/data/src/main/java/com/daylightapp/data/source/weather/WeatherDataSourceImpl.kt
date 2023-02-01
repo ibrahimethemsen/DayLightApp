@@ -1,9 +1,9 @@
 package com.daylightapp.data.source.weather
 
 import com.daylightapp.common.NetworkResult
-import com.daylightapp.common.weather.current.CurrentWeather
+import com.daylightapp.data.dto.weather.current.CurrentWeather
 import com.daylightapp.data.api.weather.WeatherApi
-import com.daylightapp.common.weather.fiveday.WeatherResponse
+import com.daylightapp.data.dto.weather.fiveday.WeatherResponse
 import javax.inject.Inject
 
 class WeatherDataSourceImpl @Inject constructor(

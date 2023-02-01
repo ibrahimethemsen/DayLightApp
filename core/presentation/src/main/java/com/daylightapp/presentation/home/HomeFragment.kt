@@ -26,8 +26,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         observe()
     }
 
-    private fun observe(){
-        viewModel.homeUiState.observe(viewLifecycleOwner){ currentWeather ->
+    private fun observe() {
+        viewModel.homeUiState.observe(viewLifecycleOwner) { currentWeather ->
             binding.apply {
                 homeSunriseTv.text = currentWeather.currentWeatherEntity?.sunrise
                 homeSunsetTv.text = currentWeather.currentWeatherEntity?.sunset
@@ -40,18 +40,21 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 homeCurrentDescriptionTv.text = currentWeather.currentWeatherEntity?.description
             }
         }
-        viewModel.quoteUiState.observe(viewLifecycleOwner){quote ->
+        viewModel.quoteUiState.observe(viewLifecycleOwner) { quote ->
             binding.homeQuoteTv.text = quote.quoteEntity?.quote
             binding.homeQuoteAuthorTv.text = quote.quoteEntity?.author
         }
-        viewModel.fiveDayWeather.observe(viewLifecycleOwner){fiveDayWeather->
+        viewModel.fiveDayWeather.observe(viewLifecycleOwner) { fiveDayWeather ->
             fiveDayWeather.fiveDayWeather?.let {
                 fiveDayAdapter.updateFiveDayWeatherList(it)
             }
         }
-        viewModel.locationLatLon.observe(viewLifecycleOwner){entity->
+        viewModel.locationLatLon.observe(viewLifecycleOwner) { entity ->
             binding.homeFiveDayWeatherBtn.setOnClickListener {
-                val action = HomeFragmentDirections.actionHomeFragmentToFiveDayWeatherListFragment(entity.lat,entity.lon)
+                val action = HomeFragmentDirections.actionHomeFragmentToFiveDayWeatherListFragment(
+                    entity.lat,
+                    entity.lon
+                )
                 it.findNavController().navigate(action)
             }
         }

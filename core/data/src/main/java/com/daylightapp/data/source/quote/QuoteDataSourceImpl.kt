@@ -1,7 +1,7 @@
 package com.daylightapp.data.source.quote
 
 import com.daylightapp.common.NetworkResult
-import com.daylightapp.common.quote.QuoteResponse
+import com.daylightapp.data.dto.quote.QuoteResponse
 import com.daylightapp.data.api.quote.QuoteApi
 import javax.inject.Inject
 

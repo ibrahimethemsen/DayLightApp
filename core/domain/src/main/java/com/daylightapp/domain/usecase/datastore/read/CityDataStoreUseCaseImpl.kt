@@ -1,6 +1,6 @@
 package com.daylightapp.domain.usecase.datastore.read
 
-import com.daylightapp.common.datastore.LocationEntity
+import com.daylightapp.domain.entity.city.LocationEntity
 
 import com.daylightapp.domain.repository.datastore.DataStoreRepository
 import kotlinx.coroutines.flow.Flow

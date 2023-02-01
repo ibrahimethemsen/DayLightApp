@@ -1,8 +1,8 @@
 package com.daylightapp.data.source.weather
 
 import com.daylightapp.common.NetworkResult
-import com.daylightapp.common.weather.current.CurrentWeather
-import com.daylightapp.common.weather.fiveday.WeatherResponse
+import com.daylightapp.data.dto.weather.current.CurrentWeather
+import com.daylightapp.data.dto.weather.fiveday.WeatherResponse
 
 interface WeatherDataSource {
     suspend fun getFiveDayWeatherForecast(lat : String, lon : String) : NetworkResult<WeatherResponse>

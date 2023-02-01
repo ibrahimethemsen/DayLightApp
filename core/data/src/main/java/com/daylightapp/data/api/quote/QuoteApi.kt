@@ -1,6 +1,6 @@
 package com.daylightapp.data.api.quote
 
-import com.daylightapp.common.quote.QuoteResponse
+import com.daylightapp.data.dto.quote.QuoteResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 const val MIN_LENGTH = 150
