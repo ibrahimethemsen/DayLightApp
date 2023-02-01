@@ -2,14 +2,22 @@ package com.daylightapp.presentation.common
 
 import android.view.View
 import android.widget.ImageView
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
 import coil.load
 import coil.size.Scale
 
 infix fun View.isVisibility(visible : Boolean){
     if (visible) this.visibility = View.VISIBLE else this.visibility = View.GONE
 }
-
-infix fun View.nullVisibility(visible : Any?){
+fun <T> LifecycleOwner.observeIfNotNull(liveData: LiveData<T>, function: (T) -> Unit) {
+    liveData.observe(this) {
+        it?.let {
+            function.invoke(it)
+        }
+    }
+}
+infix fun View.setVisibility(visible : Any?){
     if (visible != null) this.visibility = View.VISIBLE else this.visibility = View.GONE
 }
 

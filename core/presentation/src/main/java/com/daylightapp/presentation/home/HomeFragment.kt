@@ -20,8 +20,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private val fiveDayAdapter = FiveDayWeatherAdapter()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getCurrentWeather()
-        viewModel.getQuote()
         binding.homeFiveDayWeatherRv.adapter = fiveDayAdapter
         observe()
     }

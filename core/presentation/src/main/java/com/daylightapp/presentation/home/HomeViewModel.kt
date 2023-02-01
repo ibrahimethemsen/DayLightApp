@@ -26,8 +26,6 @@ class HomeViewModel @Inject constructor(
     private val quoteUseCase: QuoteUseCase,
     readDataStoreUseCase: CityDataStoreUseCase
 ) : ViewModel() {
-
-
     private val _homeUiState = MutableLiveData<CurrentWeatherUiState>()
     val homeUiState: LiveData<CurrentWeatherUiState> = _homeUiState
 
@@ -42,7 +40,12 @@ class HomeViewModel @Inject constructor(
 
     private val getLocation = readDataStoreUseCase.readCityDataStore
 
-    fun getCurrentWeather() {
+    init {
+        getCurrentWeather()
+        getQuote()
+    }
+
+    private fun getCurrentWeather() {
         viewModelScope.launch {
             getLocation.collectLatest {
                 currentDayWeather(it.lat, it.lon)
@@ -52,7 +55,7 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    fun getQuote() {
+    private fun getQuote() {
         viewModelScope.launch {
             quoteUseCase().collect {
                 when (it) {
