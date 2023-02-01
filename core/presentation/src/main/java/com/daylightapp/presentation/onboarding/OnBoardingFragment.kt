@@ -2,15 +2,15 @@ package com.daylightapp.presentation.onboarding
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.daylightapp.domain.entity.city.LocationEntity
 import com.daylightapp.presentation.R
 import com.daylightapp.presentation.common.Constants.HOME_FRAGMENT
 import com.daylightapp.presentation.common.isVisibility
+import com.daylightapp.presentation.common.observeIfNotNull
 import com.daylightapp.presentation.common.setVisibility
 import com.daylightapp.presentation.databinding.FragmentOnBoardingBinding
 import com.daylightapp.presentation.onboarding.adapter.CityRecyclerViewAdapter
@@ -26,9 +26,21 @@ class OnBoardingFragment : Fragment(R.layout.fragment_on_boarding) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getStartDestination()
-        viewModel.getList()
+
+        initAdapter()
+        setCityFilterList()
+        observer()
+        initListerners()
+    }
+    private fun initAdapter(){
         binding.onboardingSearchCityRv.adapter = cityAdapter
+    }
+
+    private fun initListerners(){
+        cityAdapter.onCityClickListener(::writeCityDataStore)
+    }
+
+    private fun setCityFilterList(){
         binding.onboardingSearchView.setOnQueryTextListener(object :
             SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
@@ -36,37 +48,40 @@ class OnBoardingFragment : Fragment(R.layout.fragment_on_boarding) {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                viewModel.filterCityList(newText).also {
+                viewModel.filterCityList(newText).let {
                     cityAdapter.updateRecyclerList(it)
                 }
                 return true
             }
         })
-        observer()
-        cityAdapter.onCityClickListener(::cityWriteDataStore)
     }
 
-    private fun cityWriteDataStore(city: LocationEntity) {
-        viewModel.writeDataStoreCity(city.lat, city.lon, city.name,city.plate).also {
-            val action = OnBoardingFragmentDirections.actionOnBoardingFragmentToHomeFragment()
-            requireView().findNavController().navigate(action)
-        }
+    private fun writeCityDataStore(city: LocationEntity) {
+        viewModel.writeDataStoreCity(city.lat, city.lon, city.name,city.plate)
+        navigateHome()
     }
 
     private fun observer() {
-        viewModel.cityList.observe(viewLifecycleOwner) { onBoardingUi ->
-            onBoardingUi.data?.let {
-                cityAdapter.updateRecyclerList(it)
-            }
-            binding.onboardingErrorTv setVisibility onBoardingUi.error
-            binding.onboardingProgress isVisibility onBoardingUi.loading
-        }
-        viewModel.navStartDestination.observe(viewLifecycleOwner) { destination ->
-            if (destination == HOME_FRAGMENT) {
-                val action = OnBoardingFragmentDirections.actionOnBoardingFragmentToHomeFragment()
-                requireView().findNavController().navigate(action)
-            }
-        }
+        observeIfNotNull(viewModel.cityList,::setOnBoardingUiState)
+        observeIfNotNull(viewModel.navStartDestination,::navStartDestination)
+    }
 
+    private fun navStartDestination(destination : String){
+        if (destination == HOME_FRAGMENT) {
+            navigateHome()
+        }
+    }
+
+    private fun setOnBoardingUiState(onBoardingUi : OnBoardingUi){
+        onBoardingUi.data?.let {
+            cityAdapter.updateRecyclerList(it)
+        }
+        binding.onboardingErrorTv setVisibility onBoardingUi.error
+        binding.onboardingProgress isVisibility onBoardingUi.loading
+    }
+
+    private fun navigateHome(){
+        val action = OnBoardingFragmentDirections.actionOnBoardingFragmentToHomeFragment()
+        findNavController().navigate(action)
     }
 }

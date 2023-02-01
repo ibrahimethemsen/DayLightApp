@@ -15,7 +15,6 @@ import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
 class CityRepositoryImpl @Inject constructor(
-    //cityDataSourceImpl degil CityDataSource
     private val cityDataSource: CityDataSource,
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher,
     private val cityListMapperImpl: ListMapper<City, LocationEntity>

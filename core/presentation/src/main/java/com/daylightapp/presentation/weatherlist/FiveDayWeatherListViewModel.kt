@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.navigation.fragment.navArgs
 import com.daylightapp.common.NetworkResult
 import com.daylightapp.domain.entity.weather.DetailFiveDayWeatherEntity
 import com.daylightapp.domain.usecase.weather.DetailFiveDayWeatherUseCase

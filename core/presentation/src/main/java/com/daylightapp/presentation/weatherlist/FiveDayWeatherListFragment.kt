@@ -2,7 +2,6 @@ package com.daylightapp.presentation.weatherlist
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -13,8 +12,6 @@ import com.daylightapp.presentation.utility.viewBindingInflater
 import com.daylightapp.presentation.weatherlist.adapter.FiveDayWeatherAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
-//scope functions
-//
 @AndroidEntryPoint
 class FiveDayWeatherListFragment : Fragment(R.layout.fragment_five_day_weather_list) {
     private val viewModel by viewModels<FiveDayWeatherListViewModel>()
@@ -30,8 +27,6 @@ class FiveDayWeatherListFragment : Fragment(R.layout.fragment_five_day_weather_l
     private fun initAdapter() {
         binding.fiveDayWeatherListRv.adapter = fiveDayAdapter
     }
-    //extension fun
-
 
     private fun initListeners() {
         with(binding) {

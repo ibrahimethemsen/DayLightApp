@@ -26,6 +26,7 @@ class HomeViewModel @Inject constructor(
     private val quoteUseCase: QuoteUseCase,
     readDataStoreUseCase: CityDataStoreUseCase
 ) : ViewModel() {
+    //StateFlow kullanılabilir
     private val _homeUiState = MutableLiveData<CurrentWeatherUiState>()
     val homeUiState: LiveData<CurrentWeatherUiState> = _homeUiState
 
