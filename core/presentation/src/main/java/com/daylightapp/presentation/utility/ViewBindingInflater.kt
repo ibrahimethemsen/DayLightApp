@@ -1,6 +1,8 @@
 package com.daylightapp.presentation.utility
 
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.Lifecycle
@@ -9,6 +11,11 @@ import androidx.lifecycle.Observer
 import androidx.viewbinding.ViewBinding
 import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KProperty
+
+
+inline fun <T : ViewBinding> ViewGroup.inflateAdapterItem(
+    crossinline bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> T
+) = bindingInflater(LayoutInflater.from(this.context), this, false)
 
 class FragmentViewBindingDelegate<T : ViewBinding>(
     val fragment: Fragment,

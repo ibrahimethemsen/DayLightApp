@@ -12,12 +12,11 @@ abstract class BaseRecyclerViewAdapter<T:Any,VH : BaseViewHolder<T>> : RecyclerV
         notifyDataSetChanged()
     }
 
-    fun getItem(position : Int) = recyclerList[position]
     abstract override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH
 
     override fun getItemCount(): Int = recyclerList.size
 
     override fun onBindViewHolder(holder: VH, position: Int) {
-
+        holder.bind(recyclerList[position],position)
     }
 }

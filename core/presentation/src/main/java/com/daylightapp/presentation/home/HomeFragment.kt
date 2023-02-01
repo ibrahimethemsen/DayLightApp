@@ -46,7 +46,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
         viewModel.fiveDayWeather.observe(viewLifecycleOwner) { fiveDayWeather ->
             fiveDayWeather.fiveDayWeather?.let {
-                fiveDayAdapter.updateFiveDayWeatherList(it)
+                fiveDayAdapter.updateRecyclerList(it)
             }
         }
         viewModel.locationLatLon.observe(viewLifecycleOwner) { entity ->

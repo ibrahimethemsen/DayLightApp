@@ -1,41 +1,27 @@
 package com.daylightapp.presentation.home.adapter
 
-import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
 import com.daylightapp.domain.entity.weather.FiveDayWeatherEntity
+import com.daylightapp.presentation.base.BaseRecyclerViewAdapter
+import com.daylightapp.presentation.base.BaseViewHolder
 import com.daylightapp.presentation.common.loadImage
 import com.daylightapp.presentation.databinding.AdapterThreeHoursWeatherItemBinding
+import com.daylightapp.presentation.utility.inflateAdapterItem
 
-class FiveDayWeatherAdapter : RecyclerView.Adapter<FiveDayWeatherAdapter.FiveDayViewHolder>() {
+class FiveDayWeatherAdapter : BaseRecyclerViewAdapter<FiveDayWeatherEntity,FiveDayWeatherAdapter.FiveDayViewHolder>() {
 
-    private val threeHoursWeatherList  = mutableListOf<FiveDayWeatherEntity>()
-
-    fun updateFiveDayWeatherList(newWeatherList : List<FiveDayWeatherEntity>){
-        threeHoursWeatherList.clear()
-        threeHoursWeatherList.addAll(newWeatherList)
-        notifyDataSetChanged()
-    }
-
-    class FiveDayViewHolder(private val binding : AdapterThreeHoursWeatherItemBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(positionWeather : FiveDayWeatherEntity){
-            binding.itemWindSpeed.text = positionWeather.windSpeed
-            positionWeather.iconId?.let {
+    class FiveDayViewHolder(private val binding : AdapterThreeHoursWeatherItemBinding) : BaseViewHolder<FiveDayWeatherEntity>(binding.root) {
+        override fun bind(data: FiveDayWeatherEntity, position: Int) {
+            binding.itemWindSpeed.text = data.windSpeed
+            data.iconId?.let {
                 binding.itemFiveDayWeatherIcon.loadImage(it)
             }
-            binding.itemFiveDayWeatherDate.text = positionWeather.date
-            binding.itemFiveDayWeatherCelcius.text = positionWeather.celcius
+            binding.itemFiveDayWeatherDate.text = data.date
+            binding.itemFiveDayWeatherCelcius.text = data.celcius
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FiveDayViewHolder {
-        val binding = AdapterThreeHoursWeatherItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
-        return FiveDayViewHolder(binding)
-    }
-
-    override fun getItemCount(): Int =threeHoursWeatherList.size
-
-    override fun onBindViewHolder(holder: FiveDayViewHolder, position: Int) {
-        holder.bind(threeHoursWeatherList[position])
+        return FiveDayViewHolder(parent.inflateAdapterItem(AdapterThreeHoursWeatherItemBinding::inflate))
     }
 }

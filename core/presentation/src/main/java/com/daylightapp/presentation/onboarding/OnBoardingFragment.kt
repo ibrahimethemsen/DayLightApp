@@ -36,7 +36,7 @@ class OnBoardingFragment : Fragment(R.layout.fragment_on_boarding) {
 
             override fun onQueryTextChange(newText: String?): Boolean {
                 viewModel.filterCityList(newText).also {
-                    cityAdapter.updateListCity(it)
+                    cityAdapter.updateRecyclerList(it)
                 }
                 return true
             }
@@ -55,7 +55,7 @@ class OnBoardingFragment : Fragment(R.layout.fragment_on_boarding) {
     private fun observer() {
         viewModel.cityList.observe(viewLifecycleOwner) { onBoardingUi ->
             onBoardingUi.data?.let {
-                cityAdapter.updateListCity(it)
+                cityAdapter.updateRecyclerList(it)
             }
             binding.onboardingErrorTv nullVisibility onBoardingUi.error
             binding.onboardingProgress isVisibility onBoardingUi.loading

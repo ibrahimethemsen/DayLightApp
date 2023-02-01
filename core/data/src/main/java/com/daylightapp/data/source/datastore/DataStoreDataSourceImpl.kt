@@ -28,7 +28,7 @@ class DataStoreDataSourceImpl @Inject constructor(
         val lat = stringPreferencesKey("lat")
         val name = stringPreferencesKey("name")
         val plate = stringPreferencesKey("plate")
-        val startDestination = stringPreferencesKey("destination")
+        val startDestination = stringPreferencesKey("nav_destination")
         val date = stringPreferencesKey("date_current")
         val quote = stringPreferencesKey("quote")
         val author = stringPreferencesKey("author")

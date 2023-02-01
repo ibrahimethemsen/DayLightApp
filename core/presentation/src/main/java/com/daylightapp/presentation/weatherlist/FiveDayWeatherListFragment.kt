@@ -33,8 +33,7 @@ class FiveDayWeatherListFragment : Fragment(R.layout.fragment_five_day_weather_l
 
     private fun observe(){
         viewModel.detailFiveUiState.observe(viewLifecycleOwner){detailListUiState ->
-            fiveDayAdapter.updateFiveDay(detailListUiState.data)
-            println()
+            fiveDayAdapter.updateRecyclerList(detailListUiState.data)
         }
     }
 }
