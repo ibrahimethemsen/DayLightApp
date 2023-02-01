@@ -12,7 +12,6 @@ import com.daylightapp.domain.usecase.datastore.write.WriteCityDataStoreUseCase
 import com.daylightapp.domain.usecase.datastore.write.WriteNavStartDestinationUseCase
 import com.daylightapp.presentation.common.Constants.HOME_FRAGMENT
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -21,7 +20,7 @@ class OnBoardingViewModel @Inject constructor(
     private val getListCityUseCase: GetListCityUseCase,
     private val writeCityDataStoreUseCase: WriteCityDataStoreUseCase,
     private val writeNavStartDestination: WriteNavStartDestinationUseCase,
-    private val readNavStartDestination: NavStartDestinationUseCase,
+    readNavStartDestination: NavStartDestinationUseCase,
 ) : ViewModel() {
     private var _cityList = MutableLiveData<OnBoardingUi>()
     val cityList: LiveData<OnBoardingUi> = _cityList
@@ -31,7 +30,7 @@ class OnBoardingViewModel @Inject constructor(
 
     private val readNavStart = readNavStartDestination.readNavStartDestination
 
-     fun getStartDestination() {
+    fun getStartDestination() {
         viewModelScope.launch {
             readNavStart.collect {
                 _navStartDestination.postValue(it)
@@ -39,9 +38,9 @@ class OnBoardingViewModel @Inject constructor(
         }
     }
 
-     fun getList() {
+    fun getList() {
         viewModelScope.launch {
-            getListCityUseCase().collect{
+            getListCityUseCase().collect {
                 when (it) {
                     is NetworkResult.Error -> {
                         _cityList.postValue(
@@ -53,7 +52,7 @@ class OnBoardingViewModel @Inject constructor(
                     }
 
                     NetworkResult.Loading -> {
-                        _cityList.postValue (
+                        _cityList.postValue(
                             OnBoardingUi()
                         )
                     }
@@ -85,7 +84,7 @@ class OnBoardingViewModel @Inject constructor(
     }
 
     fun writeDataStoreCity(lat: String, lon: String, name: String) {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             writeCityDataStoreUseCase(lat, lon, name)
             writeNavStartDestination(HOME_FRAGMENT)
         }

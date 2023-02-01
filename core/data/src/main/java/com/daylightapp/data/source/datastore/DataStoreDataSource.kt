@@ -1,7 +1,7 @@
 package com.daylightapp.data.source.datastore
 
-import com.daylightapp.common.datastore.LocalQuote
 import com.daylightapp.common.datastore.LocationEntity
+import com.daylightapp.domain.entity.quote.QuoteEntity
 import kotlinx.coroutines.flow.Flow
 
 interface DataStoreDataSource {
@@ -13,6 +13,9 @@ interface DataStoreDataSource {
     val readNavStartDestination : Flow<String>
 
     //current date
-    suspend fun writeCurrentDate(currentDate : String,quote : String,author : String)
-    val readCurrentDate :Flow<LocalQuote>
+    suspend fun writeCurrentDate(currentDate : String)
+    val readCurrentDate : Flow<String>
+
+    suspend fun writeLocalQuote(quote : String,author : String)
+    val readLocalQuote : Flow<QuoteEntity>
 }

@@ -20,3 +20,8 @@ fun Double.milToKmSpeed(): String {
 fun Double.kelvinToCelcius() : String{
     return this.minus(273.15).toInt().toString().plus("°C")
 }
+
+fun String.currentDateFormat(): String {
+    val currentDate = Calendar.getInstance().time
+    return SimpleDateFormat(this, Locale("tr")).format(currentDate)
+}

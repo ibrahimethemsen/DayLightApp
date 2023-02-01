@@ -6,7 +6,7 @@ import javax.inject.Inject
 class WriteCityDataStoreUseCaseImpl @Inject constructor(
     private val dataStoreRepository: DataStoreRepository
 ) : WriteCityDataStoreUseCase {
-    override suspend fun invoke(lat: String, lon: String,name : String) {
-        dataStoreRepository.writeCityDataStore(lat, lon,name)
-    }
+    override suspend fun invoke(lat: String, lon: String, name: String) =
+        dataStoreRepository.writeCityDataStore(lat, lon, name)
+
 }
