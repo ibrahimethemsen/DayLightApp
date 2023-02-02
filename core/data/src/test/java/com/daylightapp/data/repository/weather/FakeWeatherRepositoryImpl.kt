@@ -84,10 +84,10 @@ class FakeWeatherRepositoryImpl(
             )
 
             TestResponseEnum.LOADING -> emit(NetworkResult.Loading)
-
         }
     }
 }
+
 val testCurrentWeather = CurrentWeather(
     base = "stations",
     clouds = Clouds(all = 20),
@@ -110,6 +110,6 @@ val testCurrentWeather = CurrentWeather(
     sys = Sys(country = "TR", id = 6964, sunrise = 1675313203, sunset = 1675350180, type = 1),
     timezone = 10800,
     visibility = 10000,
-    weather = listOf(Weather(description =" az bulutlu", icon = "02 n", id = 801, main = "20")) ,
+    weather = listOf(Weather(description = " az bulutlu", icon = "02 n", id = 801, main = "20")),
     wind = Wind(deg = 310, speed = 1.54, gust = 15.2)
 )

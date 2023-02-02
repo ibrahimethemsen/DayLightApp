@@ -16,7 +16,7 @@ import org.mockito.Mock
 import org.mockito.MockitoAnnotations
 
 class WeatherRepositoryTest {
-    @Mock
+    //TODO @Mock oluşturamıyor
     private lateinit var currentWeatherMapperImpl: CurrentWeatherMapperImpl
 
     @Mock
@@ -29,6 +29,7 @@ class WeatherRepositoryTest {
 
     @Before
     fun setup() {
+        currentWeatherMapperImpl = CurrentWeatherMapperImpl()
         MockitoAnnotations.openMocks(this)
         fakeWeatherRepositoryImpl = FakeWeatherRepositoryImpl(
             fiveDayWeatherMapperImpl,
@@ -81,7 +82,15 @@ class WeatherRepositoryTest {
             awaitComplete()
         }
     }
-
+    @Test
+    fun when_getCurrentDay_is_success()=runBlocking{
+        fakeWeatherRepositoryImpl.setRequest(TestResponseEnum.SUCCESS)
+        fakeWeatherRepositoryImpl.getCurrentWeather(LAT,LON).test {
+            assertThat(awaitItem()).isInstanceOf(NetworkResult.Loading::class.java)
+            assertThat(awaitItem()).isInstanceOf(NetworkResult.Success::class.java)
+            awaitComplete()
+        }
+    }
     @Test
     fun when_getDetailFiveDay_is_error()=runBlocking{
         fakeWeatherRepositoryImpl.setRequest(TestResponseEnum.ERROR)
@@ -99,15 +108,7 @@ class WeatherRepositoryTest {
         }
     }
 
-    @Test
-    fun when_getCurrentDay_is_success()=runBlocking{
-        fakeWeatherRepositoryImpl.setRequest(TestResponseEnum.SUCCESS)
-        fakeWeatherRepositoryImpl.getCurrentWeather(LAT,LON).test {
-            assertThat(awaitItem()).isInstanceOf(NetworkResult.Loading::class.java)
-            assertThat(awaitItem()).isInstanceOf(NetworkResult.Success::class.java)
-            awaitComplete()
-        }
-    }
+
 
     @Test
     fun when_getCurrentDay_is_error()=runBlocking{
