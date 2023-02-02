@@ -2,15 +2,13 @@ package com.daylightapp.data.repository.weather
 
 import com.daylightapp.common.NetworkResult
 import com.daylightapp.data.common.Constants.DAY_MONTH_FORMAT
-import com.daylightapp.data.common.Constants.DAY_MONTH_YEAR_FORMAT
-import com.daylightapp.data.common.Constants.HOUR_MINUTE_FORMAT
 import com.daylightapp.data.common.currentDateFormat
-import com.daylightapp.data.common.kelvinToCelcius
-import com.daylightapp.data.common.milToKmSpeed
 import com.daylightapp.data.common.toDateFormat
 import com.daylightapp.data.di.IoDispatcher
+import com.daylightapp.data.dto.weather.current.CurrentWeather
 import com.daylightapp.data.dto.weather.fiveday.Response
 import com.daylightapp.data.mapper.ListMapper
+import com.daylightapp.data.mapper.Mapper
 import com.daylightapp.data.source.weather.WeatherDataSource
 import com.daylightapp.domain.entity.weather.CurrentWeatherEntity
 import com.daylightapp.domain.entity.weather.DetailFiveDayWeatherEntity
@@ -26,6 +24,7 @@ class WeatherRepositoryImpl @Inject constructor(
     private val weatherDataSource: WeatherDataSource,
     private val fiveDayWeatherMapper: ListMapper<Response, FiveDayWeatherEntity>,
     private val detailFiveDayWeatherMapper: ListMapper<Response, DetailFiveDayWeatherEntity>,
+    private val currentWeatherMapper: Mapper<CurrentWeather, CurrentWeatherEntity>,
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher
 ) : WeatherRepository {
     override fun getFiveDayThreeHoursWeatherForecast(
@@ -72,25 +71,12 @@ class WeatherRepositoryImpl @Inject constructor(
             }
 
             is NetworkResult.Success -> {
-                val sunset = response.data.sys?.sunset?.toDateFormat(HOUR_MINUTE_FORMAT)
-                val sunrise = response.data.sys?.sunrise?.toDateFormat(HOUR_MINUTE_FORMAT)
-                val date = response.data.dt?.toDateFormat(DAY_MONTH_YEAR_FORMAT)
-                val windSpeed = response.data.wind?.speed?.milToKmSpeed()
-                val celcius = response.data.main?.temp?.kelvinToCelcius()
-                val imageWeather = response.data.weather?.get(0)
-                emit(NetworkResult.Success(
-                    CurrentWeatherEntity(
-                        sunset = sunset,
-                        sunrise = sunrise,
-                        currentDate = date,
-                        windSpeed = windSpeed.toString(),
-                        currentCelcius = celcius,
-                        imageIconId = imageWeather?.icon,
-                        description = imageWeather?.description?.replaceFirstChar {
-                            it.uppercase()
-                        }
+                emit(
+                    NetworkResult.Success(
+                        currentWeatherMapper.map(response.data)
                     )
-                ))
+                )
+                println("response : ${response.data}")
             }
         }
     }.flowOn(ioDispatcher)

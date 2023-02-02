@@ -1,6 +1,9 @@
 package com.daylightapp.data.dto.weather.current
 
 
+import com.daylightapp.data.dto.weather.fiveday.Main
+import com.daylightapp.data.dto.weather.fiveday.Weather
+import com.daylightapp.data.dto.weather.fiveday.Wind
 import com.squareup.moshi.Json
 
 data class CurrentWeather(
@@ -17,7 +20,7 @@ data class CurrentWeather(
     @Json(name = "id")
     val id: Int?,
     @Json(name = "main")
-    val main: Main?,
+    val main: Main,
     @Json(name = "name")
     val name: String?,
     @Json(name = "sys")
@@ -27,7 +30,7 @@ data class CurrentWeather(
     @Json(name = "visibility")
     val visibility: Int?,
     @Json(name = "weather")
-    val weather: List<Weather?>?,
+    val weather: List<Weather>,
     @Json(name = "wind")
-    val wind: Wind?
+    val wind: Wind
 )

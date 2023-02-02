@@ -1,6 +1,6 @@
 package com.daylightapp.data.mapper
 
-import com.daylightapp.data.cityList
+import com.daylightapp.data.testCityList
 import com.google.common.truth.Truth.assertThat
 import org.junit.Before
 import org.junit.Test
@@ -16,29 +16,29 @@ class CityListMapperTest {
 
     @Test
     fun when_name_is_mapping_city_mapper(){
-        val cityListName = cityList.first().name
-        val cityMapperName = cityListMapper.map(cityList).first().name
+        val cityListName = testCityList.first().name
+        val cityMapperName = cityListMapper.map(testCityList).first().name
         assertThat(cityListName).isEqualTo(cityMapperName)
     }
 
     @Test
     fun when_lon_is_mapping_city_lon(){
-        val cityListLon = cityList.first().longitude
-        val cityMapperLon = cityListMapper.map(cityList).first().lon
+        val cityListLon = testCityList.first().longitude
+        val cityMapperLon = cityListMapper.map(testCityList).first().lon
         assertThat(cityListLon).isEqualTo(cityMapperLon)
     }
 
     @Test
     fun when_lat_is_mapping_city_lat(){
-        val cityListLat = cityList.first().latitude
-        val cityMapperLat = cityListMapper.map(cityList).first().lat
+        val cityListLat = testCityList.first().latitude
+        val cityMapperLat = cityListMapper.map(testCityList).first().lat
         assertThat(cityListLat).isEqualTo(cityMapperLat)
     }
 
     @Test
     fun when_plate_is_mapping_city_plat(){
-        val cityListPlate = cityList.first().id.toString()
-        val cityMapperPlate = cityListMapper.map(cityList).first().plate
+        val cityListPlate = testCityList.first().id.toString()
+        val cityMapperPlate = cityListMapper.map(testCityList).first().plate
         assertThat(cityListPlate).isEqualTo(cityMapperPlate)
     }
 }

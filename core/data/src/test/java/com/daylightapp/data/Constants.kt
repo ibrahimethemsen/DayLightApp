@@ -1,9 +1,11 @@
 package com.daylightapp.data
 
 import com.daylightapp.data.dto.city.City
+import com.daylightapp.data.dto.quote.QuoteResponse
 import com.daylightapp.data.dto.weather.fiveday.Main
 import com.daylightapp.data.dto.weather.fiveday.Response
 import com.daylightapp.data.dto.weather.fiveday.Weather
+import com.daylightapp.data.dto.weather.fiveday.WeatherResponse
 import com.daylightapp.data.dto.weather.fiveday.Wind
 
 object Constants {
@@ -17,7 +19,33 @@ object Constants {
     const val LON = "34.6857"
 }
 
-val cityDto = City(
+enum class TestResponseEnum {
+    ERROR,
+    SUCCESS,
+    LOADING
+}
+
+val testQuoteDto = QuoteResponse(
+    "William Hurt",
+    null,
+    "The problem with Google is you have 360 degrees of omnidirectional information on a linear basis, but the algorithms for irony and ambiguity are not there. And those are the algorithms of wisdom.",
+    null,
+    null,
+    null,
+    null,
+    null,
+)
+
+val testWeatherDto = WeatherResponse(
+    null,
+    40,
+    "200",
+    null,
+    0
+)
+
+
+val testCityDto = City(
     id = 50,
     name = "Nevşehir",
     latitude = "38.6939",
@@ -26,9 +54,9 @@ val cityDto = City(
     region = "İç Anadolu"
 )
 
-val cityList = mutableListOf(cityDto)
+val testCityList = mutableListOf(testCityDto)
 
-val fiveDayWeatherDto = Response(
+val testFiveDayWeatherDto = Response(
     dt = 1675285200,
     main = Main(
         null,
@@ -41,12 +69,14 @@ val fiveDayWeatherDto = Response(
         null,
         null,
     ),
-    weather = mutableListOf(Weather(
-        null,
-        "13n",
-        null,
-        "Snow"
-    )),
+    weather = mutableListOf(
+        Weather(
+            null,
+            "13n",
+            null,
+            "Snow"
+        )
+    ),
     clouds = null,
     visibility = 6926,
     wind = Wind(
@@ -61,4 +91,4 @@ val fiveDayWeatherDto = Response(
     rain = null
 )
 
-val fiveDayWeatherList = mutableListOf(fiveDayWeatherDto)
+val testFiveDayWeatherList = mutableListOf(testFiveDayWeatherDto)

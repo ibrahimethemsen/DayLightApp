@@ -4,7 +4,7 @@ import com.daylightapp.data.common.Constants.CARD_DATE_FORMAT
 import com.daylightapp.data.common.kelvinToCelcius
 import com.daylightapp.data.common.milToKmSpeed
 import com.daylightapp.data.common.toDateFormat
-import com.daylightapp.data.fiveDayWeatherList
+import com.daylightapp.data.testFiveDayWeatherList
 import com.daylightapp.domain.entity.weather.DetailFiveDayWeatherEntity
 import com.google.common.truth.Truth.assertThat
 import org.junit.Before
@@ -12,12 +12,12 @@ import org.junit.Test
 
 class DetailFiveDayWeatherMapperTest {
     private lateinit var detailWeatherMapper : DetailFiveDayWeatherMapperImpl
-    private var detailWeatherList = fiveDayWeatherList.first()
+    private var detailWeatherList = testFiveDayWeatherList.first()
     private lateinit var detailMapperList : DetailFiveDayWeatherEntity
     @Before
     fun setup(){
         detailWeatherMapper = DetailFiveDayWeatherMapperImpl()
-        detailMapperList = detailWeatherMapper.map(fiveDayWeatherList).first()
+        detailMapperList = detailWeatherMapper.map(testFiveDayWeatherList).first()
     }
 
     @Test
