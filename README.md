@@ -35,5 +35,7 @@ You can see the weather conditions of your city instantly and with five-day deta
   - [Truth](https://truth.dev/) A library for performing assertions in tests
   - [Turbine](https://github.com/cashapp/turbine) A small testing library for kotlinx.coroutines Flow
 
-
+## Open API
+weather data -> https://openweathermap.org/api
+quotes -> https://github.com/lukePeavey/quotable
 
