@@ -17,6 +17,7 @@ import org.mockito.MockitoAnnotations
 
 class WeatherRepositoryTest {
     //TODO @Mock oluşturamıyor
+
     private lateinit var currentWeatherMapperImpl: CurrentWeatherMapperImpl
 
     @Mock

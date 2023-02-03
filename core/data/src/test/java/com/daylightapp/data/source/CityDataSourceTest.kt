@@ -29,6 +29,7 @@ class CityDataSourceTest {
             testCityList
         )
         val response = cityDataSource.getAllCity()
+
         assertThat(response).isInstanceOf(NetworkResult.Success::class.java)
     }
 

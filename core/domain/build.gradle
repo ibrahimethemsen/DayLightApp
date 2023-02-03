@@ -37,6 +37,10 @@ dependencies {
     implementation libs.bundles.default
     implementation libs.hilt.android
     kapt libs.hilt.compiler
+    testImplementation libs.test.truth
+    testImplementation libs.test.mockito
+    testImplementation libs.test.mockito.kotlin
+    testImplementation libs.test.turbine
     testImplementation libs.test.junit
     androidTestImplementation libs.test.androidx.junit
     androidTestImplementation libs.test.espresso
