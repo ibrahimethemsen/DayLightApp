@@ -8,7 +8,10 @@ You can see the weather conditions of your city instantly and with five-day deta
 <img src=https://user-images.githubusercontent.com/68695185/216620171-1f8d9f07-e13c-43e6-94a9-a46ec7a250b8.png width="20%"/>
 <img src=https://user-images.githubusercontent.com/68695185/216620176-aad83a27-435a-4562-ab82-6fd39c78818c.png width="20%"/>
 
-
+## Clean Architecture
+<p align="center">
+<img src=https://user-images.githubusercontent.com/68695185/216622854-1ecb75ca-27e3-4039-ba78-4f474773041d.PNG width="100%"/>
+  
 ## Tech stack & Open-source libraries
 - Minimum SDK level 21
 - Contains Ui and Unit Tests
