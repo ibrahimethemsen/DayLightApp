@@ -25,10 +25,13 @@ You can see the weather conditions of your city instantly and with five-day deta
   - [UseCases](https://developer.android.com/topic/architecture/domain-layer) - Located domain layer that sits between the UI layer and the data layer. 
   - [Repository](https://developer.android.com/topic/architecture/data-layer) - Located in data layer that contains application data and business logic.
 - [ViewBinding](https://developer.android.com/topic/libraries/view-binding) - Generates a binding class for each XML layout file present in that module and allows you to more easily write code that interacts with views.
+  -[DataStore](https://developer.android.com/topic/libraries/architecture/datastore)Jetpack DataStore is a data storage solution that allows you to store key-value pairs or typed objects with protocol buffers. DataStore uses Kotlin coroutines and Flow to store data asynchronously, consistently, and transactionally.
 - [Android Hilt](https://developer.android.com/training/dependency-injection/hilt-android) - Dependency Injection Library
 - [Retrofit](https://square.github.io/retrofit/) A type-safe HTTP client for Android and Java
 - [Coil](https://coil-kt.github.io/coil/) An image loading library for Android backed by Kotlin Coroutines
 
+- Debug
+  - [LeakCanary](https://square.github.io/leakcanary/) LeakCanary is a memory leak detection library for Android.
 - Testing
   - [Mockito](https://site.mockito.org/) A mocking framework that tastes really good. It lets you write beautiful tests with a clean & simple API
   - [MockWebServer](https://github.com/square/okhttp/tree/master/mockwebserver) A scriptable web server for testing HTTP clients
