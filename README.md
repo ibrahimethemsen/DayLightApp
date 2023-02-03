@@ -36,6 +36,7 @@ You can see the weather conditions of your city instantly and with five-day deta
   - [Turbine](https://github.com/cashapp/turbine) A small testing library for kotlinx.coroutines Flow
 
 ## Open API
-weather data -> https://openweathermap.org/api
-quotes -> https://github.com/lukePeavey/quotable
+Weather Data [API](https://openweathermap.org/api)
+  
+Quotes [API](https://github.com/lukePeavey/quotable)
 
