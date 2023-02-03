@@ -17,6 +17,7 @@ You can see the weather conditions of your city instantly and with five-day deta
   -  A single-activity architecture, using the [Navigation component](https://developer.android.com/guide/navigation/navigation-getting-started) to manage fragment operations.
   - [LiveData](https://developer.android.com/topic/libraries/architecture/livedata) - Data objects that notify views when the underlying database changes.
   - [Lifecycle](https://developer.android.com/topic/libraries/architecture/lifecycle) - perform an action when lifecycle state changes
+  - [Flow](https://developer.android.com/kotlin/flow) Data objects that notify views when the underlying database changes. 
   - [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) - Stores UI-related data that isn't destroyed on UI changes. 
   - [UseCases](https://developer.android.com/topic/architecture/domain-layer) - Located domain layer that sits between the UI layer and the data layer. 
   - [Repository](https://developer.android.com/topic/architecture/data-layer) - Located in data layer that contains application data and business logic.
@@ -24,11 +25,12 @@ You can see the weather conditions of your city instantly and with five-day deta
 - [Android Hilt](https://developer.android.com/training/dependency-injection/hilt-android) - Dependency Injection Library
 - [Retrofit](https://square.github.io/retrofit/) A type-safe HTTP client for Android and Java
 - [Coil](https://coil-kt.github.io/coil/) An image loading library for Android backed by Kotlin Coroutines
+
 - Testing
   - [Mockito](https://site.mockito.org/) A mocking framework that tastes really good. It lets you write beautiful tests with a clean & simple API
   - [MockWebServer](https://github.com/square/okhttp/tree/master/mockwebserver) A scriptable web server for testing HTTP clients
   - [Truth](https://truth.dev/) A library for performing assertions in tests
   - [Turbine](https://github.com/cashapp/turbine) A small testing library for kotlinx.coroutines Flow
--
+
 
 
