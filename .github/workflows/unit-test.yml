@@ -30,4 +30,4 @@ jobs:
         profile: Nexus 6
 
     - name: Run unit tests
-      run: ./gradlew test düzelt
+      run: ./gradlew test
