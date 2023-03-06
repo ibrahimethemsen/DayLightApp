@@ -1,31 +1,30 @@
-name: Android CI                          
+name: Main Branch Tests
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
-on:                                        
-  push:                                     
-    branches: [ main ] 
-  pull_request:                           
-    branches: [ main ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
-jobs:                                      
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-  build:                                 
-    runs-on: ubuntu-latest              
-
-    steps:                                
-    - uses: actions/checkout@v2           
-    
-    - name: set up JDK 11                 
+    - name: Set up JDK
       uses: actions/setup-java@v2
       with:
         java-version: '11'
-        distribution: 'adopt'
-        cache: gradle
 
-    - name: permission for gradlew         
-      run: chmod +x gradlew
-      
-    - name: Run Test                      
-      run: ./gradlew test
-      
-    - name: Build with Gradle              
+    - name: Grant execute permission for gradlew
+      run: chmod +x ./gradlew
+
+    - name: Build with Gradle
       run: ./gradlew build
+
+    - name: Run Unit Tests
+      run: ./gradlew test
