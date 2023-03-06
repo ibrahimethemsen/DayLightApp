@@ -21,17 +21,13 @@ jobs:
     - name: Set up Android emulator
       uses: reactivecircus/android-emulator-runner@v2
       with:
-        api-level: 30
-        arch: x86
-        profile: pixel
-        script: |
-          echo no | avdmanager create avd --force --name test --abi $ABI --package "system-images;android-$API_LEVEL;$TAG" --device "pixel"
-          emulator -avd test -no-window -no-audio -no-boot-anim -no-accel -memory 2048 &
-          android-wait-for-emulator
-          adb wait-for-device
-          adb shell input keyevent 82 &
-          adb shell input keyevent 84 &
-          sleep 30
+          api-level: 28
+          arch: x86
+          profile: Nexus 5X
+          force-avd-creation: false
+          emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          emulator-build: 7425822
+          script: echo "Generated AVD snapshot for caching."
 
     - name: Build and run tests
       run: ./gradlew connectedAndroidTest --stacktrace
