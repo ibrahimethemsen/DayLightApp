@@ -33,7 +33,7 @@ N
 core/presentation/build.gradle,a\2\a2a05b115b944718caea00c3500ad3503e78f114
 L
 core/data/consumer-rules.pro,e\3\e33528bc4a91cd5ded49226f00e59f2cbdd30943
-u
-Ecore/data/src/test/java/com.daylightapp.data/common/ExtensionsTest.kt,2\6\263f1b65ac3ab4b5ea367d90d24973ca0db5ca49
 9
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+p
+@core/data/src/test/java/com/daylightapp/data/api/QuoteApiTest.kt,e\f\eff36479880d25f0a4c69c9c69cdda5b6078804b

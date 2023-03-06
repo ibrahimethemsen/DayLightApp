@@ -1,6 +1,0 @@
-
-kotlin:S100
-"nRename function "when_toDateFormat_is_locationTrFormat" to match the regular expression ^[a-zA-Z][a-zA-Z0-9]*$(¥„λϊÿÿÿÿ
-|kotlin:S100"eRename function "when_milToKmSpeed_is_kmSpeed" to match the regular expression ^[a-zA-Z][a-zA-Z0-9]*$(‰δ½
-ƒkotlin:S100"gRename function "when_kelvinToCelcius_is_celvin" to match the regular expression ^[a-zA-Z][a-zA-Z0-9]*$(–χίφόÿÿÿÿ
-‹kotlin:S100"tRename function "when_currentDateFormat_is_dayMontFormatDate" to match the regular expression ^[a-zA-Z][a-zA-Z0-9]*$(σπΖ°
