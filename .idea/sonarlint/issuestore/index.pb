@@ -13,10 +13,6 @@ o
 ?core/data/src/test/java/com/daylightapp/data/api/CityApiTest.kt,4\7\47a218a447a656bb224b3d8231e47217ffdcfe81
 „
 Tcore/data/src/main/java/com/daylightapp/data/source/weather/WeatherDataSourceImpl.kt,a\3\a348d11a8f78532a15892cc380af41014690ee15
-I
-gradle/libs.versions.toml,d\7\d7595319a0658be6f1ed500ad590d42e4b28bc4f
-@
-app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
 F
 core/data/build.gradle,a\f\aff7ea742341e3c612ddecacc22b87f26a731427
 H
@@ -25,15 +21,9 @@ H
 core/domain/build.gradle,9\c\9cfb45e71b6473e4f47428dd912737bd425466a0
 q
 Acore/common/src/main/java/com/daylightapp/common/NetworkResult.kt,e\3\e3efbedeaa89d0611df1e9401affe1e76ceba95a
-N
-core/presentation/build.gradle,a\2\a2a05b115b944718caea00c3500ad3503e78f114
 L
 core/data/consumer-rules.pro,e\3\e33528bc4a91cd5ded49226f00e59f2cbdd30943
 ~
 Ncore/data/src/androidTest/java/com/daylightapp/data/ExampleInstrumentedTest.kt,8\f\8ff0865b06f5fda00011ef59d81e949659699ff8
 ‚
 Rcore/common/src/androidTest/java/com/daylightapp/common/ExampleInstrumentedTest.kt,9\d\9d025c3f5798c231b66aa458e619645c88136511
-9
-	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
-p
-@core/data/src/test/java/com/daylightapp/data/api/QuoteApiTest.kt,e\f\eff36479880d25f0a4c69c9c69cdda5b6078804b

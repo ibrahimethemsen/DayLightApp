@@ -12,16 +12,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textSize="20sp"
         android:textColor="@color/black"
-        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/home_to_login_btn"
+        tools:layout_editor_absoluteX="16dp"
         tools:text="30 Oca 2023" />
 
     <ImageView
         android:id="@+id/home_sunrise_iv"
         android:layout_width="wrap_content"
-        android:contentDescription="@string/sunrise_tv"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/sunrise_tv"
         android:src="@drawable/sunrise"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/home_current_date" />
@@ -42,8 +43,8 @@
         android:id="@+id/home_sunset_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/sunset"
         android:contentDescription="@string/sunset_tv"
+        android:src="@drawable/sunset"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/home_sunrise_iv" />
 
@@ -64,8 +65,8 @@
         android:id="@+id/home_wind_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/wind"
         android:contentDescription="@string/wind_speed_tv"
+        android:src="@drawable/wind"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/home_sunset_iv" />
 
@@ -85,9 +86,9 @@
         android:id="@+id/home_current_icon_iv"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:contentDescription="@string/current_weather_icon"
         android:minWidth="150dp"
         android:minHeight="150dp"
-        android:contentDescription="@string/current_weather_icon"
         android:scaleType="fitCenter"
         android:src="@drawable/wind"
         app:layout_constraintBottom_toBottomOf="@+id/home_wind_tv"
@@ -118,9 +119,9 @@
 
     <View
         android:id="@+id/view"
-        android:background="@android:color/darker_gray"
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/home_current_celcius_tv" />
@@ -128,28 +129,29 @@
     <TextView
         android:id="@+id/home_quote_tv"
         android:layout_width="match_parent"
-        android:layout_marginTop="4dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:minHeight="80dp"
-        tools:text="Now this is not the end. It is not even the beginning of the end. But it is, perhaps, the end of the beginning.Now this is not the end. It is not even the beginning of the end. But it is, perhaps, the end of the beginning.Now this is not the end. It is not even the beginning of the end."
         app:layout_constraintTop_toBottomOf="@+id/view"
-        tools:layout_editor_absoluteX="16dp" />
+        tools:layout_editor_absoluteX="16dp"
+        tools:text="Now this is not the end. It is not even the beginning of the end. But it is, perhaps, the end of the beginning.Now this is not the end. It is not even the beginning of the end. But it is, perhaps, the end of the beginning.Now this is not the end. It is not even the beginning of the end." />
 
     <TextView
         android:id="@+id/home_quote_author_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="Winston Churchill"
         android:gravity="end"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@+id/home_quote_tv"
-        tools:layout_editor_absoluteX="16dp" />
+        tools:layout_editor_absoluteX="16dp"
+        tools:text="Winston Churchill" />
+
     <View
         android:id="@+id/view2"
-        android:background="@android:color/darker_gray"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="4dp"
+        android:background="@android:color/darker_gray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/home_quote_author_tv" />
@@ -157,10 +159,10 @@
     <TextView
         android:id="@+id/home_five_day_weather_tv"
         android:layout_width="match_parent"
-        android:text="@string/three_hour_five_day_weather"
+        android:layout_height="wrap_content"
         android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@+id/view2"
-        android:layout_height="wrap_content"/>
+        android:text="@string/three_hour_five_day_weather"
+        app:layout_constraintTop_toBottomOf="@+id/view2" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/home_five_day_weather_rv"
@@ -177,16 +179,52 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/home_five_day_weather_btn"
         android:layout_width="0dp"
-        android:background="@drawable/gradient_btn"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:textSize="16sp"
-        android:text="@string/five_day_weather"
         android:layout_marginHorizontal="40dp"
-        android:textColor="@color/white"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/gradient_btn"
+        android:text="@string/five_day_weather"
         android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/home_five_day_weather_rv"
         app:layout_constraintStart_toStartOf="@+id/home_five_day_weather_rv"
         app:layout_constraintTop_toBottomOf="@+id/home_five_day_weather_rv" />
+
+    <Button
+        android:id="@+id/home_to_login_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Giriş Ekranı"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/home_banner_iv"
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/banner_first"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/home_five_day_weather_btn" />
+
+    <TextView
+        android:id="@+id/home_banner_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/home_banner_iv"
+        app:layout_constraintStart_toStartOf="@+id/home_banner_iv"
+        app:layout_constraintTop_toBottomOf="@+id/home_banner_iv"
+        tools:text="Banner text view" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/home_banner_visibility_group"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="home_banner_tv,home_banner_iv" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -27,6 +27,9 @@ turbine_version = "0.9.0"
 #plugins
 gradle_plugin = "7.4.0"
 kotlin_version = "1.7.21"
+#firebase
+bom_version = "31.2.3"
+services_version = "4.3.15"
 
 [libraries]
 androidx-core = { module = "androidx.core:core-ktx", version.ref = "core_version" }
@@ -45,6 +48,7 @@ retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit
 retrofit-moshi = { module = "com.squareup.retrofit2:converter-moshi", version.ref = "retrofit_version" }
 coil = { module = "io.coil-kt:coil", version.ref = "coil_version" }
 leak-canary = {module = "com.squareup.leakcanary:leakcanary-android",version.ref = "leakcanary_version"}
+firebase-bom = {module = "com.google.firebase:firebase-bom",version.ref = "bom_version"}
 
 #tests
 test-junit = { module = "junit:junit", version.ref = "junit_version" }
@@ -68,3 +72,4 @@ android-kotlin = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin_ve
 hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt_version" }
 kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin_version" }
 androidx-navigation = { id = "androidx.navigation.safeargs", version.ref = "navigation_version" }
+google-services = {id = "com.google.gms.google-services",version.ref = "services_version"}

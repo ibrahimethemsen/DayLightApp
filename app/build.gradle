@@ -4,6 +4,7 @@ plugins {
     alias libs.plugins.hilt.android
     alias libs.plugins.kapt
     alias libs.plugins.androidx.navigation
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -48,6 +49,10 @@ dependencies {
     implementation project(path: ':core:common')
     implementation project(path: ':core:data')
     implementation project(path: ':core:domain')
+
+    implementation platform (libs.firebase.bom)
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-config-ktx'
 
     implementation libs.bundles.navigation
     implementation libs.bundles.retrofit

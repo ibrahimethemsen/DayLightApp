@@ -14,6 +14,9 @@ import com.daylightapp.domain.usecase.datastore.read.CityDataStoreUseCase
 import com.daylightapp.domain.usecase.quote.QuoteUseCase
 import com.daylightapp.domain.usecase.weather.CurrentDayWeatherUseCase
 import com.daylightapp.domain.usecase.weather.FiveDayWeatherForecastUseCase
+import com.google.firebase.remoteconfig.FirebaseRemoteConfig
+import com.google.gson.Gson
+import com.google.gson.annotations.SerializedName
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -24,7 +27,8 @@ class HomeViewModel @Inject constructor(
     private val threeHoursWeatherForecastUseCase: FiveDayWeatherForecastUseCase,
     private val currentDayWeatherUseCase: CurrentDayWeatherUseCase,
     private val quoteUseCase: QuoteUseCase,
-    readDataStoreUseCase: CityDataStoreUseCase
+    readDataStoreUseCase: CityDataStoreUseCase,
+    private val remoteConfig : FirebaseRemoteConfig
 ) : ViewModel() {
     //StateFlow kullanılabilir
     private val _homeUiState = MutableLiveData<CurrentWeatherUiState>()
@@ -39,11 +43,26 @@ class HomeViewModel @Inject constructor(
     private val _locationLatLon = MutableLiveData<LocationEntity>()
     val locationLatLon : LiveData<LocationEntity> =_locationLatLon
 
+    private val _bannerListener = MutableLiveData<BannerData>()
+    val bannerListener : LiveData<BannerData> = _bannerListener
+
     private val getLocation = readDataStoreUseCase.readCityDataStore
+
+    private fun bannerListener(){
+        remoteConfig.fetchAndActivate().addOnCompleteListener {
+            if (it.isSuccessful){
+                val banner = remoteConfig.getString("home_banner")
+                val gson = Gson()
+                val jsonModel = gson.fromJson(banner,BannerData::class.java)
+                _bannerListener.postValue(jsonModel)
+            }
+        }
+    }
 
     init {
         getCurrentWeather()
         getQuote()
+        bannerListener()
     }
 
     private fun getCurrentWeather() {
@@ -179,5 +198,12 @@ data class FiveDayWeatherUiState(
     val loading: Boolean = false
 )
 
-
+data class BannerData(
+    @SerializedName("visibility")
+    val visibility : Boolean = false,
+    @SerializedName("banner_text")
+    val bannerText : String,
+    @SerializedName("banner_season")
+    val bannerSeason : String
+)
 
