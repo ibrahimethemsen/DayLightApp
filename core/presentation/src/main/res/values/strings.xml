@@ -13,4 +13,6 @@
     <string name="wind_speed">Rüzgar : </string>
     <string name="wind_deg">Rüzgar Açısı : </string>
     <string name="humidity">Nem : </string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
