@@ -48,12 +48,13 @@ class HomeViewModel @Inject constructor(
 
     private val getLocation = readDataStoreUseCase.readCityDataStore
 
-    private fun bannerListener(){
+    fun bannerListener(){
         remoteConfig.fetchAndActivate().addOnCompleteListener {
             if (it.isSuccessful){
                 val banner = remoteConfig.getString("home_banner")
                 val gson = Gson()
                 val jsonModel = gson.fromJson(banner,BannerData::class.java)
+                println("jsonModel $jsonModel")
                 _bannerListener.postValue(jsonModel)
             }
         }
@@ -62,7 +63,6 @@ class HomeViewModel @Inject constructor(
     init {
         getCurrentWeather()
         getQuote()
-        bannerListener()
     }
 
     private fun getCurrentWeather() {

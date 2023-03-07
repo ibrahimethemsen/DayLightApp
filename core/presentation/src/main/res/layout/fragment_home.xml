@@ -222,7 +222,7 @@
 
     <androidx.constraintlayout.widget.Group
         android:id="@+id/home_banner_visibility_group"
-        android:visibility="invisible"
+        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:constraint_referenced_ids="home_banner_tv,home_banner_iv" />

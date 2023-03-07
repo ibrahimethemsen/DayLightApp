@@ -10,9 +10,11 @@
     </entry>
     <entry>
         <key>home_banner</key>
-        <value>{"visibility" : false,
+        <value>{
+            "visibility" : false,
             "banner_text":"Banner Text",
-            "banner_image":"first_season"}
+            "banner_season":"first_season"
+            }
         </value>
     </entry>
 </defaultsMap>

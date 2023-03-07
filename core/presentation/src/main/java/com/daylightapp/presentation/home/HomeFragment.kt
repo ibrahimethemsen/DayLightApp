@@ -3,7 +3,6 @@ package com.daylightapp.presentation.home
 
 import android.os.Bundle
 import android.view.View
-import androidx.annotation.DrawableRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
@@ -18,7 +17,6 @@ import com.daylightapp.presentation.utility.viewBindingInflater
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
-
 
 
 @AndroidEntryPoint
@@ -36,6 +34,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         observe()
         listener()
         bannerInitialize()
+        viewModel.bannerListener()
     }
 
     private fun initAdapter(){
@@ -47,26 +46,15 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             if (it.visibility){
                 binding.homeBannerVisibilityGroup.visibility = View.VISIBLE
                 when(it.bannerSeason){
-                    FIRST_SEASON->{
-                        setBanner(it.bannerText,R.drawable.banner_first)
-                        println("text2 ${it.bannerText}")
+                    FIRST_SEASON -> {
+                        binding.homeBannerIv.setImageDrawable(resources.getDrawable(R.drawable.banner_first,requireContext().theme))
                     }
-                    SECOND_SEASON->{
-                        println("text1 ${it.bannerText}")
-                        setBanner(it.bannerText,R.drawable.banner_two)
+                    SECOND_SEASON -> {
+                        binding.homeBannerIv.setImageDrawable(resources.getDrawable(R.drawable.banner_two,requireContext().theme))
                     }
                 }
-            }else{
-                binding.homeBannerVisibilityGroup.visibility = View.GONE
+                binding.homeBannerTv.text = it.bannerText
             }
-        }
-    }
-
-    private fun setBanner(text : String,@DrawableRes image : Int){
-        binding.apply {
-            homeBannerTv.text = text
-            println("text $text")
-            homeBannerIv.setImageDrawable(resources.getDrawable(image,requireContext().theme))
         }
     }
 
