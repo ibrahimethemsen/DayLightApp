@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<defaultsMap>
+    <entry>
+        <key>is_maintenance</key>
+        <value>false</value>
+    </entry>
+    <entry>
+        <key>register_test</key>
+        <value>group_a</value>
+    </entry>
+    <entry>
+        <key>home_banner</key>
+        <value>{"visibility" : false,
+            "banner_text":"Banner Text",
+            "banner_image":"first_season"}
+        </value>
+    </entry>
+</defaultsMap>

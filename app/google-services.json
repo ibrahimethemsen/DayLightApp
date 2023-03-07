@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "281704005176",
+    "project_id": "daylightapp-2839c",
+    "storage_bucket": "daylightapp-2839c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:281704005176:android:38fb4354089b69bc83b0cd",
+        "android_client_info": {
+          "package_name": "com.ibrahimethemsen.daylightapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "281704005176-cgenbn5v5ddp0n50muhmre5r8k95qpdg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7Az0DVxqgjzHgckYaQLGdBNh2nD_kKSI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "281704005176-cgenbn5v5ddp0n50muhmre5r8k95qpdg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

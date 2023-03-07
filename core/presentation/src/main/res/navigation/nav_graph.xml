@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_homeFragment_to_fiveDayWeatherListFragment"
             app:destination="@id/fiveDayWeatherListFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/fiveDayWeatherListFragment"
@@ -39,6 +42,45 @@
             app:argType="string" />
         <action
             android:id="@+id/action_fiveDayWeatherListFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.daylightapp.presentation.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_registerEpostaPasswordFragment"
+            app:destination="@id/registerEpostaPasswordFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_registerSingleScreenFragment"
+            app:destination="@id/registerSingleScreenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerSingleScreenFragment"
+        android:name="com.daylightapp.presentation.register.singlescreen.RegisterSingleScreenFragment"
+        android:label="fragment_register_single_screen"
+        tools:layout="@layout/fragment_register_single_screen" >
+        <action
+            android:id="@+id/action_registerSingleScreenFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerEpostaPasswordFragment"
+        android:name="com.daylightapp.presentation.register.multiscreen.RegisterEpostaPasswordFragment"
+        android:label="fragment_register_eposta_password"
+        tools:layout="@layout/fragment_register_eposta_password" >
+        <action
+            android:id="@+id/action_registerEpostaPasswordFragment_to_registerNameSurnameFragment"
+            app:destination="@id/registerNameSurnameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerNameSurnameFragment"
+        android:name="com.daylightapp.presentation.register.multiscreen.RegisterNameSurnameFragment"
+        android:label="fragment_register_name_surname"
+        tools:layout="@layout/fragment_register_name_surname" >
+        <action
+            android:id="@+id/action_registerNameSurnameFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
 </navigation>
