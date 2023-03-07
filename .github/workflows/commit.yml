@@ -9,11 +9,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check commit message for ibrahim
+      - name: Clone repository
+        uses: actions/checkout@v2
+
+      - name: Check commit messages for "ibrahim"
         run: |
-          if [[ $(git log --format=%B -n 1 ${{ github.event.pull_request.head.sha }}) == *ibrahim* ]]; then
-            echo "Commit message contains ibrahim"
+          COMMIT_MESSAGES=$(git log --format=%B ${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }})
+
+          if echo "$COMMIT_MESSAGES" | grep -q "ibrahim"; then
+            echo "At least one commit message contains ibrahim"
           else
-            echo "Commit message does not contain ibrahim"
+            echo "No commit messages contain ibrahim"
             exit 1
           fi
