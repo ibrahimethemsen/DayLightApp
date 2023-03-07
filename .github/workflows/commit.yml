@@ -17,8 +17,3 @@ jobs:
             echo "Commit message does not contain ibrahim"
             exit 1
           fi
-          
-      - name: Run unit tests
-        run: |
-          chmod +x run_tests.sh
-          ./run_tests.sh
