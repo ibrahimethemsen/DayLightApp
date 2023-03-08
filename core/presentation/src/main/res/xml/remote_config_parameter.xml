@@ -17,4 +17,31 @@
             }
         </value>
     </entry>
+    <entry>
+        <key>welcome_banner</key>
+        <value>
+            {
+            "welcome_visibility": false,
+            "welcome_url": "https://firebasestorage.googleapis.com/v0/b/daylightapp-2839c.appspot.com/o/background2.jpg?alt=media&amp;token=2c532ccc-e780-4ac4-94fa-db01a0c1bc37",
+            "welcome_description": "Uygulamamıza Hoş geldiniz"
+            }
+        </value>
+    </entry>
+    <entry>
+        <key>home_slider</key>
+        <value>
+            [
+            {
+            "slider_image_url": "https://firebasestorage.googleapis.com/v0/b/daylightapp-2839c.appspot.com/o/background2.jpg?alt=media&amp;token=2c532ccc-e780-4ac4-94fa-db01a0c1bc37",
+            "slider_intent_url": "https://github.com/Askeri-Muhendis/DayLightApp",
+            "slider_intent_url":"DayLight"
+            },
+            {
+            "slider_image_url": "https://firebasestorage.googleapis.com/v0/b/daylightapp-2839c.appspot.com/o/background3.jpg?alt=media&amp;token=c406354c-56d5-4ca0-b0fb-c57de08e6a1e",
+            "slider_intent_url": "https://github.com/Askeri-Muhendis",
+            "slider_intent_url":"Github"
+            }
+            ]
+        </value>
+    </entry>
 </defaultsMap>

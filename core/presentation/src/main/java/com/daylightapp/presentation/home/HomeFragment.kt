@@ -1,6 +1,8 @@
 package com.daylightapp.presentation.home
 
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -13,6 +15,8 @@ import com.daylightapp.presentation.common.loadImage
 import com.daylightapp.presentation.common.observeIfNotNull
 import com.daylightapp.presentation.databinding.FragmentHomeBinding
 import com.daylightapp.presentation.home.adapter.FiveDayWeatherAdapter
+import com.daylightapp.presentation.home.adapter.SliderAdapter
+import com.daylightapp.presentation.home.model.SliderModel
 import com.daylightapp.presentation.utility.viewBindingInflater
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import dagger.hilt.android.AndroidEntryPoint
@@ -24,7 +28,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private val binding by viewBindingInflater(FragmentHomeBinding::bind)
     private val viewModel by viewModels<HomeViewModel>()
     private val fiveDayAdapter = FiveDayWeatherAdapter()
-
+    private val sliderAdapter = SliderAdapter()
     @Inject
     lateinit var remoteConfig: FirebaseRemoteConfig
 
@@ -33,38 +37,33 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         initAdapter()
         observe()
         listener()
-        bannerInitialize()
-        viewModel.bannerListener()
+        viewModel.homeSliderRemoteConfig()
     }
 
     private fun initAdapter(){
         binding.homeFiveDayWeatherRv.adapter = fiveDayAdapter
+        binding.homeSliderRv.adapter = sliderAdapter
     }
 
-    private fun bannerInitialize(){
-        viewModel.bannerListener.observe(viewLifecycleOwner){
-            if (it.visibility){
-                binding.homeBannerVisibilityGroup.visibility = View.VISIBLE
-                when(it.bannerSeason){
-                    FIRST_SEASON -> {
-                        binding.homeBannerIv.setImageDrawable(resources.getDrawable(R.drawable.banner_first,requireContext().theme))
-                    }
-                    SECOND_SEASON -> {
-                        binding.homeBannerIv.setImageDrawable(resources.getDrawable(R.drawable.banner_two,requireContext().theme))
-                    }
-                }
-                binding.homeBannerTv.text = it.bannerText
-            }
-        }
-    }
 
     private fun listener(){
         binding.apply {
-            homeToLoginBtn.setOnClickListener {
-                val action = HomeFragmentDirections.actionHomeFragmentToLoginFragment()
-                findNavController().navigate(action)
-            }
+            homeToLoginBtn.setOnClickListener {toLoginFragment()}
+            sliderAdapter.sliderClickListener(::sliderIntent)
         }
+    }
+
+    private fun sliderIntent(intentUrl : String){
+        val urlIntent = Intent(
+            Intent.ACTION_VIEW,
+            Uri.parse(intentUrl)
+        )
+        startActivity(urlIntent)
+    }
+
+    private fun toLoginFragment(){
+        val action = HomeFragmentDirections.actionHomeFragmentToLoginFragment()
+        findNavController().navigate(action)
     }
 
     private fun observe() {
@@ -72,6 +71,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         observeIfNotNull(viewModel.quoteUiState,::setQuoteUiState)
         observeIfNotNull(viewModel.fiveDayWeather,::setFiveDayWeatherUiState)
         observeIfNotNull(viewModel.locationLatLon,::navigateHomeToFiveDay)
+        observeIfNotNull(viewModel.homeSlider,::setSlider)
+    }
+
+    private fun setSlider(listSlider : List<SliderModel>){
+        sliderAdapter.updateRecyclerList(listSlider)
     }
 
     private fun setHomeUiState(currentWeather : CurrentWeatherUiState){

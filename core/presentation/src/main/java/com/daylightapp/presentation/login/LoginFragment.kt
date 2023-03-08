@@ -11,7 +11,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.daylightapp.presentation.R
+import com.daylightapp.presentation.common.loadRemote
 import com.daylightapp.presentation.databinding.FragmentLoginBinding
+import com.daylightapp.presentation.home.HomeFragment
 import com.daylightapp.presentation.utility.viewBindingInflater
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -25,6 +27,8 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         super.onViewCreated(view, savedInstanceState)
         clickableText("Kayıt Ol",::toRegister,binding.loginRegisterTv)
         observe()
+        bannerInitialize()
+        viewModel.bannerListener()
     }
     private fun toRegister(){
         if (group == GROUP_A){
@@ -37,9 +41,35 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         }
     }
 
+    private fun bannerInitialize(){
+        viewModel.bannerListener.observe(viewLifecycleOwner){
+            if (it.visibility){
+                binding.loginBannerVisibilityGroup.visibility = View.VISIBLE
+                when(it.bannerSeason){
+                    HomeFragment.FIRST_SEASON -> {
+                        binding.loginBannerIv.setImageDrawable(resources.getDrawable(R.drawable.banner_first,requireContext().theme))
+                    }
+                    HomeFragment.SECOND_SEASON -> {
+                        binding.loginBannerIv.setImageDrawable(resources.getDrawable(R.drawable.banner_two,requireContext().theme))
+                    }
+                }
+                binding.loginBannerTv.text = it.bannerText
+            }
+        }
+    }
+
     private fun observe(){
         viewModel.registerScreenABTest.observe(viewLifecycleOwner){
             group = it
+        }
+        viewModel.welcomeBanner.observe(viewLifecycleOwner){
+            if (it.welcomeVisibility){
+                binding.apply {
+                    loginWelcomeBannerGroup.visibility = View.VISIBLE
+                    loginWelcomeBannerTv.text = it.welcomeDescription
+                    loginWelcomeBannerIv.loadRemote(it.welcomeUrl)
+                }
+            }
         }
     }
 

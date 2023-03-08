@@ -27,3 +27,9 @@ fun ImageView.loadImage(imageId: String) {
         scale(Scale.FILL)
     }
 }
+
+fun ImageView.loadRemote(url : String){
+    load(url){
+        scale(Scale.FILL)
+    }
+}
