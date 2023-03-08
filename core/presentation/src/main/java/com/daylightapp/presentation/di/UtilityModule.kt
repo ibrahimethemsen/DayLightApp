@@ -15,9 +15,4 @@ object UtilityModule {
     fun provideGson() : Gson {
         return Gson()
     }
-
-    @[Provides Singleton]
-    fun provideBundle() : Bundle {
-        return Bundle()
-    }
 }
