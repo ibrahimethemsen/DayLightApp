@@ -53,6 +53,8 @@ dependencies {
 
     implementation 'com.google.code.gson:gson:2.9.0'
 
+    implementation 'com.google.firebase:firebase-auth-ktx'
+
     testImplementation libs.test.junit
     androidTestImplementation libs.test.androidx.junit
     androidTestImplementation libs.test.espresso

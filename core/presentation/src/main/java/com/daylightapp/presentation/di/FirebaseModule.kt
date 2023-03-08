@@ -3,6 +3,7 @@ package com.daylightapp.presentation.di
 import android.content.Context
 import com.daylightapp.presentation.R
 import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
 import dagger.Module
@@ -29,4 +30,8 @@ object FirebaseModule {
     ) : FirebaseAnalytics{
         return FirebaseAnalytics.getInstance(context)
     }
+
+    @Provides
+    @Singleton
+    fun provideFirebaseAuth() : FirebaseAuth = FirebaseAuth.getInstance()
 }

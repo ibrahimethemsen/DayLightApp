@@ -7,15 +7,23 @@ import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.daylightapp.common.NetworkResult
 import com.daylightapp.presentation.R
 import com.daylightapp.presentation.common.loadRemote
 import com.daylightapp.presentation.databinding.FragmentLoginBinding
 import com.daylightapp.presentation.home.HomeFragment
+import com.daylightapp.presentation.utility.AnalyticsUtil
 import com.daylightapp.presentation.utility.viewBindingInflater
+import com.google.firebase.analytics.FirebaseAnalytics
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
+import javax.inject.Inject
 
 
 @AndroidEntryPoint
@@ -23,18 +31,35 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     private val binding by viewBindingInflater(FragmentLoginBinding::bind)
     private val viewModel by viewModels<LoginViewModel>()
     private var group : String = GROUP_A
+
+    @Inject
+    lateinit var analytics : FirebaseAnalytics
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         clickableText("Kayıt Ol",::toRegister,binding.loginRegisterTv)
         observe()
         viewModel.bannerListener()
         viewModel.welcomeBannerListener()
+        listener()
     }
     private fun observe(){
         viewModel.registerScreenABTest.observe(viewLifecycleOwner){group = it}
         viewModel.welcomeBanner.observe(viewLifecycleOwner,::welcomeBanner)
         viewModel.bannerListener.observe(viewLifecycleOwner,::bannerInitialize)
     }
+    private fun listener(){
+        binding.apply {
+            loginBtn.setOnClickListener {
+                loginAccount(loginEmailEt.text.toString(),loginPasswordEt.text.toString())
+                AnalyticsUtil.apply {
+                    putBundleString(FirebaseAnalytics.Event.SELECT_CONTENT,"Login")
+                    eventLog(analytics,"Login Btn")
+                }
+            }
+        }
+    }
+
     private fun toRegister(){
         if (group == GROUP_A){
             //single screen
@@ -68,6 +93,24 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                 loginWelcomeBannerTv.text = banner.welcomeDescription
                 loginWelcomeBannerIv.loadRemote(banner.welcomeUrl)
             }
+        }
+    }
+    private fun loginAccount(email : String?,password : String?){
+        if (viewModel.isEmpty(email, password)){
+            viewModel.loginAccount(email!!,password!!).onEach {
+                when(it){
+                    is NetworkResult.Error -> {
+                        Toast.makeText(requireContext(),it.exception.message,Toast.LENGTH_LONG).show()
+                    }
+                    is NetworkResult.Success<Boolean> -> {
+                        val action = LoginFragmentDirections.actionLoginFragmentToHomeFragment()
+                        findNavController().navigate(action)
+                    }
+                    else -> {}
+                }
+            }.launchIn(lifecycleScope)
+        }else{
+            Toast.makeText(requireContext(),"Boş alan bırakmayınız",Toast.LENGTH_LONG).show()
         }
     }
 
