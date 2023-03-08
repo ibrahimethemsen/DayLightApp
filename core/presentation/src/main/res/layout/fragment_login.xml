@@ -6,18 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".login.LoginFragment">
 
-    <TextView
-        android:id="@+id/login_title_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/login_vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textSize="24sp"
-        android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        android:text="Giriş Yap"/>
-
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/login_email_til"
@@ -41,8 +29,8 @@
         android:id="@+id/login_password_til"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
-        android:hint="Password"
         android:layout_height="wrap_content"
+        android:hint="Password"
         app:endIconMode="password_toggle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -77,11 +65,70 @@
     <TextView
         android:id="@+id/login_register_tv"
         android:layout_width="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/login_btn"
-        app:layout_constraintStart_toStartOf="@id/login_btn"
-        app:layout_constraintEnd_toEndOf="@id/login_btn"
+        android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@id/login_btn"
+        app:layout_constraintStart_toStartOf="@id/login_btn"
+        app:layout_constraintTop_toBottomOf="@id/login_btn"
+        tools:text="Kayıt Ol" />
+
+    <ImageView
+        android:id="@+id/login_welcome_banner_iv"
+        android:layout_width="300dp"
+        android:layout_height="150dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/login_vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/banner_first" />
+
+    <TextView
+        android:id="@+id/login_welcome_banner_tv"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Kayıt Ol"/>
+        android:text="TextView"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/login_welcome_banner_iv"
+        app:layout_constraintStart_toStartOf="@+id/login_welcome_banner_iv"
+        app:layout_constraintTop_toBottomOf="@+id/login_welcome_banner_iv" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/login_welcome_banner_group"
+        android:layout_width="wrap_content"
+        android:visibility="gone"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="login_welcome_banner_tv,login_welcome_banner_iv" />
+
+    <ImageView
+        android:id="@+id/login_banner_iv"
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/banner_first"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_register_tv" />
+
+    <TextView
+        android:id="@+id/login_banner_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/login_banner_iv"
+        app:layout_constraintStart_toStartOf="@+id/login_banner_iv"
+        app:layout_constraintTop_toBottomOf="@+id/login_banner_iv"
+        tools:text="Banner text view" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/login_banner_visibility_group"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="login_banner_tv,login_banner_iv" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,13 +9,15 @@
 
     <TextView
         android:id="@+id/home_current_date"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textColor="@color/black"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@+id/home_to_login_btn"
-        tools:layout_editor_absoluteX="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/home_current_description_tv"
+        app:layout_constraintEnd_toStartOf="@+id/home_to_login_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/home_to_login_btn"
         tools:text="30 Oca 2023" />
 
     <ImageView
@@ -25,7 +27,7 @@
         android:contentDescription="@string/sunrise_tv"
         android:src="@drawable/sunrise"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/home_current_date" />
+        app:layout_constraintTop_toBottomOf="@+id/home_to_login_btn" />
 
     <TextView
         android:id="@+id/home_sunrise_tv"
@@ -94,7 +96,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/home_wind_tv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/home_sunset_tv"
-        app:layout_constraintTop_toBottomOf="@+id/home_current_date" />
+        app:layout_constraintTop_toBottomOf="@+id/home_to_login_btn" />
 
     <TextView
         android:id="@+id/home_current_celcius_tv"
@@ -162,7 +164,8 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/three_hour_five_day_weather"
-        app:layout_constraintTop_toBottomOf="@+id/view2" />
+        app:layout_constraintTop_toBottomOf="@+id/home_slider_rv"
+        tools:layout_editor_absoluteX="16dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/home_five_day_weather_rv"
@@ -199,32 +202,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/home_banner_iv"
-        android:layout_width="250dp"
-        android:layout_height="100dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/banner_first"
-        app:layout_constraintBottom_toBottomOf="parent"
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/home_slider_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/adapter_slider_item"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/home_five_day_weather_btn" />
-
-    <TextView
-        android:id="@+id/home_banner_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/home_banner_iv"
-        app:layout_constraintStart_toStartOf="@+id/home_banner_iv"
-        app:layout_constraintTop_toBottomOf="@+id/home_banner_iv"
-        tools:text="Banner text view" />
-
-    <androidx.constraintlayout.widget.Group
-        android:id="@+id/home_banner_visibility_group"
-        android:visibility="gone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:constraint_referenced_ids="home_banner_tv,home_banner_iv" />
+        app:layout_constraintTop_toTopOf="@+id/view2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

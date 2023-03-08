@@ -14,9 +14,10 @@ import com.daylightapp.domain.usecase.datastore.read.CityDataStoreUseCase
 import com.daylightapp.domain.usecase.quote.QuoteUseCase
 import com.daylightapp.domain.usecase.weather.CurrentDayWeatherUseCase
 import com.daylightapp.domain.usecase.weather.FiveDayWeatherForecastUseCase
+import com.daylightapp.presentation.home.model.SliderModel
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.gson.Gson
-import com.google.gson.annotations.SerializedName
+import com.google.gson.reflect.TypeToken
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -43,22 +44,10 @@ class HomeViewModel @Inject constructor(
     private val _locationLatLon = MutableLiveData<LocationEntity>()
     val locationLatLon : LiveData<LocationEntity> =_locationLatLon
 
-    private val _bannerListener = MutableLiveData<BannerData>()
-    val bannerListener : LiveData<BannerData> = _bannerListener
-
     private val getLocation = readDataStoreUseCase.readCityDataStore
 
-    fun bannerListener(){
-        remoteConfig.fetchAndActivate().addOnCompleteListener {
-            if (it.isSuccessful){
-                val banner = remoteConfig.getString("home_banner")
-                val gson = Gson()
-                val jsonModel = gson.fromJson(banner,BannerData::class.java)
-                println("jsonModel $jsonModel")
-                _bannerListener.postValue(jsonModel)
-            }
-        }
-    }
+    private val _homeSlider = MutableLiveData<List<SliderModel>>()
+    val homeSlider : LiveData<List<SliderModel>> = _homeSlider
 
     init {
         getCurrentWeather()
@@ -178,6 +167,18 @@ class HomeViewModel @Inject constructor(
             }
         }
     }
+
+    fun homeSliderRemoteConfig(){
+        remoteConfig.fetchAndActivate().addOnCompleteListener {
+            if (it.isSuccessful){
+                val banner = remoteConfig.getString("home_slider")
+                val gson = Gson()
+                val type = object : TypeToken<List<SliderModel>>() {}.type
+                val jsonModel = gson.fromJson<List<SliderModel>>(banner, type)
+                _homeSlider.postValue(jsonModel)
+            }
+        }
+    }
 }
 
 data class CurrentWeatherUiState(
@@ -198,12 +199,5 @@ data class FiveDayWeatherUiState(
     val loading: Boolean = false
 )
 
-data class BannerData(
-    @SerializedName("visibility")
-    val visibility : Boolean = false,
-    @SerializedName("banner_text")
-    val bannerText : String,
-    @SerializedName("banner_season")
-    val bannerSeason : String
-)
+
 

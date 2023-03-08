@@ -35,6 +35,4 @@ class CityViewHolder(
             onCityClickListener.invoke(data)
         }
     }
-
-
 }
