@@ -18,9 +18,7 @@ import com.daylightapp.presentation.home.adapter.FiveDayWeatherAdapter
 import com.daylightapp.presentation.home.adapter.SliderAdapter
 import com.daylightapp.presentation.home.model.SliderModel
 import com.daylightapp.presentation.utility.viewBindingInflater
-import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 
 @AndroidEntryPoint
@@ -29,8 +27,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private val viewModel by viewModels<HomeViewModel>()
     private val fiveDayAdapter = FiveDayWeatherAdapter()
     private val sliderAdapter = SliderAdapter()
-    @Inject
-    lateinit var remoteConfig: FirebaseRemoteConfig
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

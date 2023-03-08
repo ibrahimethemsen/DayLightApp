@@ -14,6 +14,7 @@ import com.daylightapp.domain.usecase.datastore.read.CityDataStoreUseCase
 import com.daylightapp.domain.usecase.quote.QuoteUseCase
 import com.daylightapp.domain.usecase.weather.CurrentDayWeatherUseCase
 import com.daylightapp.domain.usecase.weather.FiveDayWeatherForecastUseCase
+import com.daylightapp.presentation.common.fetchToLiveData
 import com.daylightapp.presentation.home.model.SliderModel
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.gson.Gson
@@ -29,7 +30,8 @@ class HomeViewModel @Inject constructor(
     private val currentDayWeatherUseCase: CurrentDayWeatherUseCase,
     private val quoteUseCase: QuoteUseCase,
     readDataStoreUseCase: CityDataStoreUseCase,
-    private val remoteConfig : FirebaseRemoteConfig
+    private val remoteConfig : FirebaseRemoteConfig,
+    private val gson : Gson
 ) : ViewModel() {
     //StateFlow kullanılabilir
     private val _homeUiState = MutableLiveData<CurrentWeatherUiState>()
@@ -169,15 +171,7 @@ class HomeViewModel @Inject constructor(
     }
 
     fun homeSliderRemoteConfig(){
-        remoteConfig.fetchAndActivate().addOnCompleteListener {
-            if (it.isSuccessful){
-                val banner = remoteConfig.getString("home_slider")
-                val gson = Gson()
-                val type = object : TypeToken<List<SliderModel>>() {}.type
-                val jsonModel = gson.fromJson<List<SliderModel>>(banner, type)
-                _homeSlider.postValue(jsonModel)
-            }
-        }
+        remoteConfig.fetchToLiveData("home_slider",gson,_homeSlider)
     }
 }
 

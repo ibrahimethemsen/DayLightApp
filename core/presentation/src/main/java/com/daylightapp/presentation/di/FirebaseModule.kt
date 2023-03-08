@@ -29,6 +29,4 @@ object FirebaseModule {
     ) : FirebaseAnalytics{
         return FirebaseAnalytics.getInstance(context)
     }
-
-
 }

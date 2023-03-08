@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.daylightapp.presentation.R
 import com.daylightapp.presentation.databinding.FragmentRegisterNameSurnameBinding
+import com.daylightapp.presentation.utility.AnalyticsUtil
 import com.daylightapp.presentation.utility.viewBindingInflater
 import com.google.firebase.analytics.FirebaseAnalytics
 import dagger.hilt.android.AndroidEntryPoint
@@ -23,9 +24,6 @@ class RegisterNameSurnameFragment : Fragment(R.layout.fragment_register_name_sur
         listener()
     }
 
-    private val parameters = Bundle().apply {
-        this.putString(FirebaseAnalytics.Event.SELECT_CONTENT,"Completed Register")
-    }
 
     private fun listener(){
         binding.apply {
@@ -36,7 +34,10 @@ class RegisterNameSurnameFragment : Fragment(R.layout.fragment_register_name_sur
     }
 
     private fun toHomeFragment(){
-        analytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM,parameters)
+        AnalyticsUtil.apply {
+            putBundleString(FirebaseAnalytics.Event.SELECT_CONTENT,"Completed Register")
+            eventLog(analytics,FirebaseAnalytics.Event.SELECT_ITEM)
+        }
         val action = RegisterNameSurnameFragmentDirections.actionRegisterNameSurnameFragmentToHomeFragment()
         findNavController().navigate(action)
     }

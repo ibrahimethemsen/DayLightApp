@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.daylightapp.presentation.R
 import com.daylightapp.presentation.databinding.FragmentRegisterSingleScreenBinding
+import com.daylightapp.presentation.utility.AnalyticsUtil
 import com.daylightapp.presentation.utility.viewBindingInflater
 import com.google.firebase.analytics.FirebaseAnalytics
 import dagger.hilt.android.AndroidEntryPoint
@@ -23,10 +24,6 @@ class RegisterSingleScreenFragment : Fragment(R.layout.fragment_register_single_
         listener()
     }
 
-    private val parameters = Bundle().apply {
-        this.putString(FirebaseAnalytics.Event.SELECT_CONTENT,"Register Single Screen")
-    }
-
     private fun listener(){
         binding.apply {
             registerSingleBtn.setOnClickListener {
@@ -36,7 +33,11 @@ class RegisterSingleScreenFragment : Fragment(R.layout.fragment_register_single_
     }
 
     private fun toHomeFragment(){
-        analytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM,parameters)
+        AnalyticsUtil.apply {
+            putBundleString(FirebaseAnalytics.Event.SELECT_ITEM,"toHomeFragment Btn")
+            eventLog(analytics,"toHomeFragment")
+        }
+
         val action = RegisterSingleScreenFragmentDirections.actionRegisterSingleScreenFragmentToHomeFragment()
         findNavController().navigate(action)
     }

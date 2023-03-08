@@ -27,8 +27,13 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         super.onViewCreated(view, savedInstanceState)
         clickableText("Kayıt Ol",::toRegister,binding.loginRegisterTv)
         observe()
-        bannerInitialize()
         viewModel.bannerListener()
+        viewModel.welcomeBannerListener()
+    }
+    private fun observe(){
+        viewModel.registerScreenABTest.observe(viewLifecycleOwner){group = it}
+        viewModel.welcomeBanner.observe(viewLifecycleOwner,::welcomeBanner)
+        viewModel.bannerListener.observe(viewLifecycleOwner,::bannerInitialize)
     }
     private fun toRegister(){
         if (group == GROUP_A){
@@ -40,35 +45,28 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             findNavController().navigate(action)
         }
     }
-
-    private fun bannerInitialize(){
-        viewModel.bannerListener.observe(viewLifecycleOwner){
-            if (it.visibility){
-                binding.loginBannerVisibilityGroup.visibility = View.VISIBLE
-                when(it.bannerSeason){
-                    HomeFragment.FIRST_SEASON -> {
-                        binding.loginBannerIv.setImageDrawable(resources.getDrawable(R.drawable.banner_first,requireContext().theme))
-                    }
-                    HomeFragment.SECOND_SEASON -> {
-                        binding.loginBannerIv.setImageDrawable(resources.getDrawable(R.drawable.banner_two,requireContext().theme))
-                    }
+    private fun bannerInitialize(banner : BannerData){
+        if (banner.visibility){
+            binding.loginBannerVisibilityGroup.visibility = View.VISIBLE
+            when(banner.bannerSeason){
+                HomeFragment.FIRST_SEASON -> {
+                    binding.loginBannerIv.setImageDrawable(resources.getDrawable(R.drawable.banner_first,requireContext().theme))
                 }
-                binding.loginBannerTv.text = it.bannerText
+                HomeFragment.SECOND_SEASON -> {
+                    binding.loginBannerIv.setImageDrawable(resources.getDrawable(R.drawable.banner_two,requireContext().theme))
+                }
             }
+            binding.loginBannerTv.text = banner.bannerText
         }
+
     }
 
-    private fun observe(){
-        viewModel.registerScreenABTest.observe(viewLifecycleOwner){
-            group = it
-        }
-        viewModel.welcomeBanner.observe(viewLifecycleOwner){
-            if (it.welcomeVisibility){
-                binding.apply {
-                    loginWelcomeBannerGroup.visibility = View.VISIBLE
-                    loginWelcomeBannerTv.text = it.welcomeDescription
-                    loginWelcomeBannerIv.loadRemote(it.welcomeUrl)
-                }
+    private fun welcomeBanner(banner : WelcomeBanner){
+        if (banner.welcomeVisibility){
+            binding.apply {
+                loginWelcomeBannerGroup.visibility = View.VISIBLE
+                loginWelcomeBannerTv.text = banner.welcomeDescription
+                loginWelcomeBannerIv.loadRemote(banner.welcomeUrl)
             }
         }
     }
