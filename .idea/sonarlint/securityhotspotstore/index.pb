@@ -61,9 +61,9 @@ score/presentation/src/main/java/com/daylightapp/presentation/register/multiscre
 pcore/presentation/src/main/java/com/daylightapp/presentation/register/multiscreen/RegisterNameSurnameFragment.kt,9\5\959bd37b82d7585fb065e97a21dcb25d41a5c036
 H
 app/google-services.json,f\d\fd8d34b142d02ec743a8efefefd2c097961666e9
-Å
-Qcore/presentation/src/main/java/com/daylightapp/presentation/home/HomeFragment.kt,b\0\b0086f1097bc1361a4840d183d396c2559d92387
 P
  app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
+Å
+Qcore/presentation/src/main/java/com/daylightapp/presentation/home/HomeFragment.kt,b\0\b0086f1097bc1361a4840d183d396c2559d92387
 Ç
 Rcore/presentation/src/main/java/com/daylightapp/presentation/home/HomeViewModel.kt,b\9\b951e42f83985efc992ea9c5c90072a7fb311c58
