@@ -15,6 +15,7 @@ import com.daylightapp.domain.usecase.quote.QuoteUseCase
 import com.daylightapp.domain.usecase.weather.CurrentDayWeatherUseCase
 import com.daylightapp.domain.usecase.weather.FiveDayWeatherForecastUseCase
 import com.daylightapp.presentation.common.fetchToLiveData
+import com.daylightapp.presentation.home.model.FeedBackModel
 import com.daylightapp.presentation.home.model.LanguageModel
 import com.daylightapp.presentation.home.model.NewFeature
 import com.daylightapp.presentation.home.model.SliderModel
@@ -60,6 +61,14 @@ class HomeViewModel @Inject constructor(
 
     private val _languageRemoteConfig = MutableLiveData<LanguageModel>()
     val languageRemoteConfig : LiveData<LanguageModel> = _languageRemoteConfig
+
+    private val _feedBackBottomVisibility = MutableLiveData<FeedBackModel>()
+    val feedBackBottomVisibility : LiveData<FeedBackModel> = _feedBackBottomVisibility
+
+
+    fun feedbackRemoteConfig(){
+        remoteConfig.fetchToLiveData("bottom_feedback", gson,_feedBackBottomVisibility)
+    }
 
     init {
         getCurrentWeather()

@@ -28,6 +28,9 @@
         <action
             android:id="@+id/action_homeFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_feedBackBottomFragment"
+            app:destination="@id/feedBackBottomFragment" />
     </fragment>
     <fragment
         android:id="@+id/fiveDayWeatherListFragment"
@@ -86,4 +89,24 @@
             android:id="@+id/action_registerNameSurnameFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
+    <dialog
+        android:id="@+id/feedBackBottomFragment"
+        android:name="com.daylightapp.presentation.feedback.FeedBackBottomFragment"
+        android:label="fragment_feed_back_bottom"
+        tools:layout="@layout/fragment_feed_back_bottom" >
+        <action
+            android:id="@+id/action_feedBackBottomFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/feedBackBottomFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="collection_id"
+            app:argType="string" />
+        <argument
+            android:name="shared_key"
+            app:argType="string" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+    </dialog>
 </navigation>
