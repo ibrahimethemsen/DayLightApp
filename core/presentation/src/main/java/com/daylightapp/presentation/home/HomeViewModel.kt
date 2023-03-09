@@ -15,11 +15,11 @@ import com.daylightapp.domain.usecase.quote.QuoteUseCase
 import com.daylightapp.domain.usecase.weather.CurrentDayWeatherUseCase
 import com.daylightapp.domain.usecase.weather.FiveDayWeatherForecastUseCase
 import com.daylightapp.presentation.common.fetchToLiveData
+import com.daylightapp.presentation.home.model.LanguageModel
 import com.daylightapp.presentation.home.model.NewFeature
 import com.daylightapp.presentation.home.model.SliderModel
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -58,9 +58,28 @@ class HomeViewModel @Inject constructor(
     private val _activeIsQuoteService = MutableLiveData<Boolean>()
     val activeIsQuoteService : LiveData<Boolean> = _activeIsQuoteService
 
+    private val _languageRemoteConfig = MutableLiveData<LanguageModel>()
+    val languageRemoteConfig : LiveData<LanguageModel> = _languageRemoteConfig
+
     init {
         getCurrentWeather()
+        locale()
     }
+
+    private fun locale(){
+        remoteConfig.fetchAndActivate().addOnCompleteListener {
+            if (it.isSuccessful){
+                val text = remoteConfig.getString("locale_config")
+                println("locale $text")
+
+            }
+        }
+    }
+
+    fun languageRemoteConfig(){
+        remoteConfig.fetchToLiveData("selected_language",gson,_languageRemoteConfig)
+    }
+
 
     private fun getCurrentWeather() {
         viewModelScope.launch {

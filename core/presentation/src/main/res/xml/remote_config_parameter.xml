@@ -61,4 +61,20 @@
         <key>active_is_quote_service</key>
         <value>true</value>
     </entry>
+    <entry>
+        <key>locale_config</key>
+        <value>default locale</value>
+    </entry>
+
+    <entry>
+        <key>selected_language</key>
+        <value>
+            {
+            "language_visibility" : false,
+            "language_title" : "",
+            "language_description":""
+            }
+        </value>
+    </entry>
+
 </defaultsMap>
