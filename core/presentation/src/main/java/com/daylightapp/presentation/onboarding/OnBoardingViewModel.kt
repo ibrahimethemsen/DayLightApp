@@ -76,7 +76,6 @@ class OnBoardingViewModel @Inject constructor(
         }
     }
 
-    //TODO search iki ekranda olacagi icin TextWatcher'a tasinacak
     fun filterCityList(query: String?): List<LocationEntity> {
         val searchList = mutableListOf<LocationEntity>()
         query?.let {

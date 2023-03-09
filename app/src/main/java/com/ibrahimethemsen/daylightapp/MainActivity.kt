@@ -41,5 +41,4 @@ class MainActivity : AppCompatActivity() {
             mainProgress.visibility = View.GONE
         }
     }
-
 }

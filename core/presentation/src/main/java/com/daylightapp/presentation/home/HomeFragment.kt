@@ -1,6 +1,7 @@
 package com.daylightapp.presentation.home
 
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -16,6 +17,7 @@ import com.daylightapp.presentation.common.observeIfNotNull
 import com.daylightapp.presentation.databinding.FragmentHomeBinding
 import com.daylightapp.presentation.home.adapter.FiveDayWeatherAdapter
 import com.daylightapp.presentation.home.adapter.SliderAdapter
+import com.daylightapp.presentation.home.model.NewFeature
 import com.daylightapp.presentation.home.model.SliderModel
 import com.daylightapp.presentation.utility.viewBindingInflater
 import dagger.hilt.android.AndroidEntryPoint
@@ -34,6 +36,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         observe()
         listener()
         viewModel.homeSliderRemoteConfig()
+        viewModel.newFeatureRemoteConfig()
     }
 
     private fun initAdapter(){
@@ -45,18 +48,17 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private fun listener(){
         binding.apply {
             homeToLoginBtn.setOnClickListener {toLoginFragment()}
-            sliderAdapter.sliderClickListener(::sliderIntent)
+            sliderAdapter.sliderClickListener(::openWithIntent)
         }
     }
 
-    private fun sliderIntent(intentUrl : String){
+    private fun openWithIntent(intentUrl: String){
         val urlIntent = Intent(
             Intent.ACTION_VIEW,
             Uri.parse(intentUrl)
         )
         startActivity(urlIntent)
     }
-
     private fun toLoginFragment(){
         val action = HomeFragmentDirections.actionHomeFragmentToLoginFragment()
         findNavController().navigate(action)
@@ -68,8 +70,26 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         observeIfNotNull(viewModel.fiveDayWeather,::setFiveDayWeatherUiState)
         observeIfNotNull(viewModel.locationLatLon,::navigateHomeToFiveDay)
         observeIfNotNull(viewModel.homeSlider,::setSlider)
+        observeIfNotNull(viewModel.newFeature,::newFeature)
     }
 
+    private fun newFeature(newFeature : NewFeature){
+        if (newFeature.featureVisibility){
+            val alertDialog = AlertDialog.Builder(requireContext())
+                .setTitle(newFeature.featureTitle)
+                .setMessage(newFeature.featureMessage)
+                .setPositiveButton("Keşfet") { dialog, _ ->
+
+                    openWithIntent(newFeature.positiveUrl)
+                    dialog.dismiss()
+                }
+                .setNegativeButton("Daha sonra") { dialog, _ ->
+                    dialog.dismiss()
+                }
+                .create()
+            alertDialog.show()
+        }
+    }
     private fun setSlider(listSlider : List<SliderModel>){
         sliderAdapter.updateRecyclerList(listSlider)
     }

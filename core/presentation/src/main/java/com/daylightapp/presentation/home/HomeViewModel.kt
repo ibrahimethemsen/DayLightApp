@@ -15,6 +15,7 @@ import com.daylightapp.domain.usecase.quote.QuoteUseCase
 import com.daylightapp.domain.usecase.weather.CurrentDayWeatherUseCase
 import com.daylightapp.domain.usecase.weather.FiveDayWeatherForecastUseCase
 import com.daylightapp.presentation.common.fetchToLiveData
+import com.daylightapp.presentation.home.model.NewFeature
 import com.daylightapp.presentation.home.model.SliderModel
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.gson.Gson
@@ -50,6 +51,9 @@ class HomeViewModel @Inject constructor(
 
     private val _homeSlider = MutableLiveData<List<SliderModel>>()
     val homeSlider : LiveData<List<SliderModel>> = _homeSlider
+
+    private val _newFeature = MutableLiveData<NewFeature>()
+    val newFeature : LiveData<NewFeature> = _newFeature
 
     init {
         getCurrentWeather()
@@ -172,6 +176,9 @@ class HomeViewModel @Inject constructor(
 
     fun homeSliderRemoteConfig(){
         remoteConfig.fetchToLiveData("home_slider",gson,_homeSlider)
+    }
+    fun newFeatureRemoteConfig(){
+        remoteConfig.fetchToLiveData("new_feature_dialog",gson,_newFeature)
     }
 }
 
