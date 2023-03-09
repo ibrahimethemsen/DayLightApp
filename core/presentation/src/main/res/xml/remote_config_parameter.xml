@@ -76,5 +76,15 @@
             }
         </value>
     </entry>
-
+    <entry>
+        <key>bottom_feedback</key>
+        <value>
+            {
+            "feedback_visibility": false,
+            "feedback_shared": "",
+            "feedback_title": "",
+            "feedback_collection_id": ""
+            }
+        </value>
+    </entry>
 </defaultsMap>

@@ -55,6 +55,7 @@ dependencies {
 
     implementation 'com.google.firebase:firebase-auth-ktx'
 
+    implementation 'com.google.firebase:firebase-firestore-ktx'
     testImplementation libs.test.junit
     androidTestImplementation libs.test.androidx.junit
     androidTestImplementation libs.test.espresso

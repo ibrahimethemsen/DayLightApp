@@ -12,14 +12,17 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.daylightapp.domain.entity.city.LocationEntity
 import com.daylightapp.presentation.R
+import com.daylightapp.presentation.common.Constants.FEEDBACK_KEY
 import com.daylightapp.presentation.common.loadImage
 import com.daylightapp.presentation.common.observeIfNotNull
 import com.daylightapp.presentation.databinding.FragmentHomeBinding
 import com.daylightapp.presentation.home.adapter.FiveDayWeatherAdapter
 import com.daylightapp.presentation.home.adapter.SliderAdapter
+import com.daylightapp.presentation.home.model.FeedBackModel
 import com.daylightapp.presentation.home.model.LanguageModel
 import com.daylightapp.presentation.home.model.NewFeature
 import com.daylightapp.presentation.home.model.SliderModel
+import com.daylightapp.presentation.utility.SharedManager
 import com.daylightapp.presentation.utility.viewBindingInflater
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -40,6 +43,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         viewModel.newFeatureRemoteConfig()
         viewModel.activeIsQuoteService()
         viewModel.languageRemoteConfig()
+        viewModel.feedbackRemoteConfig()
     }
 
     private fun initAdapter(){
@@ -76,6 +80,19 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         observeIfNotNull(viewModel.newFeature,::newFeature)
         observeIfNotNull(viewModel.activeIsQuoteService,::setQuoteService)
         observeIfNotNull(viewModel.languageRemoteConfig,::languageDialog)
+        observeIfNotNull(viewModel.feedBackBottomVisibility,::toFeedBackBottomSheet)
+    }
+
+    private fun toFeedBackBottomSheet(feedbackModel : FeedBackModel){
+        val shared = SharedManager(requireContext())
+        if (feedbackModel.feedbackVisibility && shared.getSharedPreference(FEEDBACK_KEY,"empty") != feedbackModel.feedbackShared){
+            toBottomSheet(feedbackModel)
+        }
+    }
+
+    private fun toBottomSheet(feedbackModel: FeedBackModel){
+        val action = HomeFragmentDirections.actionHomeFragmentToFeedBackBottomFragment(feedbackModel.feedbackCollectionId,feedbackModel.feedbackShared,feedbackModel.feedbackTitle)
+        findNavController().navigate(action)
     }
 
     private fun setQuoteService(active : Boolean){
