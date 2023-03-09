@@ -37,6 +37,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         listener()
         viewModel.homeSliderRemoteConfig()
         viewModel.newFeatureRemoteConfig()
+        viewModel.activeIsQuoteService()
     }
 
     private fun initAdapter(){
@@ -71,6 +72,16 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         observeIfNotNull(viewModel.locationLatLon,::navigateHomeToFiveDay)
         observeIfNotNull(viewModel.homeSlider,::setSlider)
         observeIfNotNull(viewModel.newFeature,::newFeature)
+        observeIfNotNull(viewModel.activeIsQuoteService,::setQuoteService)
+    }
+
+    private fun setQuoteService(active : Boolean){
+        if (active){
+            binding.homeQuoteGroup.visibility = View.VISIBLE
+            viewModel.getQuote()
+        }else{
+            binding.homeQuoteGroup.visibility = View.GONE
+        }
     }
 
     private fun newFeature(newFeature : NewFeature){

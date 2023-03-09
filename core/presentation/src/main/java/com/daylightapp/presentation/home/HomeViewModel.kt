@@ -55,9 +55,11 @@ class HomeViewModel @Inject constructor(
     private val _newFeature = MutableLiveData<NewFeature>()
     val newFeature : LiveData<NewFeature> = _newFeature
 
+    private val _activeIsQuoteService = MutableLiveData<Boolean>()
+    val activeIsQuoteService : LiveData<Boolean> = _activeIsQuoteService
+
     init {
         getCurrentWeather()
-        getQuote()
     }
 
     private fun getCurrentWeather() {
@@ -70,7 +72,15 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    private fun getQuote() {
+    fun activeIsQuoteService(){
+        remoteConfig.fetchAndActivate().addOnCompleteListener {
+            if (it.isSuccessful){
+                _activeIsQuoteService.postValue(remoteConfig.getBoolean("active_is_quote_service"))
+            }
+        }
+    }
+
+     fun getQuote() {
         viewModelScope.launch {
             quoteUseCase().collect {
                 when (it) {
