@@ -17,6 +17,7 @@ import com.daylightapp.presentation.common.observeIfNotNull
 import com.daylightapp.presentation.databinding.FragmentHomeBinding
 import com.daylightapp.presentation.home.adapter.FiveDayWeatherAdapter
 import com.daylightapp.presentation.home.adapter.SliderAdapter
+import com.daylightapp.presentation.home.model.LanguageModel
 import com.daylightapp.presentation.home.model.NewFeature
 import com.daylightapp.presentation.home.model.SliderModel
 import com.daylightapp.presentation.utility.viewBindingInflater
@@ -38,6 +39,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         viewModel.homeSliderRemoteConfig()
         viewModel.newFeatureRemoteConfig()
         viewModel.activeIsQuoteService()
+        viewModel.languageRemoteConfig()
     }
 
     private fun initAdapter(){
@@ -73,6 +75,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         observeIfNotNull(viewModel.homeSlider,::setSlider)
         observeIfNotNull(viewModel.newFeature,::newFeature)
         observeIfNotNull(viewModel.activeIsQuoteService,::setQuoteService)
+        observeIfNotNull(viewModel.languageRemoteConfig,::languageDialog)
     }
 
     private fun setQuoteService(active : Boolean){
@@ -83,7 +86,18 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             binding.homeQuoteGroup.visibility = View.GONE
         }
     }
-
+    private fun languageDialog(languageModel: LanguageModel){
+        if (languageModel.languageVisibility){
+            val alertDialog = AlertDialog.Builder(requireContext())
+                .setTitle(languageModel.languageTitle)
+                .setMessage(languageModel.languageDescription)
+                .setPositiveButton("Tamam") { dialog, _ ->
+                    dialog.dismiss()
+                }
+                .create()
+            alertDialog.show()
+        }
+    }
     private fun newFeature(newFeature : NewFeature){
         if (newFeature.featureVisibility){
             val alertDialog = AlertDialog.Builder(requireContext())
