@@ -14,9 +14,9 @@ class ExtensionsTest {
 
     @Test
     fun when_milToKmSpeed_is_kmSpeed(){
-        // . ve , !
+        /** . VE , */
         val milToKm = (4.12).milToKmSpeed()
-        assertThat(milToKm).isEqualTo("6.63 km/s")
+        assertThat(milToKm).isEqualTo("6,63 km/s")
     }
 
     @Test
