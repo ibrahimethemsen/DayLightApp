@@ -12,12 +12,12 @@ class ExtensionsTest {
         assertThat(date).isEqualTo("ÖÖ 02:41")
     }
 
-    /*@Test
+    @Test
     fun when_milToKmSpeed_is_kmSpeed(){
-        // . ve , !
+        /** . VE , */
         val milToKm = (4.12).milToKmSpeed()
         assertThat(milToKm).isEqualTo("6,63 km/s")
-    }*/
+    }
 
     @Test
     fun when_kelvinToCelcius_is_celvin(){
